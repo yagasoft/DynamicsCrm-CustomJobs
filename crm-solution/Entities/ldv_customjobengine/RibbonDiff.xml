@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml>
+  <CustomActions>
+    <CustomAction Id="ldv.ldv_customjobengine.Run.Button.CustomAction" Location="Mscrm.Form.ldv_customjobengine.MainTab.Save.Controls._children" Sequence="65">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:ldv.ldv_customjobengine.Run.Button.Alt" Command="ldv.ldv_customjobengine.Run.Command" Description="Start Engine" Id="ldv.ldv_customjobengine.Run.Button" Image32by32="$webresource:ldv_QueuePng32" Image16by16="$webresource:ldv_QueuePng16" LabelText="$LocLabels:ldv.ldv_customjobengine.Run.Button.LabelText" Sequence="65" TemplateAlias="o2" ToolTipTitle="$LocLabels:ldv.ldv_customjobengine.Run.Button.ToolTipTitle" ToolTipDescription="$LocLabels:ldv.ldv_customjobengine.Run.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="ldv.ldv_customjobengine.Stop.Button.CustomAction" Location="Mscrm.Form.ldv_customjobengine.MainTab.Save.Controls._children" Sequence="67">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:ldv.ldv_customjobengine.Stop.Button.Alt" Command="ldv.ldv_customjobengine.Stop.Command" Description="Stop Engine" Id="ldv.ldv_customjobengine.Stop.Button" Image32by32="$webresource:ldv_StopPng32" Image16by16="$webresource:ldv_StopPng16" LabelText="$LocLabels:ldv.ldv_customjobengine.Stop.Button.LabelText" Sequence="67" TemplateAlias="o2" ToolTipTitle="$LocLabels:ldv.ldv_customjobengine.Stop.Button.ToolTipTitle" ToolTipDescription="$LocLabels:ldv.ldv_customjobengine.Stop.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="ldv.ldv_customjobengine.Run.Command">
+      <EnableRules>
+        <EnableRule Id="ldv.ldv_customjobengine.Run.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="RunEngine" Library="$webresource:ldv_CustomJobEngineRibbonJs" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="ldv.ldv_customjobengine.Stop.Command">
+      <EnableRules>
+        <EnableRule Id="ldv.ldv_customjobengine.Stop.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="StopEngine" Library="$webresource:ldv_CustomJobEngineRibbonJs" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="ldv.ldv_customjobengine.Run.EnableRule">
+        <CustomRule FunctionName="IsRunEnabled" Library="$webresource:ldv_CustomJobEngineRibbonJs" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="ldv.ldv_customjobengine.Stop.EnableRule">
+        <CustomRule FunctionName="IsStopEnabled" Library="$webresource:ldv_CustomJobEngineRibbonJs" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="ldv.ldv_customjobengine.Run.Button.Alt">
+      <Titles>
+        <Title description="Start Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjobengine.Run.Button.LabelText">
+      <Titles>
+        <Title description="Start Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjobengine.Run.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Start Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjobengine.Run.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Start Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjobengine.Stop.Button.Alt">
+      <Titles>
+        <Title description="Stop Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjobengine.Stop.Button.LabelText">
+      <Titles>
+        <Title description="Stop Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjobengine.Stop.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Stop Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjobengine.Stop.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Stop Engine" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

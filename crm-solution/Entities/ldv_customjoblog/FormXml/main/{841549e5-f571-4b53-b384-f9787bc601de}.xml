@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms>
+  <systemform>
+    <formid>{841549e5-f571-4b53-b384-f9787bc601de}</formid>
+    <IntroducedVersion>1.5.5.3</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{8d31cdf2-9576-42ba-af2e-8c63cf429066}" IsUserDefined="1" name="{8d31cdf2-9576-42ba-af2e-8c63cf429066}" locklevel="0" expanded="true" showlabel="false">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{81f68c53-ca2b-4f96-bd99-7e218c02d75a}" height="auto" name="{81f68c53-ca2b-4f96-bd99-7e218c02d75a}" columns="1" locklevel="0" labelwidth="150" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{738d5b52-f0ab-494f-974b-3593a7b6f1a6}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Message" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_name" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0000cd0e-9c3c-e6e7-8995-0678b937591b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Custom Job" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_customjobid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ldv_customjobid" disabled="true">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{3BE80847-B71C-48C3-9EDB-D2C03D32880F}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e847b28a-6bd4-cba9-3856-c98ec5144127}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Execution Date" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_executiondate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="ldv_executiondate" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1198e134-3057-c925-2cdc-102e9a24cdee}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6b2d6dc5-3a2d-409b-99b7-7a593308209f}" showlabel="true" locklevel="1" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="{8d31cdf2-9576-42ba-af2e-8c63cf429066}_section_2" showlabel="false" showbar="false" locklevel="0" id="{818e16be-5ec6-3e8b-67e3-623387b79058}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="150" celllabelalignment="Left" celllabelposition="Top" height="auto">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row height="auto">
+                      <cell id="{eab78b05-dc16-956e-722c-8a30ca14471e}" showlabel="true" locklevel="0" auto="true">
+                        <labels>
+                          <label description="Execution Full Message" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_executionfullmessage" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="ldv_executionfullmessage" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_2" id="{24c01353-6aad-4581-6881-cb24b5998889}" IsUserDefined="0" locklevel="0" showlabel="false" expanded="true">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" showlabel="false" showbar="false" locklevel="0" id="{c8515320-8ee1-4374-e593-072c20e0963b}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" height="auto">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2cbc3b02-2246-8805-9d77-ae9a4a374c30}" showlabel="true" colspan="1" auto="true" rowspan="4">
+                        <labels>
+                          <label description="Custom Job Failed Targets" languagecode="1033" />
+                        </labels>
+                        <control id="FailedTargetsGrid" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{4ae83ece-632b-8e57-5384-ca312171d8a7}">
+                          <parameters>
+                            <ViewId>{C73E1B68-BCF4-440A-9741-395994957493}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>ldv_ldv_customjoblog_ldv_customjobfailedtarget_LogEntry</RelationshipName>
+                            <TargetEntityType>ldv_customjobfailedtarget</TargetEntityType>
+                            <AutoExpand>Auto</AutoExpand>
+                            <EnableQuickFind>true</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{C73E1B68-BCF4-440A-9741-395994957493}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId></VisualizationId>
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>250</RecordsPerPage>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row height="auto" />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{c3386f8c-3df8-4ab8-9693-57ecb60a0da1}" columns="111">
+        <rows>
+          <row>
+            <cell id="{3fa1a0c6-4fbd-4aa7-827a-921ad9c2ba85}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{03400f0d-105d-4702-9cb5-7e583f4e0c3d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c37a950a-4526-b526-de3c-c6968e1e2e71}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <Navigation>
+        <NavBar></NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <controlDescriptions />
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

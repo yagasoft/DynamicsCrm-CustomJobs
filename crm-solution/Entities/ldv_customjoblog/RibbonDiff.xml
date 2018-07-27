@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml>
+  <CustomActions>
+    <HideCustomAction HideActionId="ldv.Mscrm.Form.ldv_customjoblog.NewRecord.Hide" Location="Mscrm.Form.ldv_customjoblog.NewRecord" />
+    <HideCustomAction HideActionId="ldv.Mscrm.Form.ldv_customjoblog.SaveAndNew.Hide" Location="Mscrm.Form.ldv_customjoblog.SaveAndNew" />
+    <HideCustomAction HideActionId="ldv.Mscrm.SubGrid.ldv_customjoblog.AddExistingAssoc.Hide" Location="Mscrm.SubGrid.ldv_customjoblog.AddExistingAssoc" />
+    <HideCustomAction HideActionId="ldv.Mscrm.SubGrid.ldv_customjoblog.AddExistingStandard.Hide" Location="Mscrm.SubGrid.ldv_customjoblog.AddExistingStandard" />
+    <HideCustomAction HideActionId="ldv.Mscrm.SubGrid.ldv_customjoblog.AddNewStandard.Hide" Location="Mscrm.SubGrid.ldv_customjoblog.AddNewStandard" />
+    <HideCustomAction HideActionId="ldv.Mscrm.SubGrid.ldv_customjoblog.NewRecord.Hide" Location="Mscrm.SubGrid.ldv_customjoblog.NewRecord" />
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions />
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules />
+  </RuleDefinitions>
+  <LocLabels />
+</RibbonDiffXml>

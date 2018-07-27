@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{4ad0db76-0a80-e611-80bf-00155d890101}" Name="Generate Name">
+  <XamlFileName>/Workflows/GenerateName-4AD0DB76-0A80-E611-80BF-00155D890101.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>2</Category>
+  <Mode>1</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.4.8.5</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <PrimaryEntity>ldv_customjobengine</PrimaryEntity>
+  <ProcessTriggers>
+    <ProcessTrigger processtriggerid="{53d0db76-0a80-e611-80bf-00155d890101}">
+      <controltype>1</controltype>
+      <scope>2</scope>
+      <controlname>ldv_name</controlname>
+      <event>change</event>
+      <pipelinestage>0</pipelinestage>
+      <iscustomizable>1</iscustomizable>
+      <primaryentitytypecode>ldv_customjobengine</primaryentitytypecode>
+    </ProcessTrigger>
+    <ProcessTrigger processtriggerid="{54d0db76-0a80-e611-80bf-00155d890101}">
+      <scope>2</scope>
+      <event>load</event>
+      <pipelinestage>0</pipelinestage>
+      <iscustomizable>1</iscustomizable>
+      <primaryentitytypecode>ldv_customjobengine</primaryentitytypecode>
+    </ProcessTrigger>
+  </ProcessTriggers>
+</Workflow>

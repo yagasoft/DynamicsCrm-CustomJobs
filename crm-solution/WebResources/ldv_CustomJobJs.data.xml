@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource>
+  <WebResourceId>{f28e7e79-b884-e611-80bf-00155d890101}</WebResourceId>
+  <Name>ldv_CustomJobJs</Name>
+  <DisplayName>Custom Job JS</DisplayName>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>1.5.3.2</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/ldv_CustomJobJsF28E7E79-B884-E611-80BF-00155D890101</FileName>
+</WebResource>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml>
+  <CustomActions>
+    <CustomAction Id="ldv.ldv_customjob.CancelJob.Button.CustomAction" Location="Mscrm.Form.ldv_customjob.MainTab.Save.Controls._children" Sequence="68">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:ldv.ldv_customjob.CancelJob.Button.Alt" Command="ldv.ldv_customjob.CancelJob.Command" Id="ldv.ldv_customjob.CancelJob.Button" Image32by32="$webresource:ldv_StopPng32" Image16by16="$webresource:ldv_StopPng16" LabelText="$LocLabels:ldv.ldv_customjob.CancelJob.Button.LabelText" Sequence="68" TemplateAlias="o2" ToolTipTitle="$LocLabels:ldv.ldv_customjob.CancelJob.Button.ToolTipTitle" ToolTipDescription="$LocLabels:ldv.ldv_customjob.CancelJob.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="ldv.ldv_customjob.ClearLogs.Button.CustomAction" Location="Mscrm.Form.ldv_customjob.MainTab.Save.Controls._children" Sequence="68">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:ldv.ldv_customjob.ClearLogs.Button.Alt" Command="ldv.ldv_customjob.ClearLogs.Command" Id="ldv.ldv_customjob.ClearLogs.Button" Image32by32="$webresource:ldv_RetryPng32" Image16by16="$webresource:ldv_RetryPng16" LabelText="$LocLabels:ldv.ldv_customjob.ClearLogs.Button.LabelText" Sequence="68" TemplateAlias="o2" ToolTipTitle="$LocLabels:ldv.ldv_customjob.ClearLogs.Button.ToolTipTitle" ToolTipDescription="$LocLabels:ldv.ldv_customjob.ClearLogs.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="ldv.ldv_customjob.EnqueueJob.Button.CustomAction" Location="Mscrm.Form.ldv_customjob.MainTab.Save.Controls._children" Sequence="67">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:ldv.ldv_customjob.EnqueueJob.Button.Alt" Command="ldv.ldv_customjob.EnqueueJob.Command" Id="ldv.ldv_customjob.EnqueueJob.Button" Image32by32="$webresource:ldv_QueuePng32" Image16by16="$webresource:ldv_QueuePng16" LabelText="$LocLabels:ldv.ldv_customjob.EnqueueJob.Button.LabelText" Sequence="67" TemplateAlias="o2" ToolTipTitle="$LocLabels:ldv.ldv_customjob.EnqueueJob.Button.ToolTipTitle" ToolTipDescription="$LocLabels:ldv.ldv_customjob.EnqueueJob.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="ldv.ldv_customjob.SetToDraft.Button.CustomAction" Location="Mscrm.Form.ldv_customjob.MainTab.Save.Controls._children" Sequence="65">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:ldv.ldv_customjob.SetToDraft.Button.Alt" Command="ldv.ldv_customjob.SetToDraft.Command" Id="ldv.ldv_customjob.SetToDraft.Button" Image32by32="$webresource:ldv_DraftPng32" Image16by16="$webresource:ldv_DraftPng16" LabelText="$LocLabels:ldv.ldv_customjob.SetToDraft.Button.LabelText" Sequence="65" TemplateAlias="o2" ToolTipTitle="$LocLabels:ldv.ldv_customjob.SetToDraft.Button.ToolTipTitle" ToolTipDescription="$LocLabels:ldv.ldv_customjob.SetToDraft.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="ldv.ldv_customjob.CancelJob.Command">
+      <EnableRules>
+        <EnableRule Id="ldv.ldv_customjob.CancelJob.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="CancelJob" Library="$webresource:ldv_CustomJobRibbonJs" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="ldv.ldv_customjob.ClearLogs.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="ClearLogs" Library="$webresource:ldv_CustomJobRibbonJs" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="ldv.ldv_customjob.EnqueueJob.Command">
+      <EnableRules>
+        <EnableRule Id="ldv.ldv_customjob.EnqueueJob.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="EnqueueJob" Library="$webresource:ldv_CustomJobRibbonJs" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="ldv.ldv_customjob.SetToDraft.Command">
+      <EnableRules>
+        <EnableRule Id="ldv.ldv_customjob.SetToDraft.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="SetToDraft" Library="$webresource:ldv_CustomJobRibbonJs" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="ldv.ldv_customjob.CancelJob.EnableRule">
+        <CustomRule FunctionName="IsCancelJobEnabled" Library="$webresource:ldv_CustomJobRibbonJs" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="ldv.ldv_customjob.EnqueueJob.EnableRule">
+        <CustomRule FunctionName="IsEnqueueJobEnabled" Library="$webresource:ldv_CustomJobRibbonJs" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="ldv.ldv_customjob.SetToDraft.EnableRule">
+        <CustomRule FunctionName="IsSetToDraftEnabled" Library="$webresource:ldv_CustomJobRibbonJs" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="ldv.ldv_customjob.CancelJob.Button.Alt">
+      <Titles>
+        <Title description="Cancel Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.CancelJob.Button.LabelText">
+      <Titles>
+        <Title description="Cancel Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.CancelJob.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Cancel Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.CancelJob.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Cancel Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.ClearLogs.Button.Alt">
+      <Titles>
+        <Title description="Clear Logs" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.ClearLogs.Button.LabelText">
+      <Titles>
+        <Title description="Clear Logs" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.ClearLogs.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Clear Logs" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.ClearLogs.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Clear Logs" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.EnqueueJob.Button.Alt">
+      <Titles>
+        <Title description="Enqueue Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.EnqueueJob.Button.LabelText">
+      <Titles>
+        <Title description="Enqueue Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.EnqueueJob.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Enqueue Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.EnqueueJob.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Enqueue Job" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.SetToDraft.Button.Alt">
+      <Titles>
+        <Title description="Set to Draft" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.SetToDraft.Button.LabelText">
+      <Titles>
+        <Title description="Set to Draft" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.SetToDraft.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Set to Draft" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="ldv.ldv_customjob.SetToDraft.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Set to Draft" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

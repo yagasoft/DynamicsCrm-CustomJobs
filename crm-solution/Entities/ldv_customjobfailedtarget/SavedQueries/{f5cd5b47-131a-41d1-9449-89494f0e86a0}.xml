@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries>
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <returnedtypecode>10008</returnedtypecode>
+    <savedqueryid>{f5cd5b47-131a-41d1-9449-89494f0e86a0}</savedqueryid>
+    <layoutxml>
+      <grid name="" object="10008" jump="ldv_name" select="1" icon="1" preview="1">
+        <row name="ldv_customjobfailedtarget" id="ldv_customjobfailedtargetid">
+          <cell name="ldv_name" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="ldv_customjobfailedtarget">
+          <attribute name="ldv_customjobfailedtargetid" />
+          <attribute name="ldv_name" />
+          <attribute name="createdon" />
+          <order attribute="ldv_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.1.3.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Custom Job Failed Target Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

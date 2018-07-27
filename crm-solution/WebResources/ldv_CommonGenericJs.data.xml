@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource>
+  <WebResourceId>{961a0a99-5b35-e611-80bc-00155d016501}</WebResourceId>
+  <Name>ldv_CommonGenericJs</Name>
+  <DisplayName>Common Generic JS</DisplayName>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>1.2.1.1</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/ldv_CommonGenericJs961A0A99-5B35-E611-80BC-00155D016501</FileName>
+</WebResource>

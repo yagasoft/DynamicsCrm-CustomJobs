@@ -328,3 +328,79 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Secrets
+nuget-access-key.txt
+*.snk
+*.dat
+
+# Tests
+/LinkDev.Tests.EnhancedOrgService
+
+# Tools
+*.exe
+*.bat
+/tools
+
+# Logs
+/crm-solution/log.csv
+/LinkDev.DataMigration.WebApp.Tests
+/LinkDev.DataMigration.Tests
+
+
+
+### Angular
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Created by https://www.gitignore.io/api/angular
+
+# compiled output
+/app/**/*.js
+/app/**/*.js.map
+
+# dependencies
+/bower_components
+
+# End of https://www.gitignore.io/api/angular

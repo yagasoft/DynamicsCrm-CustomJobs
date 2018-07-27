@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{3af1c5af-1911-4bc4-b3c7-15989a184298}" Name="[Generic] [Custom Job] [WF] 10-minute">
+  <XamlFileName>/Workflows/GenericCustomJobWF10-minute-3AF1C5AF-1911-4BC4-B3C7-15989A184298.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>0</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnUpdateAttributeList>ldv_10minutewfreset</TriggerOnUpdateAttributeList>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>1</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <PrimaryEntity>ldv_customjobengine</PrimaryEntity>
+  <labels>
+    <steplabels id="{08ad484e-2fed-44c4-a281-f6ae78ebe340}" />
+    <steplabels id="{36614c9f-6be2-4d5b-990c-a3dc217068b8}" />
+    <steplabels id="{35f6a7bf-60ad-4ec9-9e03-61a4f3a8d27d}" />
+    <steplabels id="{4f4a9b6a-c41f-469e-896f-6bd9cd4ef2e6}" />
+    <steplabels id="{b42d56ce-cab6-4982-8c0a-118c3ffa37d3}" />
+    <steplabels id="{9cd101df-8e2c-4858-8f44-4ef829217b0b}" />
+    <steplabels id="{14e587d9-3f74-48a9-9881-95a29e696e0a}" />
+    <steplabels id="{ceb26413-e1f9-4b41-ab65-3099c391cde0}" />
+  </labels>
+</Workflow>

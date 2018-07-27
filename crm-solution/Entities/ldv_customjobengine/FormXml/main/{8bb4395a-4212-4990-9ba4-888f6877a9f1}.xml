@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms>
+  <systemform>
+    <formid>{8bb4395a-4212-4990-9ba4-888f6877a9f1}</formid>
+    <IntroducedVersion>1.4.8.5</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1900">
+      <tabs>
+        <tab verticallayout="true" id="{a8d562cc-109a-4a47-bbbc-25415aa347e7}" IsUserDefined="1" name="{a8d562cc-109a-4a47-bbbc-25415aa347e7}" locklevel="0" expanded="true" showlabel="false">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="true" showbar="true" IsUserDefined="0" id="{986be64b-d767-45f6-88b2-d83824786c24}" name="{986be64b-d767-45f6-88b2-d83824786c24}" columns="1" locklevel="0" labelwidth="150" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4f459802-a6ea-47ba-93b8-ff49d667b8a2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_name" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{db02696d-7a7d-3a90-244d-352cc6653562}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Max Jobs Per Run" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_maxjobsperrun" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="ldv_maxjobsperrun" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{605e3714-78b6-443a-971b-89b84e1032c8}" showlabel="true" locklevel="1">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="true">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="{a8d562cc-109a-4a47-bbbc-25415aa347e7}_section_2" showlabel="true" showbar="true" locklevel="0" id="{65669e4b-b866-6c54-37a6-13d059269322}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="150" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Status" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1ab05e53-c432-1222-d29e-77258e1a623b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="{a8d562cc-109a-4a47-bbbc-25415aa347e7}_section_5" showlabel="true" showbar="true" locklevel="0" id="{e628d5d9-8108-4d6b-7702-3605bbc9b838}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="150" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Run IDs" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{aad574ce-e2c1-6993-3162-2c19871d1c5b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Hourly WF Run ID" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_hourlywfrunid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_hourlywfrunid" disabled="true" uniqueid="{8de30963-897a-2544-7600-4963b527e0a7}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{784620b5-021e-7e30-4d95-2a198319b846}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="10-Minute WF Run ID" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_10minutewfrunid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_10minutewfrunid" disabled="true" uniqueid="{40ecdee8-5d10-0e32-12c2-b50c5e322351}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0b346150-5446-ce50-ed55-2989730e2454}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="1-Minute WF Run ID" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_1minutewfrunid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_1minutewfrunid" disabled="true" uniqueid="{add26921-47a1-e9d9-4c66-80ea4c544b43}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{412dc3e6-29d1-2e24-879d-d6d3a48e76d8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Monitor WF Run ID" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_monitor1wfrunid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_monitor1wfrunid" disabled="true" uniqueid="{b5ed1db0-1225-8ed9-050d-2b69171b324c}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2e8e9218-e51d-208b-8238-c893aa6b866e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Monitor x2 WF Run ID" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_monitorx2wfrunid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_monitorx2wfrunid" disabled="true" uniqueid="{ca83587a-68e3-0928-83a3-4296c9dd9bb0}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="{a8d562cc-109a-4a47-bbbc-25415aa347e7}_section_3" showlabel="true" showbar="true" locklevel="0" id="{134b264c-43e1-17dc-4978-be30172ce131}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="150" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Reset" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b2053216-4214-67cc-c002-44831d9679ba}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Hourly WF Reset" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_hourlywfreset" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_hourlywfreset" disabled="true" uniqueid="{0b0d00bb-818a-526a-8415-cae45dd14379}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dd7e4329-2c7c-b682-316a-99b0b65b0244}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="10-Minute WF Reset" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_10minutewfreset" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_10minutewfreset" disabled="true" uniqueid="{c43ccdc0-9977-17bd-edb8-82a7bcb2dc50}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6d3cb830-484e-b549-6a91-aaa975529dd5}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="1-Minute WF Reset" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_1minutewfreset" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_1minutewfreset" disabled="true" uniqueid="{53c6884c-c621-98c0-28c1-2b3d766ccbe3}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e7456ce0-948c-a586-d33e-78c771d8b34c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Monitor WF Reset" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_monitorwfreset" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_monitorwfreset" disabled="true" uniqueid="{20acda4b-d5b9-7cad-24cc-c902a861055d}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ac8e31e4-7877-0ccd-83b5-2c2200a99a9e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Monitor x2 WF Reset" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_monitorx2wfreset" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_monitorx2wfreset" disabled="true" uniqueid="{65380c67-51c2-e795-4eac-a2d36b144049}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="{a8d562cc-109a-4a47-bbbc-25415aa347e7}_section_6" showlabel="true" showbar="true" locklevel="0" id="{ed5c9c02-72cd-aaa7-e69e-8997e2a1a254}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="150" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Dates" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{7a95e426-7819-153b-1b94-c28111700b96}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Hourly Base Date" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_hourlybasedate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="ldv_hourlybasedate" disabled="true" uniqueid="{d2e0790c-a25d-90ea-6910-59ca427ab98d}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b3507345-1442-47e7-b4d8-23b29c043aec}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Monitor Base Date" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_monitorbasedate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="ldv_monitorbasedate" disabled="true" uniqueid="{9976c723-4a59-e35a-e202-d6439bed345e}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c4531a26-75cd-427a-a006-5de7541bb37a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Monitor x2 Base Date" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_monitorx2basedate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="ldv_monitorx2basedate" disabled="true" uniqueid="{0576d9b2-8913-564a-4dc2-74083c4bda8d}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="{a8d562cc-109a-4a47-bbbc-25415aa347e7}_section_4" showlabel="true" showbar="true" locklevel="0" id="{122a6b55-9151-e4ac-44db-e66cec5c322b}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="150" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Flags" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4633a375-313a-0b88-cee2-5d938923a313}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Hourly Triggered" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_ishourlytriggered" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="ldv_ishourlytriggered" disabled="true" uniqueid="{ad6697a5-eda8-e648-b3a1-b23a3759b3bc}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <Navigation>
+        <NavBar></NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <formLibraries>
+        <Library name="ldv_CommonGenericSchemaJs" libraryUniqueId="{17c4b694-d946-a3e5-4e19-cec89e27cc2e}" />
+        <Library name="ldv_CommonGenericJs" libraryUniqueId="{798210b2-a756-18d2-b998-d10bd4406459}" />
+      </formLibraries>
+      <controlDescriptions />
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

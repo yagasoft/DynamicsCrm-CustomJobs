@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries>
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <returnedtypecode>10009</returnedtypecode>
+    <savedqueryid>{5f4da740-57b0-4103-aa2c-99efc200554f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" object="10009" jump="ldv_name" select="1" icon="1" preview="1">
+        <row name="result" id="ldv_customjoblogid">
+          <cell name="ldv_name" width="300" />
+          <cell name="ldv_executiondate" width="150" />
+          <cell name="statuscode" width="125" />
+          <cell name="createdon" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="ldv_customjoblog">
+          <attribute name="ldv_name" />
+          <order attribute="statuscode" descending="false" />
+          <order attribute="ldv_executiondate" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="statuscode" />
+          <attribute name="ldv_executiondate" />
+          <attribute name="createdon" />
+          <attribute name="ldv_customjoblogid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.5.5.3</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Custom Job Logs" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

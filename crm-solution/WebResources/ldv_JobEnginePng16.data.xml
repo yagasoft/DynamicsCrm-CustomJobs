@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource>
+  <WebResourceId>{6ed32698-b596-e611-80c2-00155d5f3d02}</WebResourceId>
+  <Name>ldv_JobEnginePng16</Name>
+  <DisplayName>Job Engine PNG 16</DisplayName>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>1.5.6.3</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/ldv_JobEnginePng166ED32698-B596-E611-80C2-00155D5F3D02</FileName>
+</WebResource>

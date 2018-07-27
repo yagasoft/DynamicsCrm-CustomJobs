@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{b037ca84-125c-4095-a8f8-14d3e0ecaa6d}" Name="[Generic] [Custom Job] [Action] Get Next Recurrence Date">
+  <XamlFileName>/Workflows/GenericCustomJobActionGetNextRecurrenceDate-B037CA84-125C-4095-A8F8-14D3E0ECAA6D.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>3</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>1</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <CreateStage>40</CreateStage>
+  <RunAs>1</RunAs>
+  <SdkMessageId>{f363c21b-108a-e611-80bf-00155d890101}</SdkMessageId>
+  <UniqueName>CustomJobGetNextRecurrenceDate</UniqueName>
+  <IsTransacted>0</IsTransacted>
+  <IntroducedVersion>1.5.3.4</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <PrimaryEntity>none</PrimaryEntity>
+</Workflow>
