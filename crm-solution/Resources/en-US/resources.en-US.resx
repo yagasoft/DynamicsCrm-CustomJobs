@@ -156,6 +156,14 @@
     <value />
     <comment>ldv_ldv_customjob_ldv_recurrencerule CustomLabel for EntityRelationship 'ldv_ldv_customjob_ldv_recurrencerule'</comment>
   </data>
+  <data name="10:CustomLabel,ldv_ldv_recurrenceruleexceptiongrouping_ldv_rOrdinal:1" xml:space="preserve">
+    <value />
+    <comment>ldv_ldv_recurrenceruleexceptiongrouping_ldv CustomLabel for EntityRelationship 'ldv_ldv_recurrenceruleexceptiongrouping_ldv_r'</comment>
+  </data>
+  <data name="10:CustomLabel,ldv_ldv_recurrenceruleexceptiongrouping_ldv_rOrdinal:2" xml:space="preserve">
+    <value />
+    <comment>ldv_ldv_recurrenceruleexceptiongrouping_ldv CustomLabel for EntityRelationship 'ldv_ldv_recurrenceruleexceptiongrouping_ldv_r'</comment>
+  </data>
   <data name="10:CustomLabel,ldv_ldv_recurrencerule_ldv_customjob_RetrySchedule" xml:space="preserve">
     <value />
     <comment>ldv_customjob CustomLabel for EntityRelationship 'ldv_ldv_recurrencerule_ldv_customjob_RetrySchedule'</comment>
@@ -215,6 +223,14 @@
   <data name="10:Description,business_unit_ldv_recurrencerule" xml:space="preserve">
     <value>Unique identifier for the business unit that owns the record</value>
     <comment>ldv_recurrencerule Description for EntityRelationship 'business_unit_ldv_recurrencerule'</comment>
+  </data>
+  <data name="10:Description,business_unit_ldv_recurrenceruleexception" xml:space="preserve">
+    <value>Unique identifier for the business unit that owns the record</value>
+    <comment>ldv_recurrenceruleexception Description for EntityRelationship 'business_unit_ldv_recurrenceruleexception'</comment>
+  </data>
+  <data name="10:Description,business_unit_ldv_recurrenceruleexceptiongrouping" xml:space="preserve">
+    <value>Unique identifier for the business unit that owns the record</value>
+    <comment>ldv_recurrenceruleexceptiongrouping Description for EntityRelationship 'business_unit_ldv_recurrenceruleexceptiongrouping'</comment>
   </data>
   <data name="10:Description,ldv_ldv_customjoblog_ldv_customjobfailedtarget_LogEntry" xml:space="preserve">
     <value>Unique identifier for Custom Job Log associated with Custom Job Failed Target.</value>
@@ -288,6 +304,22 @@
     <value>Unique identifier of the user who modified the record.</value>
     <comment>ldv_customjob Description for EntityRelationship 'lk_ldv_customjob_modifiedby'</comment>
   </data>
+  <data name="10:Description,lk_ldv_recurrenceruleexceptiongrouping_createdby" xml:space="preserve">
+    <value>Unique identifier of the user who created the record.</value>
+    <comment>ldv_recurrenceruleexceptiongrouping Description for EntityRelationship 'lk_ldv_recurrenceruleexceptiongrouping_createdby'</comment>
+  </data>
+  <data name="10:Description,lk_ldv_recurrenceruleexceptiongrouping_modifiedby" xml:space="preserve">
+    <value>Unique identifier of the user who modified the record.</value>
+    <comment>ldv_recurrenceruleexceptiongrouping Description for EntityRelationship 'lk_ldv_recurrenceruleexceptiongrouping_modifiedby'</comment>
+  </data>
+  <data name="10:Description,lk_ldv_recurrenceruleexception_createdby" xml:space="preserve">
+    <value>Unique identifier of the user who created the record.</value>
+    <comment>ldv_recurrenceruleexception Description for EntityRelationship 'lk_ldv_recurrenceruleexception_createdby'</comment>
+  </data>
+  <data name="10:Description,lk_ldv_recurrenceruleexception_modifiedby" xml:space="preserve">
+    <value>Unique identifier of the user who modified the record.</value>
+    <comment>ldv_recurrenceruleexception Description for EntityRelationship 'lk_ldv_recurrenceruleexception_modifiedby'</comment>
+  </data>
   <data name="10:Description,lk_ldv_recurrencerule_createdby" xml:space="preserve">
     <value>Unique identifier of the user who created the record.</value>
     <comment>ldv_recurrencerule Description for EntityRelationship 'lk_ldv_recurrencerule_createdby'</comment>
@@ -316,6 +348,14 @@
     <value>Owner Id</value>
     <comment>ldv_recurrencerule Description for EntityRelationship 'owner_ldv_recurrencerule'</comment>
   </data>
+  <data name="10:Description,owner_ldv_recurrenceruleexception" xml:space="preserve">
+    <value>Owner Id</value>
+    <comment>ldv_recurrenceruleexception Description for EntityRelationship 'owner_ldv_recurrenceruleexception'</comment>
+  </data>
+  <data name="10:Description,owner_ldv_recurrenceruleexceptiongrouping" xml:space="preserve">
+    <value>Owner Id</value>
+    <comment>ldv_recurrenceruleexceptiongrouping Description for EntityRelationship 'owner_ldv_recurrenceruleexceptiongrouping'</comment>
+  </data>
   <data name="10:Description,team_ldv_customjob" xml:space="preserve">
     <value>Unique identifier for the team that owns the record.</value>
     <comment>ldv_customjob Description for EntityRelationship 'team_ldv_customjob'</comment>
@@ -336,6 +376,14 @@
     <value>Unique identifier for the team that owns the record.</value>
     <comment>ldv_recurrencerule Description for EntityRelationship 'team_ldv_recurrencerule'</comment>
   </data>
+  <data name="10:Description,team_ldv_recurrenceruleexception" xml:space="preserve">
+    <value>Unique identifier for the team that owns the record.</value>
+    <comment>ldv_recurrenceruleexception Description for EntityRelationship 'team_ldv_recurrenceruleexception'</comment>
+  </data>
+  <data name="10:Description,team_ldv_recurrenceruleexceptiongrouping" xml:space="preserve">
+    <value>Unique identifier for the team that owns the record.</value>
+    <comment>ldv_recurrenceruleexceptiongrouping Description for EntityRelationship 'team_ldv_recurrenceruleexceptiongrouping'</comment>
+  </data>
   <data name="10:Description,user_ldv_customjob" xml:space="preserve">
     <value>Unique identifier for the user that owns the record.</value>
     <comment>ldv_customjob Description for EntityRelationship 'user_ldv_customjob'</comment>
@@ -355,6 +403,14 @@
   <data name="10:Description,user_ldv_recurrencerule" xml:space="preserve">
     <value>Unique identifier for the user that owns the record.</value>
     <comment>ldv_recurrencerule Description for EntityRelationship 'user_ldv_recurrencerule'</comment>
+  </data>
+  <data name="10:Description,user_ldv_recurrenceruleexception" xml:space="preserve">
+    <value>Unique identifier for the user that owns the record.</value>
+    <comment>ldv_recurrenceruleexception Description for EntityRelationship 'user_ldv_recurrenceruleexception'</comment>
+  </data>
+  <data name="10:Description,user_ldv_recurrenceruleexceptiongrouping" xml:space="preserve">
+    <value>Unique identifier for the user that owns the record.</value>
+    <comment>ldv_recurrenceruleexceptiongrouping Description for EntityRelationship 'user_ldv_recurrenceruleexceptiongrouping'</comment>
   </data>
   <data name="15062:Description,CustomJobs" xml:space="preserve">
     <value>Refer to YagaSoft.com for any enquiries.</value>
@@ -1072,6 +1128,246 @@
     <value />
     <comment> 'ldv_recurrencerule' : Description for Entity</comment>
   </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionCreatedBy" xml:space="preserve">
+    <value>Unique identifier of the user who created the record.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'CreatedBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionCreatedOn" xml:space="preserve">
+    <value>Date and time when the record was created.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'CreatedOn' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionCreatedOnBehalfBy" xml:space="preserve">
+    <value>Unique identifier of the delegate user who created the record.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'CreatedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionentityldv_recurrenceruleexception" xml:space="preserve">
+    <value />
+    <comment> 'ldv_recurrenceruleexception' : Description for Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingCreatedBy" xml:space="preserve">
+    <value>Unique identifier of the user who created the record.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'CreatedBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingCreatedOn" xml:space="preserve">
+    <value>Date and time when the record was created.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'CreatedOn' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingCreatedOnBehalfBy" xml:space="preserve">
+    <value>Unique identifier of the delegate user who created the record.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'CreatedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingentityldv_recurrenceruleexceptiongrouping" xml:space="preserve">
+    <value />
+    <comment> 'ldv_recurrenceruleexceptiongrouping' : Description for Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingImportSequenceNumber" xml:space="preserve">
+    <value>Sequence number of the import that created this record.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'ImportSequenceNumber' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingldv_name" xml:space="preserve">
+    <value>The name of the custom entity.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'ldv_name' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongroupingId" xml:space="preserve">
+    <value>Unique identifier for entity instances</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'ldv_recurrenceruleexceptiongroupingId' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statecode" xml:space="preserve">
+    <value>Status of the Recurrence Rule Exception Grouping</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for OptionSet 'ldv_recurrenceruleexceptiongrouping_statecode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statuscode" xml:space="preserve">
+    <value>Reason for the status of the Recurrence Rule Exception Grouping</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for OptionSet 'ldv_recurrenceruleexceptiongrouping_statuscode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingModifiedBy" xml:space="preserve">
+    <value>Unique identifier of the user who modified the record.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'ModifiedBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingModifiedOn" xml:space="preserve">
+    <value>Date and time when the record was modified.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'ModifiedOn' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingModifiedOnBehalfBy" xml:space="preserve">
+    <value>Unique identifier of the delegate user who modified the record.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'ModifiedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOverriddenCreatedOn" xml:space="preserve">
+    <value>Date and time that the record was migrated.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OverriddenCreatedOn' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOwnerId" xml:space="preserve">
+    <value>Owner Id</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OwnerId' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOwnerIdName" xml:space="preserve">
+    <value>Name of the owner</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OwnerIdName' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOwnerIdType" xml:space="preserve">
+    <value>Owner Id Type</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OwnerIdType' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOwnerIdYomiName" xml:space="preserve">
+    <value>Yomi name of the owner</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OwnerIdYomiName' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOwningBusinessUnit" xml:space="preserve">
+    <value>Unique identifier for the business unit that owns the record</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OwningBusinessUnit' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOwningTeam" xml:space="preserve">
+    <value>Unique identifier for the team that owns the record.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OwningTeam' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingOwningUser" xml:space="preserve">
+    <value>Unique identifier for the user that owns the record.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'OwningUser' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingstatecode" xml:space="preserve">
+    <value>Status of the Recurrence Rule Exception Grouping</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'statecode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingstatuscode" xml:space="preserve">
+    <value>Reason for the status of the Recurrence Rule Exception Grouping</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'statuscode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingTimeZoneRuleVersionNumber" xml:space="preserve">
+    <value>For internal use only.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'TimeZoneRuleVersionNumber' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptiongroupingUTCConversionTimeZoneCode" xml:space="preserve">
+    <value>Time zone code that was in use when the record was created.</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : Description for Attribute 'UTCConversionTimeZoneCode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionImportSequenceNumber" xml:space="preserve">
+    <value>Sequence number of the import that created this record.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ImportSequenceNumber' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_DayOccurrences" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_DayOccurrences' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_DaysOfTheMonth" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_DaysOfTheMonth' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_EndDate" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_EndDate' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_Hours" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_Hours' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_Minutes" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_Minutes' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_Month" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_Month' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_MonthlyDayOccurrence" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_MonthlyDayOccurrence' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_Months" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_Months' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_name" xml:space="preserve">
+    <value>The name of the custom entity.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_name' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_recurrenceruleexceptionId" xml:space="preserve">
+    <value>Unique identifier for entity instances</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_recurrenceruleexceptionId' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statecode" xml:space="preserve">
+    <value>Status of the Recurrence Rule Exception</value>
+    <comment>'ldv_recurrenceruleexception' : Description for OptionSet 'ldv_recurrenceruleexception_statecode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statuscode" xml:space="preserve">
+    <value>Reason for the status of the Recurrence Rule Exception</value>
+    <comment>'ldv_recurrenceruleexception' : Description for OptionSet 'ldv_recurrenceruleexception_statuscode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_StartDate" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_StartDate' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_WeekDay" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_WeekDay' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_WeekDays" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_WeekDays' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionldv_Years" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ldv_Years' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionModifiedBy" xml:space="preserve">
+    <value>Unique identifier of the user who modified the record.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ModifiedBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionModifiedOn" xml:space="preserve">
+    <value>Date and time when the record was modified.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ModifiedOn' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionModifiedOnBehalfBy" xml:space="preserve">
+    <value>Unique identifier of the delegate user who modified the record.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'ModifiedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOverriddenCreatedOn" xml:space="preserve">
+    <value>Date and time that the record was migrated.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OverriddenCreatedOn' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOwnerId" xml:space="preserve">
+    <value>Owner Id</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OwnerId' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOwnerIdName" xml:space="preserve">
+    <value>Name of the owner</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OwnerIdName' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOwnerIdType" xml:space="preserve">
+    <value>Owner Id Type</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OwnerIdType' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOwnerIdYomiName" xml:space="preserve">
+    <value>Yomi name of the owner</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OwnerIdYomiName' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOwningBusinessUnit" xml:space="preserve">
+    <value>Unique identifier for the business unit that owns the record</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OwningBusinessUnit' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOwningTeam" xml:space="preserve">
+    <value>Unique identifier for the team that owns the record.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OwningTeam' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionOwningUser" xml:space="preserve">
+    <value>Unique identifier for the user that owns the record.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'OwningUser' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionstatecode" xml:space="preserve">
+    <value>Status of the Recurrence Rule Exception</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'statecode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionstatuscode" xml:space="preserve">
+    <value>Reason for the status of the Recurrence Rule Exception</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'statuscode' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionTimeZoneRuleVersionNumber" xml:space="preserve">
+    <value>For internal use only.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'TimeZoneRuleVersionNumber' on Entity</comment>
+  </data>
+  <data name="1:Description,ldv_recurrenceruleexceptionUTCConversionTimeZoneCode" xml:space="preserve">
+    <value>Time zone code that was in use when the record was created.</value>
+    <comment>'ldv_recurrenceruleexception' : Description for Attribute 'UTCConversionTimeZoneCode' on Entity</comment>
+  </data>
   <data name="1:Description,ldv_recurrenceruleImportSequenceNumber" xml:space="preserve">
     <value>Sequence number of the import that created this record.</value>
     <comment>'ldv_recurrencerule' : Description for Attribute 'ImportSequenceNumber' on Entity</comment>
@@ -1223,6 +1519,22 @@
   <data name="1:Description,ldv_recurrenceruleUTCConversionTimeZoneCode" xml:space="preserve">
     <value>Time zone code that was in use when the record was created.</value>
     <comment>'ldv_recurrencerule' : Description for Attribute 'UTCConversionTimeZoneCode' on Entity</comment>
+  </data>
+  <data name="1:Description,Recurrence Rule Exception Grouping{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}" xml:space="preserve">
+    <value>A form for this entity.</value>
+    <comment>'Recurrence Rule Exception Grouping' : Description for systemform in Entity FormXml ID: '{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}'</comment>
+  </data>
+  <data name="1:Description,Recurrence Rule Exception Grouping{ebf868a0-92d2-40c1-a9f6-23da0da25720}" xml:space="preserve">
+    <value>This is the form that is displayed for the CRM Mobile application.</value>
+    <comment>'Recurrence Rule Exception Grouping' : Description for systemform in Entity FormXml ID: '{ebf868a0-92d2-40c1-a9f6-23da0da25720}'</comment>
+  </data>
+  <data name="1:Description,Recurrence Rule Exception{7d477941-1640-4d75-97b6-a325a065f3fb}" xml:space="preserve">
+    <value>This is the form that is displayed for the CRM Mobile application.</value>
+    <comment>'Recurrence Rule Exception' : Description for systemform in Entity FormXml ID: '{7d477941-1640-4d75-97b6-a325a065f3fb}'</comment>
+  </data>
+  <data name="1:Description,Recurrence Rule Exception{b8eb5e9d-326f-432a-aee4-cddb9a754019}" xml:space="preserve">
+    <value>A form for this entity.</value>
+    <comment>'Recurrence Rule Exception' : Description for systemform in Entity FormXml ID: '{b8eb5e9d-326f-432a-aee4-cddb9a754019}'</comment>
   </data>
   <data name="1:Description,Recurrence Rule{00101675-db35-4d51-9085-05769a16df22}" xml:space="preserve">
     <value>A form for this entity.</value>
@@ -1823,6 +2135,214 @@
   <data name="1:displayname,ldv_recurrenceruleCreatedOnBehalfBy" xml:space="preserve">
     <value>Created By (Delegate)</value>
     <comment>'ldv_recurrencerule' : displayname for Attribute 'CreatedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionCreatedBy" xml:space="preserve">
+    <value>Created By</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'CreatedBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionCreatedOn" xml:space="preserve">
+    <value>Created On</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'CreatedOn' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionCreatedOnBehalfBy" xml:space="preserve">
+    <value>Created By (Delegate)</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'CreatedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingCreatedBy" xml:space="preserve">
+    <value>Created By</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'CreatedBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingCreatedOn" xml:space="preserve">
+    <value>Created On</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'CreatedOn' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingCreatedOnBehalfBy" xml:space="preserve">
+    <value>Created By (Delegate)</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'CreatedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingImportSequenceNumber" xml:space="preserve">
+    <value>Import Sequence Number</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'ImportSequenceNumber' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingldv_name" xml:space="preserve">
+    <value>Name</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'ldv_name' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongroupingId" xml:space="preserve">
+    <value>Recurrence Rule Exception Grouping</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'ldv_recurrenceruleexceptiongroupingId' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statecode" xml:space="preserve">
+    <value>Status</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for OptionSet 'ldv_recurrenceruleexceptiongrouping_statecode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statuscode" xml:space="preserve">
+    <value>Status Reason</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for OptionSet 'ldv_recurrenceruleexceptiongrouping_statuscode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingModifiedBy" xml:space="preserve">
+    <value>Modified By</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'ModifiedBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingModifiedOn" xml:space="preserve">
+    <value>Modified On</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'ModifiedOn' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingModifiedOnBehalfBy" xml:space="preserve">
+    <value>Modified By (Delegate)</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'ModifiedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingOverriddenCreatedOn" xml:space="preserve">
+    <value>Record Created On</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'OverriddenCreatedOn' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingOwnerId" xml:space="preserve">
+    <value>Owner</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'OwnerId' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingOwningBusinessUnit" xml:space="preserve">
+    <value>Owning Business Unit</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'OwningBusinessUnit' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingOwningTeam" xml:space="preserve">
+    <value>Owning Team</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'OwningTeam' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingOwningUser" xml:space="preserve">
+    <value>Owning User</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'OwningUser' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingstatecode" xml:space="preserve">
+    <value>Status</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'statecode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingstatuscode" xml:space="preserve">
+    <value>Status Reason</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'statuscode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingTimeZoneRuleVersionNumber" xml:space="preserve">
+    <value>Time Zone Rule Version Number</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'TimeZoneRuleVersionNumber' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptiongroupingUTCConversionTimeZoneCode" xml:space="preserve">
+    <value>UTC Conversion Time Zone Code</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : displayname for Attribute 'UTCConversionTimeZoneCode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionImportSequenceNumber" xml:space="preserve">
+    <value>Import Sequence Number</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ImportSequenceNumber' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_DayOccurrences" xml:space="preserve">
+    <value>Day Occurrences</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_DayOccurrences' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_DaysOfTheMonth" xml:space="preserve">
+    <value>Days Of The Month</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_DaysOfTheMonth' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_EndDate" xml:space="preserve">
+    <value>End Date</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_EndDate' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_Hours" xml:space="preserve">
+    <value>Hours</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_Hours' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_Minutes" xml:space="preserve">
+    <value>Minutes</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_Minutes' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_Month" xml:space="preserve">
+    <value>Month</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_Month' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_MonthlyDayOccurrence" xml:space="preserve">
+    <value>Monthly Day Occurrence</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_MonthlyDayOccurrence' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_Months" xml:space="preserve">
+    <value>Months</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_Months' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_name" xml:space="preserve">
+    <value>Name</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_name' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_recurrenceruleexceptionId" xml:space="preserve">
+    <value>Recurrence Rule Exception</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_recurrenceruleexceptionId' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statecode" xml:space="preserve">
+    <value>Status</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for OptionSet 'ldv_recurrenceruleexception_statecode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statuscode" xml:space="preserve">
+    <value>Status Reason</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for OptionSet 'ldv_recurrenceruleexception_statuscode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_StartDate" xml:space="preserve">
+    <value>Start Date</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_StartDate' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_WeekDay" xml:space="preserve">
+    <value>Week Day</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_WeekDay' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_WeekDays" xml:space="preserve">
+    <value>Week Days</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_WeekDays' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionldv_Years" xml:space="preserve">
+    <value>Years</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ldv_Years' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionModifiedBy" xml:space="preserve">
+    <value>Modified By</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ModifiedBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionModifiedOn" xml:space="preserve">
+    <value>Modified On</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ModifiedOn' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionModifiedOnBehalfBy" xml:space="preserve">
+    <value>Modified By (Delegate)</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'ModifiedOnBehalfBy' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionOverriddenCreatedOn" xml:space="preserve">
+    <value>Record Created On</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'OverriddenCreatedOn' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionOwnerId" xml:space="preserve">
+    <value>Owner</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'OwnerId' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionOwningBusinessUnit" xml:space="preserve">
+    <value>Owning Business Unit</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'OwningBusinessUnit' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionOwningTeam" xml:space="preserve">
+    <value>Owning Team</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'OwningTeam' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionOwningUser" xml:space="preserve">
+    <value>Owning User</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'OwningUser' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionstatecode" xml:space="preserve">
+    <value>Status</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'statecode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionstatuscode" xml:space="preserve">
+    <value>Status Reason</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'statuscode' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionTimeZoneRuleVersionNumber" xml:space="preserve">
+    <value>Time Zone Rule Version Number</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'TimeZoneRuleVersionNumber' on Entity</comment>
+  </data>
+  <data name="1:displayname,ldv_recurrenceruleexceptionUTCConversionTimeZoneCode" xml:space="preserve">
+    <value>UTC Conversion Time Zone Code</value>
+    <comment>'ldv_recurrenceruleexception' : displayname for Attribute 'UTCConversionTimeZoneCode' on Entity</comment>
   </data>
   <data name="1:displayname,ldv_recurrenceruleImportSequenceNumber" xml:space="preserve">
     <value>Import Sequence Number</value>
@@ -2816,6 +3336,38 @@
     <value>Failure</value>
     <comment>'ldv_customjoblog' : label for status '753240000' on Entity</comment>
   </data>
+  <data name="1:label,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statecode0" xml:space="preserve">
+    <value>Active</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : label for state '0' on Entity</comment>
+  </data>
+  <data name="1:label,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statecode1" xml:space="preserve">
+    <value>Inactive</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : label for state '1' on Entity</comment>
+  </data>
+  <data name="1:label,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statuscode1" xml:space="preserve">
+    <value>Active</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : label for status '1' on Entity</comment>
+  </data>
+  <data name="1:label,ldv_recurrenceruleexceptiongroupingldv_recurrenceruleexceptiongrouping_statuscode2" xml:space="preserve">
+    <value>Inactive</value>
+    <comment>'ldv_recurrenceruleexceptiongrouping' : label for status '2' on Entity</comment>
+  </data>
+  <data name="1:label,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statecode0" xml:space="preserve">
+    <value>Active</value>
+    <comment>'ldv_recurrenceruleexception' : label for state '0' on Entity</comment>
+  </data>
+  <data name="1:label,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statecode1" xml:space="preserve">
+    <value>Inactive</value>
+    <comment>'ldv_recurrenceruleexception' : label for state '1' on Entity</comment>
+  </data>
+  <data name="1:label,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statuscode1" xml:space="preserve">
+    <value>Active</value>
+    <comment>'ldv_recurrenceruleexception' : label for status '1' on Entity</comment>
+  </data>
+  <data name="1:label,ldv_recurrenceruleexceptionldv_recurrenceruleexception_statuscode2" xml:space="preserve">
+    <value>Inactive</value>
+    <comment>'ldv_recurrenceruleexception' : label for status '2' on Entity</comment>
+  </data>
   <data name="1:label,ldv_recurrenceruleldv_recurrencerule_ldv_monthlypattern1" xml:space="preserve">
     <value>Specific Days</value>
     <comment>'ldv_recurrencerule' : label for option '1' on Entity</comment>
@@ -2839,6 +3391,210 @@
   <data name="1:label,ldv_recurrenceruleldv_recurrencerule_statuscode2" xml:space="preserve">
     <value>Inactive</value>
     <comment>'ldv_recurrencerule' : label for status '2' on Entity</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{07abb421-5198-2e76-3ea8-70250c697976}" xml:space="preserve">
+    <value>Recurrence Rules</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for cell in Entity FormXml ID: '{07abb421-5198-2e76-3ea8-70250c697976}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{118eba90-8506-4174-a3d2-d601d80cfa26}" xml:space="preserve">
+    <value />
+    <comment>'Recurrence Rule Exception Grouping' : label for section in Entity FormXml ID: '{118eba90-8506-4174-a3d2-d601d80cfa26}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{13e3887a-5c67-93da-a3c6-a82c3cc91e18}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for section in Entity FormXml ID: '{13e3887a-5c67-93da-a3c6-a82c3cc91e18}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{3f346804-f127-4a6f-a0b9-2139dd713e47}" xml:space="preserve">
+    <value />
+    <comment>'Recurrence Rule Exception Grouping' : label for tab in Entity FormXml ID: '{3f346804-f127-4a6f-a0b9-2139dd713e47}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{534ca6c1-3d28-44a7-ae70-7361c8c70f47}" xml:space="preserve">
+    <value>Name</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for cell in Entity FormXml ID: '{534ca6c1-3d28-44a7-ae70-7361c8c70f47}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{59a2563d-e46b-0b61-34b2-a84a257741b1}" xml:space="preserve">
+    <value>Recurrence Rule Exceptions</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for cell in Entity FormXml ID: '{59a2563d-e46b-0b61-34b2-a84a257741b1}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{5e52ecc0-4561-da46-eeb9-1bbd33b0b83a}" xml:space="preserve">
+    <value>Tab</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for tab in Entity FormXml ID: '{5e52ecc0-4561-da46-eeb9-1bbd33b0b83a}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{79d88468-0234-b080-a138-86c283e047bd}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for section in Entity FormXml ID: '{79d88468-0234-b080-a138-86c283e047bd}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{7b3f2db7-7e44-4b7f-81a5-4ebbf900f780}" xml:space="preserve">
+    <value>Owner</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for cell in Entity FormXml ID: '{7b3f2db7-7e44-4b7f-81a5-4ebbf900f780}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{87c3d0b6-153c-2905-bd87-7472c883b880}" xml:space="preserve">
+    <value>Tab</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for tab in Entity FormXml ID: '{87c3d0b6-153c-2905-bd87-7472c883b880}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{8d3fba3b-76ab-4e31-b476-a71ab33d81b1}" xml:space="preserve">
+    <value>Name</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for cell in Entity FormXml ID: '{8d3fba3b-76ab-4e31-b476-a71ab33d81b1}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{930f2f62-8f6c-4790-aa39-51b9306596c5}" xml:space="preserve">
+    <value>General</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for tab in Entity FormXml ID: '{930f2f62-8f6c-4790-aa39-51b9306596c5}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{99cc1ccd-4eff-4e2a-8360-6656ae68ced6}" xml:space="preserve">
+    <value>Status</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for cell in Entity FormXml ID: '{99cc1ccd-4eff-4e2a-8360-6656ae68ced6}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{a9b65c5a-902f-4681-b803-e2ad5ed0e927}" xml:space="preserve">
+    <value>General</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for section in Entity FormXml ID: '{a9b65c5a-902f-4681-b803-e2ad5ed0e927}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception Grouping{af80fce8-25a6-4c38-957f-be79a3521666}" xml:space="preserve">
+    <value>Owner</value>
+    <comment>'Recurrence Rule Exception Grouping' : label for cell in Entity FormXml ID: '{af80fce8-25a6-4c38-957f-be79a3521666}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{033ad55b-9b5e-02d2-c466-ab4ae9a442c4}" xml:space="preserve">
+    <value />
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{033ad55b-9b5e-02d2-c466-ab4ae9a442c4}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{087e6ed0-dd4e-ad16-3d4a-d4031c8d8aa1}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{087e6ed0-dd4e-ad16-3d4a-d4031c8d8aa1}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{0c139068-3ca0-a5c5-3170-9e053140d430}" xml:space="preserve">
+    <value>Monthly Day Occurrence</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{0c139068-3ca0-a5c5-3170-9e053140d430}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{10570325-919b-39e4-09b9-e950214a6521}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{10570325-919b-39e4-09b9-e950214a6521}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{106d84c3-104e-d50d-0464-5e9b7553de1a}" xml:space="preserve">
+    <value />
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{106d84c3-104e-d50d-0464-5e9b7553de1a}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{1e4c38d8-ea83-4946-96b5-be5ee3077601}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{1e4c38d8-ea83-4946-96b5-be5ee3077601}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{1e997545-2ad5-4161-6423-de623e6d504b}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{1e997545-2ad5-4161-6423-de623e6d504b}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{1fc7b46b-5a39-4b75-bca5-8707fb846638}" xml:space="preserve">
+    <value>General</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{1fc7b46b-5a39-4b75-bca5-8707fb846638}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{2457077f-6de1-426a-a3db-f1a2087bd85a}" xml:space="preserve">
+    <value />
+    <comment>'Recurrence Rule Exception' : label for tab in Entity FormXml ID: '{2457077f-6de1-426a-a3db-f1a2087bd85a}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{262252ba-7bf7-46ce-a17d-73e79cab5c70}" xml:space="preserve">
+    <value>Status</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{262252ba-7bf7-46ce-a17d-73e79cab5c70}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{2d415ab9-1846-38b5-9c28-85529031d703}" xml:space="preserve">
+    <value>Tab</value>
+    <comment>'Recurrence Rule Exception' : label for tab in Entity FormXml ID: '{2d415ab9-1846-38b5-9c28-85529031d703}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{3428185b-61e4-06ce-649c-9569ad3b11a9}" xml:space="preserve">
+    <value>Start Date</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{3428185b-61e4-06ce-649c-9569ad3b11a9}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{37201373-c624-c4b6-a221-0ae9e8903be5}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{37201373-c624-c4b6-a221-0ae9e8903be5}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{3a54a253-7943-978a-35d7-7c1e8cc589a2}" xml:space="preserve">
+    <value>Tab</value>
+    <comment>'Recurrence Rule Exception' : label for tab in Entity FormXml ID: '{3a54a253-7943-978a-35d7-7c1e8cc589a2}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{3b7b90c8-c2c5-3891-5650-4567536c02a6}" xml:space="preserve">
+    <value>Days of the Month</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{3b7b90c8-c2c5-3891-5650-4567536c02a6}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{4425aee1-4787-843e-0292-902c9ed0029c}" xml:space="preserve">
+    <value>Day Occurrences</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{4425aee1-4787-843e-0292-902c9ed0029c}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{49426c06-11d0-b266-50a0-44a12ca9c418}" xml:space="preserve">
+    <value>Minutes</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{49426c06-11d0-b266-50a0-44a12ca9c418}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{64516613-2ebb-0e61-3592-72947c7e75ea}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{64516613-2ebb-0e61-3592-72947c7e75ea}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{661da341-9b1c-9499-6d1c-d36b9c0e1e33}" xml:space="preserve">
+    <value>Years</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{661da341-9b1c-9499-6d1c-d36b9c0e1e33}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{66235457-2224-63c8-bb6a-0db237950a31}" xml:space="preserve">
+    <value>Recurrence Rule Exception Groupings</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{66235457-2224-63c8-bb6a-0db237950a31}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{66774357-d824-41b0-987a-d4e50d79fe86}" xml:space="preserve">
+    <value>Owner</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{66774357-d824-41b0-987a-d4e50d79fe86}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{6ab9c95d-5e8a-5331-d69a-0dc8e8a8a85a}" xml:space="preserve">
+    <value>Tab</value>
+    <comment>'Recurrence Rule Exception' : label for tab in Entity FormXml ID: '{6ab9c95d-5e8a-5331-d69a-0dc8e8a8a85a}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{717db89b-3b6d-3da5-bed1-e46a05132dce}" xml:space="preserve">
+    <value>Month</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{717db89b-3b6d-3da5-bed1-e46a05132dce}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{79230afc-f824-4563-9711-f473b29b72fd}" xml:space="preserve">
+    <value />
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{79230afc-f824-4563-9711-f473b29b72fd}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{8517763d-358a-5808-5385-b36ebc13ac1d}" xml:space="preserve">
+    <value>End Date</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{8517763d-358a-5808-5385-b36ebc13ac1d}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{853960e3-2601-83c1-d99a-3236d33263eb}" xml:space="preserve">
+    <value>Months</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{853960e3-2601-83c1-d99a-3236d33263eb}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{8dc2970a-1aa7-4764-b544-c228cc7dd609}" xml:space="preserve">
+    <value>General</value>
+    <comment>'Recurrence Rule Exception' : label for tab in Entity FormXml ID: '{8dc2970a-1aa7-4764-b544-c228cc7dd609}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{9649d429-8a49-a326-2a28-47d254350125}" xml:space="preserve">
+    <value>Section</value>
+    <comment>'Recurrence Rule Exception' : label for section in Entity FormXml ID: '{9649d429-8a49-a326-2a28-47d254350125}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{96dcd256-fccb-4f8c-bd01-a1f4cb30490a}" xml:space="preserve">
+    <value>Owner</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{96dcd256-fccb-4f8c-bd01-a1f4cb30490a}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{b1a23015-3094-ca76-2d4e-9cbcac5c51aa}" xml:space="preserve">
+    <value>Hours</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{b1a23015-3094-ca76-2d4e-9cbcac5c51aa}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{c61bcca2-b2c5-463a-857f-3e6c357f8a88}" xml:space="preserve">
+    <value>Name</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{c61bcca2-b2c5-463a-857f-3e6c357f8a88}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{ca2cc4ce-a073-1c0b-32c4-53a383920b7d}" xml:space="preserve">
+    <value>Recurrence Rules</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{ca2cc4ce-a073-1c0b-32c4-53a383920b7d}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{d8019195-217a-56b6-50ca-d6d75c4707d7}" xml:space="preserve">
+    <value>Week Days</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{d8019195-217a-56b6-50ca-d6d75c4707d7}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{e1cde84e-6e47-192a-a54a-9acc464eeee8}" xml:space="preserve">
+    <value>Tab</value>
+    <comment>'Recurrence Rule Exception' : label for tab in Entity FormXml ID: '{e1cde84e-6e47-192a-a54a-9acc464eeee8}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{e70dca96-393e-54ce-15e4-eb81855ed4dd}" xml:space="preserve">
+    <value>Week Day</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{e70dca96-393e-54ce-15e4-eb81855ed4dd}'</comment>
+  </data>
+  <data name="1:label,Recurrence Rule Exception{ef928917-1b1a-42a6-8cf7-14e3a85bb0f3}" xml:space="preserve">
+    <value>Name</value>
+    <comment>'Recurrence Rule Exception' : label for cell in Entity FormXml ID: '{ef928917-1b1a-42a6-8cf7-14e3a85bb0f3}'</comment>
   </data>
   <data name="1:label,Recurrence Rule{06b92d39-a3c9-7622-0393-2712a6a2ca0b}" xml:space="preserve">
     <value>Days Of The Month</value>
@@ -3056,6 +3812,14 @@
     <value>Recurrence Rules</value>
     <comment> 'ldv_recurrencerule' : LocalizedCollectionName for Entity</comment>
   </data>
+  <data name="1:LocalizedCollectionName,ldv_recurrenceruleexceptionentityldv_recurrenceruleexception" xml:space="preserve">
+    <value>Recurrence Rule Exceptions</value>
+    <comment> 'ldv_recurrenceruleexception' : LocalizedCollectionName for Entity</comment>
+  </data>
+  <data name="1:LocalizedCollectionName,ldv_recurrenceruleexceptiongroupingentityldv_recurrenceruleexceptiongrouping" xml:space="preserve">
+    <value>Recurrence Rule Exception Groupings</value>
+    <comment> 'ldv_recurrenceruleexceptiongrouping' : LocalizedCollectionName for Entity</comment>
+  </data>
   <data name="1:LocalizedName,Custom Job Engine{085084e7-08ac-421c-931d-d72e3070f80f}" xml:space="preserve">
     <value>Custom Job Engine Lookup View</value>
     <comment>'Custom Job Engine' : LocalizedName for SavedQuery on Entity QueryId: '{085084e7-08ac-421c-931d-d72e3070f80f}'</comment>
@@ -3255,6 +4019,86 @@
   <data name="1:LocalizedName,ldv_recurrenceruleentityldv_recurrencerule" xml:space="preserve">
     <value>Recurrence Rule</value>
     <comment> 'ldv_recurrencerule' : LocalizedName for Entity</comment>
+  </data>
+  <data name="1:LocalizedName,ldv_recurrenceruleexceptionentityldv_recurrenceruleexception" xml:space="preserve">
+    <value>Recurrence Rule Exception</value>
+    <comment> 'ldv_recurrenceruleexception' : LocalizedName for Entity</comment>
+  </data>
+  <data name="1:LocalizedName,ldv_recurrenceruleexceptiongroupingentityldv_recurrenceruleexceptiongrouping" xml:space="preserve">
+    <value>Recurrence Rule Exception Grouping</value>
+    <comment> 'ldv_recurrenceruleexceptiongrouping' : LocalizedName for Entity</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{44d05367-9884-e611-80bf-00155d890101}" xml:space="preserve">
+    <value>My Recurrence Rule Exception Groupings</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for SavedQuery on Entity QueryId: '{44d05367-9884-e611-80bf-00155d890101}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{696b8fa6-e567-4b24-b5a4-a4888fbbf2dd}" xml:space="preserve">
+    <value>Recurrence Rule Exception Grouping Advanced Find View</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for SavedQuery on Entity QueryId: '{696b8fa6-e567-4b24-b5a4-a4888fbbf2dd}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{7195a8f5-d805-46c2-9b29-e188fe83de42}" xml:space="preserve">
+    <value>Recurrence Rule Exception Grouping Associated View</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for SavedQuery on Entity QueryId: '{7195a8f5-d805-46c2-9b29-e188fe83de42}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{85868350-0e0c-4297-a3d3-f02b3198f793}" xml:space="preserve">
+    <value>Inactive Recurrence Rule Exception Groupings</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for SavedQuery on Entity QueryId: '{85868350-0e0c-4297-a3d3-f02b3198f793}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{a4eeaa5a-677c-4515-9f74-cda2e81926b2}" xml:space="preserve">
+    <value>Quick Find Active Recurrence Rule Exception Groupings</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for SavedQuery on Entity QueryId: '{a4eeaa5a-677c-4515-9f74-cda2e81926b2}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{b4b5836b-f6a0-486e-9e23-211f97b8f62e}" xml:space="preserve">
+    <value>Active Recurrence Rule Exception Groupings</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for SavedQuery on Entity QueryId: '{b4b5836b-f6a0-486e-9e23-211f97b8f62e}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}" xml:space="preserve">
+    <value>Information</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for systemform in Entity FormXml ID: '{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{d6cb540f-e3f3-4a75-a0ab-3d20ef2ba3be}" xml:space="preserve">
+    <value>Recurrence Rule Exception Grouping Lookup View</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for SavedQuery on Entity QueryId: '{d6cb540f-e3f3-4a75-a0ab-3d20ef2ba3be}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception Grouping{ebf868a0-92d2-40c1-a9f6-23da0da25720}" xml:space="preserve">
+    <value>Information</value>
+    <comment>'Recurrence Rule Exception Grouping' : LocalizedName for systemform in Entity FormXml ID: '{ebf868a0-92d2-40c1-a9f6-23da0da25720}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{1c46e16f-9784-e611-80bf-00155d890101}" xml:space="preserve">
+    <value>My Recurrence Rule Exceptions</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for SavedQuery on Entity QueryId: '{1c46e16f-9784-e611-80bf-00155d890101}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{21849080-2de4-4352-924e-58afc5cdaa90}" xml:space="preserve">
+    <value>Recurrence Rule Exception Associated View</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for SavedQuery on Entity QueryId: '{21849080-2de4-4352-924e-58afc5cdaa90}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{41ccc7bf-067f-449f-918a-7b0e54b23ca3}" xml:space="preserve">
+    <value>Recurrence Rule Exception Advanced Find View</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for SavedQuery on Entity QueryId: '{41ccc7bf-067f-449f-918a-7b0e54b23ca3}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{5df92359-023d-485b-b6cb-4de92588dc11}" xml:space="preserve">
+    <value>Active Recurrence Rule Exceptions</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for SavedQuery on Entity QueryId: '{5df92359-023d-485b-b6cb-4de92588dc11}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{7d477941-1640-4d75-97b6-a325a065f3fb}" xml:space="preserve">
+    <value>Information</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for systemform in Entity FormXml ID: '{7d477941-1640-4d75-97b6-a325a065f3fb}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{8da08db7-e760-4149-91dc-f92ea9975d35}" xml:space="preserve">
+    <value>Recurrence Rule Exception Lookup View</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for SavedQuery on Entity QueryId: '{8da08db7-e760-4149-91dc-f92ea9975d35}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{a18aba79-ed68-4476-beae-f3b303f8c9bb}" xml:space="preserve">
+    <value>Inactive Recurrence Rule Exceptions</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for SavedQuery on Entity QueryId: '{a18aba79-ed68-4476-beae-f3b303f8c9bb}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{a4413e19-5383-499e-83e8-93992be17b8d}" xml:space="preserve">
+    <value>Quick Find Active Recurrence Rule Exceptions</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for SavedQuery on Entity QueryId: '{a4413e19-5383-499e-83e8-93992be17b8d}'</comment>
+  </data>
+  <data name="1:LocalizedName,Recurrence Rule Exception{b8eb5e9d-326f-432a-aee4-cddb9a754019}" xml:space="preserve">
+    <value>Information</value>
+    <comment>'Recurrence Rule Exception' : LocalizedName for systemform in Entity FormXml ID: '{b8eb5e9d-326f-432a-aee4-cddb9a754019}'</comment>
   </data>
   <data name="1:LocalizedName,Recurrence Rule{00101675-db35-4d51-9085-05769a16df22}" xml:space="preserve">
     <value>Information</value>
@@ -3468,6 +4312,46 @@
     <value>Service</value>
     <comment>'Custom Job' : Title for NavBarArea in Entity FormXml ID: 'Service'</comment>
   </data>
+  <data name="1:Title,Recurrence Rule Exception GroupingInfo{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}" xml:space="preserve">
+    <value>Common</value>
+    <comment>'Recurrence Rule Exception Grouping' : Title for NavBarArea in Entity FormXml ID: 'Info'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule Exception GroupingMarketing{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}" xml:space="preserve">
+    <value>Marketing</value>
+    <comment>'Recurrence Rule Exception Grouping' : Title for NavBarArea in Entity FormXml ID: 'Marketing'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule Exception GroupingProcessCenter{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}" xml:space="preserve">
+    <value>Process Sessions</value>
+    <comment>'Recurrence Rule Exception Grouping' : Title for NavBarArea in Entity FormXml ID: 'ProcessCenter'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule Exception GroupingSales{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}" xml:space="preserve">
+    <value>Sales</value>
+    <comment>'Recurrence Rule Exception Grouping' : Title for NavBarArea in Entity FormXml ID: 'Sales'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule Exception GroupingService{bc6d1a83-8c3f-4c65-b8ee-f796ff92f96f}" xml:space="preserve">
+    <value>Service</value>
+    <comment>'Recurrence Rule Exception Grouping' : Title for NavBarArea in Entity FormXml ID: 'Service'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule ExceptionInfo{b8eb5e9d-326f-432a-aee4-cddb9a754019}" xml:space="preserve">
+    <value>Common</value>
+    <comment>'Recurrence Rule Exception' : Title for NavBarArea in Entity FormXml ID: 'Info'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule ExceptionMarketing{b8eb5e9d-326f-432a-aee4-cddb9a754019}" xml:space="preserve">
+    <value>Marketing</value>
+    <comment>'Recurrence Rule Exception' : Title for NavBarArea in Entity FormXml ID: 'Marketing'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule ExceptionProcessCenter{b8eb5e9d-326f-432a-aee4-cddb9a754019}" xml:space="preserve">
+    <value>Process Sessions</value>
+    <comment>'Recurrence Rule Exception' : Title for NavBarArea in Entity FormXml ID: 'ProcessCenter'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule ExceptionSales{b8eb5e9d-326f-432a-aee4-cddb9a754019}" xml:space="preserve">
+    <value>Sales</value>
+    <comment>'Recurrence Rule Exception' : Title for NavBarArea in Entity FormXml ID: 'Sales'</comment>
+  </data>
+  <data name="1:Title,Recurrence Rule ExceptionService{b8eb5e9d-326f-432a-aee4-cddb9a754019}" xml:space="preserve">
+    <value>Service</value>
+    <comment>'Recurrence Rule Exception' : Title for NavBarArea in Entity FormXml ID: 'Service'</comment>
+  </data>
   <data name="1:Title,Recurrence RuleInfo{00101675-db35-4d51-9085-05769a16df22}" xml:space="preserve">
     <value>Common</value>
     <comment>'Recurrence Rule' : Title for NavBarArea in Entity FormXml ID: 'Info'</comment>
@@ -3491,5 +4375,269 @@
   <data name="29:label,{112054a3-454c-43b0-a6ed-180422d37393}" xml:space="preserve">
     <value>Hourly WF already triggered.</value>
     <comment>'[Generic] [Custom Job] [WF] Main:{112054a3-454c-43b0-a6ed-180422d37393}' : label for Workflow Label</comment>
+  </data>
+  <data name="9:Description,ldv_monthlydayoccurrence" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthlydayoccurrence' : Description for OptionSet</comment>
+  </data>
+  <data name="9:Description,ldv_monthlydayoccurrence1" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthlydayoccurrence' : Description for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:Description,ldv_monthlydayoccurrence2" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthlydayoccurrence' : Description for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:Description,ldv_monthlydayoccurrence3" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthlydayoccurrence' : Description for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:Description,ldv_monthlydayoccurrence4" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthlydayoccurrence' : Description for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:Description,ldv_monthlydayoccurrence5" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthlydayoccurrence' : Description for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear1" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear10" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '10'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear11" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '11'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear12" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '12'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear2" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear3" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear4" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear5" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear6" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '6'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear7" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '7'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear8" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '8'</comment>
+  </data>
+  <data name="9:Description,ldv_monthoftheyear9" xml:space="preserve">
+    <value />
+    <comment>'ldv_monthoftheyear' : Description for OptionSet Value '9'</comment>
+  </data>
+  <data name="9:Description,ldv_recurrence" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrence' : Description for OptionSet</comment>
+  </data>
+  <data name="9:Description,ldv_recurrence1" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrence' : Description for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:Description,ldv_recurrence2" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrence' : Description for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:Description,ldv_recurrence3" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrence' : Description for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:Description,ldv_recurrence4" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrence' : Description for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:Description,ldv_recurrence5" xml:space="preserve">
+    <value />
+    <comment>'ldv_recurrence' : Description for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:Description,ldv_weekday" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet</comment>
+  </data>
+  <data name="9:Description,ldv_weekday1" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:Description,ldv_weekday2" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:Description,ldv_weekday3" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:Description,ldv_weekday4" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:Description,ldv_weekday5" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:Description,ldv_weekday6" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet Value '6'</comment>
+  </data>
+  <data name="9:Description,ldv_weekday7" xml:space="preserve">
+    <value />
+    <comment>'ldv_weekday' : Description for OptionSet Value '7'</comment>
+  </data>
+  <data name="9:displayname,ldv_monthlydayoccurrence" xml:space="preserve">
+    <value>Monthly Day Occurrence</value>
+    <comment>'ldv_monthlydayoccurrence' : displayname for OptionSet</comment>
+  </data>
+  <data name="9:displayname,ldv_monthoftheyear" xml:space="preserve">
+    <value>Month of the Year</value>
+    <comment>'ldv_monthoftheyear' : displayname for OptionSet</comment>
+  </data>
+  <data name="9:displayname,ldv_recurrence" xml:space="preserve">
+    <value>Recurrence</value>
+    <comment>'ldv_recurrence' : displayname for OptionSet</comment>
+  </data>
+  <data name="9:displayname,ldv_weekday" xml:space="preserve">
+    <value>Week Day</value>
+    <comment>'ldv_weekday' : displayname for OptionSet</comment>
+  </data>
+  <data name="9:label,ldv_monthlydayoccurrence1" xml:space="preserve">
+    <value>First</value>
+    <comment>'ldv_monthlydayoccurrence' : label for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:label,ldv_monthlydayoccurrence2" xml:space="preserve">
+    <value>Second</value>
+    <comment>'ldv_monthlydayoccurrence' : label for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:label,ldv_monthlydayoccurrence3" xml:space="preserve">
+    <value>Third</value>
+    <comment>'ldv_monthlydayoccurrence' : label for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:label,ldv_monthlydayoccurrence4" xml:space="preserve">
+    <value>Fourth</value>
+    <comment>'ldv_monthlydayoccurrence' : label for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:label,ldv_monthlydayoccurrence5" xml:space="preserve">
+    <value>Last</value>
+    <comment>'ldv_monthlydayoccurrence' : label for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear1" xml:space="preserve">
+    <value>January</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear10" xml:space="preserve">
+    <value>October</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '10'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear11" xml:space="preserve">
+    <value>November</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '11'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear12" xml:space="preserve">
+    <value>December</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '12'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear2" xml:space="preserve">
+    <value>February</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear3" xml:space="preserve">
+    <value>March</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear4" xml:space="preserve">
+    <value>April</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear5" xml:space="preserve">
+    <value>May</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear6" xml:space="preserve">
+    <value>June</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '6'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear7" xml:space="preserve">
+    <value>July</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '7'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear8" xml:space="preserve">
+    <value>August</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '8'</comment>
+  </data>
+  <data name="9:label,ldv_monthoftheyear9" xml:space="preserve">
+    <value>September</value>
+    <comment>'ldv_monthoftheyear' : label for OptionSet Value '9'</comment>
+  </data>
+  <data name="9:label,ldv_recurrence1" xml:space="preserve">
+    <value>Every Minute</value>
+    <comment>'ldv_recurrence' : label for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:label,ldv_recurrence2" xml:space="preserve">
+    <value>Hourly</value>
+    <comment>'ldv_recurrence' : label for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:label,ldv_recurrence3" xml:space="preserve">
+    <value>Daily</value>
+    <comment>'ldv_recurrence' : label for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:label,ldv_recurrence4" xml:space="preserve">
+    <value>Weekly</value>
+    <comment>'ldv_recurrence' : label for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:label,ldv_recurrence5" xml:space="preserve">
+    <value>Monthly</value>
+    <comment>'ldv_recurrence' : label for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:label,ldv_weekday1" xml:space="preserve">
+    <value>Sunday</value>
+    <comment>'ldv_weekday' : label for OptionSet Value '1'</comment>
+  </data>
+  <data name="9:label,ldv_weekday2" xml:space="preserve">
+    <value>Monday</value>
+    <comment>'ldv_weekday' : label for OptionSet Value '2'</comment>
+  </data>
+  <data name="9:label,ldv_weekday3" xml:space="preserve">
+    <value>Tuesday</value>
+    <comment>'ldv_weekday' : label for OptionSet Value '3'</comment>
+  </data>
+  <data name="9:label,ldv_weekday4" xml:space="preserve">
+    <value>Wednesday</value>
+    <comment>'ldv_weekday' : label for OptionSet Value '4'</comment>
+  </data>
+  <data name="9:label,ldv_weekday5" xml:space="preserve">
+    <value>Thursday</value>
+    <comment>'ldv_weekday' : label for OptionSet Value '5'</comment>
+  </data>
+  <data name="9:label,ldv_weekday6" xml:space="preserve">
+    <value>Friday</value>
+    <comment>'ldv_weekday' : label for OptionSet Value '6'</comment>
+  </data>
+  <data name="9:label,ldv_weekday7" xml:space="preserve">
+    <value>Saturday</value>
+    <comment>'ldv_weekday' : label for OptionSet Value '7'</comment>
   </data>
 </root>

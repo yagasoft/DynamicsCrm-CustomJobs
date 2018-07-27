@@ -5,6 +5,8 @@
   <EntityRelationship Name="business_unit_ldv_customjobfailedtarget" />
   <EntityRelationship Name="business_unit_ldv_customjoblog" />
   <EntityRelationship Name="business_unit_ldv_recurrencerule" />
+  <EntityRelationship Name="business_unit_ldv_recurrenceruleexception" />
+  <EntityRelationship Name="business_unit_ldv_recurrenceruleexceptiongrouping" />
   <EntityRelationship Name="ldv_ldv_customjob_ldv_customjob" />
   <EntityRelationship Name="ldv_ldv_customjob_ldv_customjobfailedtarget_CustomJob" />
   <EntityRelationship Name="ldv_ldv_customjob_ldv_customjoblog" />
@@ -13,6 +15,7 @@
   <EntityRelationship Name="ldv_ldv_recurrencerule_ldv_customjob_RetrySchedule" />
   <EntityRelationship Name="ldv_ldv_recurrencerule_ldv_recurrenceexgroup" />
   <EntityRelationship Name="ldv_ldv_recurrencerule_ldv_recurrenceruleexce" />
+  <EntityRelationship Name="ldv_ldv_recurrenceruleexceptiongrouping_ldv_r" />
   <EntityRelationship Name="ldv_recurrencerule_customjob_SubJobsRetryScheduleId" />
   <EntityRelationship Name="ldv_systemuser_ldv_customjob_ContextUser" />
   <EntityRelationship Name="ldv_workflow_ldv_customjob_FailureAction" />
@@ -28,19 +31,29 @@
   <EntityRelationship Name="lk_ldv_customjoblog_modifiedby" />
   <EntityRelationship Name="lk_ldv_recurrencerule_createdby" />
   <EntityRelationship Name="lk_ldv_recurrencerule_modifiedby" />
+  <EntityRelationship Name="lk_ldv_recurrenceruleexception_createdby" />
+  <EntityRelationship Name="lk_ldv_recurrenceruleexception_modifiedby" />
+  <EntityRelationship Name="lk_ldv_recurrenceruleexceptiongrouping_createdby" />
+  <EntityRelationship Name="lk_ldv_recurrenceruleexceptiongrouping_modifiedby" />
   <EntityRelationship Name="owner_ldv_customjob" />
   <EntityRelationship Name="owner_ldv_customjobengine" />
   <EntityRelationship Name="owner_ldv_customjobfailedtarget" />
   <EntityRelationship Name="owner_ldv_customjoblog" />
   <EntityRelationship Name="owner_ldv_recurrencerule" />
+  <EntityRelationship Name="owner_ldv_recurrenceruleexception" />
+  <EntityRelationship Name="owner_ldv_recurrenceruleexceptiongrouping" />
   <EntityRelationship Name="team_ldv_customjob" />
   <EntityRelationship Name="team_ldv_customjobengine" />
   <EntityRelationship Name="team_ldv_customjobfailedtarget" />
   <EntityRelationship Name="team_ldv_customjoblog" />
   <EntityRelationship Name="team_ldv_recurrencerule" />
+  <EntityRelationship Name="team_ldv_recurrenceruleexception" />
+  <EntityRelationship Name="team_ldv_recurrenceruleexceptiongrouping" />
   <EntityRelationship Name="user_ldv_customjob" />
   <EntityRelationship Name="user_ldv_customjobengine" />
   <EntityRelationship Name="user_ldv_customjobfailedtarget" />
   <EntityRelationship Name="user_ldv_customjoblog" />
   <EntityRelationship Name="user_ldv_recurrencerule" />
+  <EntityRelationship Name="user_ldv_recurrenceruleexception" />
+  <EntityRelationship Name="user_ldv_recurrenceruleexceptiongrouping" />
 </EntityRelationships>

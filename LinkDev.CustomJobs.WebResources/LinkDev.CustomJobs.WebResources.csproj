@@ -72,10 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\DynamicsCrm-Libraries\LinkDev.Libraries.Common\CrmSchemaJs.js">
-      <Link>JavaScript\CrmSchemaJs.js</Link>
+      <Link>Scripts\CrmSchemaJs.js</Link>
     </Content>
     <Content Include="..\..\DynamicsCrm-Libraries\LinkDev.Libraries.Common\Scripts\ldv_CommonGeneric.js">
-      <Link>JavaScript\ldv_CommonGeneric.js</Link>
+      <Link>Scripts\ldv_CommonGeneric.js</Link>
     </Content>
     <Content Include="Scripts\ldv_CustomJobEngineRibbon.js" />
     <Content Include="Scripts\ldv_CustomJobRibbon.js" />

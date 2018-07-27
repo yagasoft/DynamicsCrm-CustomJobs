@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="LinkDev.Plugins.Common.RecurrenceExceptionHandler: Disassociate of any entity" SdkMessageProcessingStepId="{79358253-e98a-e611-9c0b-f8b156a3e077}">
+  <PluginTypeName>LinkDev.Plugins.Common.RecurrenceExceptionHandler, LinkDev.Plugins.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5</PluginTypeName>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <FilteringAttributes></FilteringAttributes>
+  <InvocationSource>0</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <SdkMessageId>{bdfc191d-fc56-493a-a6b1-cb0c47a22ecc}</SdkMessageId>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

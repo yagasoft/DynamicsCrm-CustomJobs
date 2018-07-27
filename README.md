@@ -15,10 +15,20 @@ A very powerful CRM solution that gives a multitude of options to control schedu
   + Retry schedule
   + Contingency processes for failure recovery
 
+### Guide
+
+  + Create a record in the Custom Job Engine entity
+	+ "Start the Engine"
+  + Create a job in the Custom Job Entity
+	+ "Enqueue" the job
+
+I will post a complete guide soon.
+
 ### Dependencies
 
   + Common.cs, CommonGeneric.js, and CrmSchema.js
     + Can be found in the DynamicsCrm-Libraries repository
+  + Generic Base solution
   + CRM Logger solution
 
 ---

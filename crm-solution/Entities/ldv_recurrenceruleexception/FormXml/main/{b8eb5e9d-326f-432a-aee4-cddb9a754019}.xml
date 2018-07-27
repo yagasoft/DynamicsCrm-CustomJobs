@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms>
+  <systemform>
+    <formid>{b8eb5e9d-326f-432a-aee4-cddb9a754019}</formid>
+    <IntroducedVersion>1.5.3.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1900">
+      <tabs>
+        <tab verticallayout="true" id="{8dc2970a-1aa7-4764-b544-c228cc7dd609}" IsUserDefined="1" name="{8dc2970a-1aa7-4764-b544-c228cc7dd609}" locklevel="0" expanded="true" showlabel="false">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{1fc7b46b-5a39-4b75-bca5-8707fb846638}" name="{1fc7b46b-5a39-4b75-bca5-8707fb846638}" columns="1" locklevel="0" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" height="auto">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ef928917-1b1a-42a6-8cf7-14e3a85bb0f3}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{66774357-d824-41b0-987a-d4e50d79fe86}" showlabel="true" locklevel="1" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="{8dc2970a-1aa7-4764-b544-c228cc7dd609}_section_2" showlabel="false" showbar="false" locklevel="0" id="{10570325-919b-39e4-09b9-e950214a6521}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3428185b-61e4-06ce-649c-9569ad3b11a9}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Start Date" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_startdate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="ldv_startdate" disabled="false" />
+                      </cell>
+                      <cell id="{106d84c3-104e-d50d-0464-5e9b7553de1a}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8517763d-358a-5808-5385-b36ebc13ac1d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="End Date" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_enddate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="ldv_enddate" disabled="false" />
+                      </cell>
+                      <cell id="{033ad55b-9b5e-02d2-c466-ab4ae9a442c4}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_4" id="{3a54a253-7943-978a-35d7-7c1e8cc589a2}" IsUserDefined="0" locklevel="0" showlabel="false" expanded="true">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="34%">
+              <sections>
+                <section name="tab_4_section_1" showlabel="false" showbar="false" locklevel="0" id="{64516613-2ebb-0e61-3592-72947c7e75ea}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{49426c06-11d0-b266-50a0-44a12ca9c418}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Minutes" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_minutes" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_minutes" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b1a23015-3094-ca76-2d4e-9cbcac5c51aa}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Hours" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_hours" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_hours" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section name="tab_4_section_2" showlabel="false" showbar="false" locklevel="0" id="{087e6ed0-dd4e-ad16-3d4a-d4031c8d8aa1}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3b7b90c8-c2c5-3891-5650-4567536c02a6}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Days of the Month" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_daysofthemonth" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_daysofthemonth" disabled="false" uniqueid="{a2b8be68-73c9-d6b2-9ac0-cc4217117830}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4425aee1-4787-843e-0292-902c9ed0029c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Day Occurrences" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_dayoccurrences" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_dayoccurrences" disabled="false" uniqueid="{dc233a7b-4411-1dbc-4934-27acc8a62a05}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d8019195-217a-56b6-50ca-d6d75c4707d7}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Week Days" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_weekdays" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_weekdays" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section name="tab_4_section_3" showlabel="false" showbar="false" locklevel="0" id="{1e4c38d8-ea83-4946-96b5-be5ee3077601}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{853960e3-2601-83c1-d99a-3236d33263eb}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Months" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_months" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_months" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{661da341-9b1c-9499-6d1c-d36b9c0e1e33}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Years" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_years" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ldv_years" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_2" id="{6ab9c95d-5e8a-5331-d69a-0dc8e8a8a85a}" IsUserDefined="0" locklevel="0" showlabel="false" expanded="true">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" showlabel="false" showbar="false" locklevel="0" id="{37201373-c624-c4b6-a221-0ae9e8903be5}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" height="auto">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ca2cc4ce-a073-1c0b-32c4-53a383920b7d}" showlabel="true" colspan="1" auto="true" rowspan="4">
+                        <labels>
+                          <label description="Recurrence Rules" languagecode="1033" />
+                        </labels>
+                        <control id="RecurrenceRules" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
+                          <parameters>
+                            <ViewId>{2546F604-2749-4F49-B51B-6F4633960F5F}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>ldv_ldv_recurrencerule_ldv_recurrenceruleexce</RelationshipName>
+                            <TargetEntityType>ldv_recurrencerule</TargetEntityType>
+                            <AutoExpand>Auto</AutoExpand>
+                            <EnableQuickFind>true</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{2546F604-2749-4F49-B51B-6F4633960F5F}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId></VisualizationId>
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <RelationshipRoleOrdinal>2</RelationshipRoleOrdinal>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row></row>
+                    <row></row>
+                    <row height="auto"></row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_3" id="{2d415ab9-1846-38b5-9c28-85529031d703}" IsUserDefined="0" locklevel="0" showlabel="false" expanded="true">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_3_section_1" showlabel="false" showbar="false" locklevel="0" id="{1e997545-2ad5-4161-6423-de623e6d504b}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" height="auto">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{66235457-2224-63c8-bb6a-0db237950a31}" showlabel="true" colspan="1" auto="true" rowspan="4">
+                        <labels>
+                          <label description="Recurrence Rule Exception Groupings" languagecode="1033" />
+                        </labels>
+                        <control id="RecurrenceRuleExceptionGroupings" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
+                          <parameters>
+                            <ViewId>{B4B5836B-F6A0-486E-9E23-211F97B8F62E}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>ldv_ldv_recurrenceruleexceptiongrouping_ldv_r</RelationshipName>
+                            <TargetEntityType>ldv_recurrenceruleexceptiongrouping</TargetEntityType>
+                            <AutoExpand>Auto</AutoExpand>
+                            <EnableQuickFind>true</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{B4B5836B-F6A0-486E-9E23-211F97B8F62E}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId></VisualizationId>
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <RelationshipRoleOrdinal>2</RelationshipRoleOrdinal>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row></row>
+                    <row></row>
+                    <row height="auto"></row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_5" id="{e1cde84e-6e47-192a-a54a-9acc464eeee8}" IsUserDefined="0" locklevel="0" showlabel="false" expanded="true" visible="false">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_5_section_1" showlabel="false" showbar="false" locklevel="0" id="{9649d429-8a49-a326-2a28-47d254350125}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{0c139068-3ca0-a5c5-3170-9e053140d430}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Monthly Day Occurrence" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_monthlydayoccurrence" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="ldv_monthlydayoccurrence" disabled="false" uniqueid="{b160747c-8669-d3d0-c933-76482173d86c}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e70dca96-393e-54ce-15e4-eb81855ed4dd}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Week Day" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_weekday" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="ldv_weekday" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{717db89b-3b6d-3da5-bed1-e46a05132dce}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Month" languagecode="1033" />
+                        </labels>
+                        <control id="ldv_month" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="ldv_month" disabled="false" uniqueid="{9e3ae5ac-5141-9a38-b39c-148ae553b718}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <Navigation>
+        <NavBar></NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <formLibraries>
+        <Library name="ldv_CommonGenericJs" libraryUniqueId="{747aac5e-9e51-814e-0547-9c538464b47a}" />
+        <Library name="ldv_CommonGenericSchemaJs" libraryUniqueId="{5351c357-95b8-4d90-4b9b-00ecb80864e4}" />
+        <Library name="ldv_RecurrenceRuleExceptionJs" libraryUniqueId="{0bb2179d-1a02-365e-e301-050e8132620d}" />
+      </formLibraries>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="Recurrence_OnLoad" libraryName="ldv_RecurrenceRuleExceptionJs" handlerUniqueId="{6bab97a2-9295-7d99-43ee-ba827d625550}" enabled="true" parameters="" passExecutionContext="false" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="ldv_startdate">
+          <Handlers>
+            <Handler functionName="Date_OnChange" libraryName="ldv_RecurrenceRuleExceptionJs" handlerUniqueId="{37e895b2-e8a7-8e3e-1dd2-4465e5b756e2}" enabled="true" parameters="" passExecutionContext="false" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="ldv_enddate">
+          <Handlers>
+            <Handler functionName="Date_OnChange" libraryName="ldv_RecurrenceRuleExceptionJs" handlerUniqueId="{e61a409c-c4dc-e596-148c-1d81146d39c1}" enabled="true" parameters="" passExecutionContext="false" />
+          </Handlers>
+        </event>
+      </events>
+      <controlDescriptions />
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

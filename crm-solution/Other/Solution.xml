@@ -87,6 +87,12 @@
       <RootComponent type="1" schemaName="ldv_customjobfailedtarget" behavior="0" />
       <RootComponent type="1" schemaName="ldv_customjoblog" behavior="0" />
       <RootComponent type="1" schemaName="ldv_recurrencerule" behavior="0" />
+      <RootComponent type="1" schemaName="ldv_recurrenceruleexception" behavior="0" />
+      <RootComponent type="1" schemaName="ldv_recurrenceruleexceptiongrouping" behavior="0" />
+      <RootComponent type="9" schemaName="ldv_monthlydayoccurrence" behavior="0" />
+      <RootComponent type="9" schemaName="ldv_monthoftheyear" behavior="0" />
+      <RootComponent type="9" schemaName="ldv_recurrence" behavior="0" />
+      <RootComponent type="9" schemaName="ldv_weekday" behavior="0" />
       <RootComponent type="29" id="{3af1c5af-1911-4bc4-b3c7-15989a184298}" behavior="0" />
       <RootComponent type="29" id="{3b05a19f-178a-44a8-8321-e3bfcc399c05}" behavior="0" />
       <RootComponent type="29" id="{7315a108-efa6-42ff-b77f-196698a38cab}" behavior="0" />
@@ -96,89 +102,153 @@
       <RootComponent type="29" id="{b037ca84-125c-4095-a8f8-14d3e0ecaa6d}" behavior="0" />
       <RootComponent type="29" id="{cd727571-f2df-4969-b9a9-ca0b5c066008}" behavior="0" />
       <RootComponent type="29" id="{fd5b5a8f-8bde-4290-a72c-4ec97f49ad74}" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_CommonGenericJs" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_CommonGenericSchemaJs" behavior="0" />
       <RootComponent type="61" schemaName="ldv_CustomJobEngineRibbonJs" behavior="0" />
       <RootComponent type="61" schemaName="ldv_CustomJobJs" behavior="0" />
       <RootComponent type="61" schemaName="ldv_CustomJobRibbonJs" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_DraftPng16" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_DraftPng32" behavior="0" />
       <RootComponent type="61" schemaName="ldv_JobEnginePng16" behavior="0" />
       <RootComponent type="61" schemaName="ldv_JobEnginePng32" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_JobPng16" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_JobPng32" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_QueuePng16" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_QueuePng32" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_RetryPng16" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_RetryPng32" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_StopPng16" behavior="0" />
-      <RootComponent type="61" schemaName="ldv_StopPng32" behavior="0" />
+      <RootComponent type="61" schemaName="ldv_RecurrenceRuleExceptionJs" behavior="0" />
+      <RootComponent type="61" schemaName="ldv_RecurrenceRuleJs" behavior="0" />
       <RootComponent type="91" schemaName="LinkDev.CustomJobs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e8d87f7d871f19c4" behavior="0" />
       <RootComponent type="91" schemaName="LinkDev.Steps.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5" behavior="0" />
       <RootComponent type="92" id="{29b693b2-2799-e611-b363-f8b156a3e077}" behavior="0" />
       <RootComponent type="92" id="{367c01f9-ff82-e611-9c05-f8b156a3e077}" behavior="0" />
       <RootComponent type="92" id="{65be63ea-ff82-e611-9c05-f8b156a3e077}" behavior="0" />
       <RootComponent type="92" id="{76f16422-128a-e611-9c0b-f8b156a3e077}" behavior="0" />
+      <RootComponent type="92" id="{78358253-e98a-e611-9c0b-f8b156a3e077}" behavior="0" />
+      <RootComponent type="92" id="{79358253-e98a-e611-9c0b-f8b156a3e077}" behavior="0" />
+      <RootComponent type="92" id="{85bef1d3-9285-e611-9c07-f8b156a3e077}" behavior="0" />
       <RootComponent type="92" id="{89176865-dca4-e611-b369-f8b156a3e077}" behavior="0" />
       <RootComponent type="92" id="{8e2093ab-2799-e611-b363-f8b156a3e077}" behavior="0" />
+      <RootComponent type="92" id="{9792a796-1f8a-e611-9c0b-f8b156a3e077}" behavior="0" />
+      <RootComponent type="92" id="{a4ec1265-e98a-e611-9c0b-f8b156a3e077}" behavior="0" />
+      <RootComponent type="92" id="{d8fa8467-c684-e611-9c07-f8b156a3e077}" behavior="0" />
       <RootComponent type="92" id="{fc7c38f1-d5b0-e611-b36d-f8b156a3e077}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required key="0" type="1" schemaName="ldv_recurrenceruleexception" displayName="Recurrence Rule Exception" solution="Active" />
-        <Dependent key="1" type="60" displayName="Information" parentDisplayName="Recurrence Rule" id="{00101675-db35-4d51-9085-05769a16df22}" />
+        <Required key="0" type="1" schemaName="ldv_slainstance" displayName="SLA Instance" solution="Active" />
+        <Dependent key="1" type="1" schemaName="ldv_customjob" displayName="Custom Job" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="2" type="1" schemaName="ldv_recurrenceruleexceptiongrouping" displayName="Recurrence Rule Exception Grouping" solution="Active" />
-        <Dependent key="1" type="60" displayName="Information" parentDisplayName="Recurrence Rule" id="{00101675-db35-4d51-9085-05769a16df22}" />
+        <Required key="2" type="61" schemaName="ldv_RecurrencePng32" displayName="ldv_RecurrencePng32" solution="Active" />
+        <Dependent key="3" type="1" schemaName="ldv_recurrencerule" displayName="Recurrence Rule" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="3" type="1" schemaName="ldv_slainstance" displayName="SLA Instance" solution="Active" />
-        <Dependent key="4" type="1" schemaName="ldv_customjob" displayName="Custom Job" />
+        <Required key="4" type="61" schemaName="ldv_RecurrencePng16" displayName="ldv_RecurrencePng16" solution="Active" />
+        <Dependent key="3" type="1" schemaName="ldv_recurrencerule" displayName="Recurrence Rule" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="5" type="9" schemaName="ldv_monthlydayoccurrence" displayName="Monthly Day Occurrence" solution="Active" />
-        <Dependent key="6" type="2" schemaName="ldv_monthlydayoccurrence" displayName="Monthly Day Occurrence" parentSchemaName="ldv_recurrencerule" parentDisplayName="Recurrence Rule" />
+        <Required key="5" type="61" schemaName="ldv_JobPng32" displayName="ldv_JobPng32" solution="Active" />
+        <Dependent key="1" type="1" schemaName="ldv_customjob" displayName="Custom Job" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="7" type="9" schemaName="ldv_monthoftheyear" displayName="Month of the Year" solution="Active" />
-        <Dependent key="8" type="2" schemaName="ldv_monthofyear" displayName="Month Of Year" parentSchemaName="ldv_recurrencerule" parentDisplayName="Recurrence Rule" />
+        <Required key="6" type="61" schemaName="ldv_RetryPng32" displayName="ldv_RetryPng32" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="9" type="9" schemaName="ldv_weekday" displayName="Week Day" solution="Active" />
-        <Dependent key="10" type="2" schemaName="ldv_weekday" displayName="Week Day" parentSchemaName="ldv_recurrencerule" parentDisplayName="Recurrence Rule" />
+        <Required key="8" type="61" schemaName="ldv_JobPng16" displayName="ldv_JobPng16" solution="Active" />
+        <Dependent key="1" type="1" schemaName="ldv_customjob" displayName="Custom Job" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="11" type="9" schemaName="ldv_recurrence" displayName="Recurrence" solution="Active" />
-        <Dependent key="12" type="2" schemaName="ldv_recurrencepattern" displayName="Recurrence Pattern" parentSchemaName="ldv_recurrencerule" parentDisplayName="Recurrence Rule" />
+        <Required key="9" type="61" schemaName="ldv_StopPng32" displayName="ldv_StopPng32" solution="Active" />
+        <Dependent key="10" type="50" schemaName="ldv_customjobengine:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="2" type="1" schemaName="ldv_recurrenceruleexceptiongrouping" displayName="Recurrence Rule Exception Grouping" solution="Active" />
-        <Dependent key="13" type="10" schemaName="ldv_ldv_recurrencerule_ldv_recurrenceexgroup" displayName="ldv_ldv_recurrencerule_ldv_recurrenceexgroup" parentSchemaName="ldv_recurrencerule" parentDisplayName="Recurrence Rule" />
+        <Required key="9" type="61" schemaName="ldv_StopPng32" displayName="ldv_StopPng32" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="0" type="1" schemaName="ldv_recurrenceruleexception" displayName="Recurrence Rule Exception" solution="Active" />
-        <Dependent key="14" type="10" schemaName="ldv_ldv_recurrencerule_ldv_recurrenceruleexce" displayName="ldv_ldv_recurrencerule_ldv_recurrenceruleexce" parentSchemaName="ldv_recurrencerule" parentDisplayName="Recurrence Rule" />
+        <Required key="11" type="61" schemaName="ldv_QueuePng32" displayName="ldv_QueuePng32" solution="Active" />
+        <Dependent key="10" type="50" schemaName="ldv_customjobengine:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="15" type="26" schemaName="Active Recurrence Rule Exceptions" displayName="Active Recurrence Rule Exceptions" parentSchemaName="ldv_recurrenceruleexception" parentDisplayName="Recurrence Rule Exception" solution="Active" id="{5df92359-023d-485b-b6cb-4de92588dc11}" />
-        <Dependent key="1" type="60" displayName="Information" parentDisplayName="Recurrence Rule" id="{00101675-db35-4d51-9085-05769a16df22}" />
+        <Required key="11" type="61" schemaName="ldv_QueuePng32" displayName="ldv_QueuePng32" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="16" type="26" schemaName="Active Recurrence Rule Exception Groupings" displayName="Active Recurrence Rule Exception Groupings" parentSchemaName="ldv_recurrenceruleexceptiongrouping" parentDisplayName="Recurrence Rule Exception Grouping" solution="Active" id="{b4b5836b-f6a0-486e-9e23-211f97b8f62e}" />
-        <Dependent key="1" type="60" displayName="Information" parentDisplayName="Recurrence Rule" id="{00101675-db35-4d51-9085-05769a16df22}" />
+        <Required key="12" type="61" schemaName="ldv_CommonGenericSchemaJs" displayName="ldv_CommonGenericSchemaJs" solution="Active" />
+        <Dependent key="13" type="60" displayName="Information" parentDisplayName="Recurrence Rule" id="{00101675-db35-4d51-9085-05769a16df22}" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="17" type="61" schemaName="ldv_RecurrenceRuleJs" displayName="ldv_RecurrenceRuleJs" solution="Active" />
-        <Dependent key="1" type="60" displayName="Information" parentDisplayName="Recurrence Rule" id="{00101675-db35-4d51-9085-05769a16df22}" />
+        <Required key="12" type="61" schemaName="ldv_CommonGenericSchemaJs" displayName="ldv_CommonGenericSchemaJs" solution="Active" />
+        <Dependent key="14" type="60" displayName="Information" parentDisplayName="Custom Job Engine" id="{8bb4395a-4212-4990-9ba4-888f6877a9f1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="18" type="61" schemaName="ldv_RecurrencePng32" displayName="ldv_RecurrencePng32" solution="Active" />
-        <Dependent key="19" type="1" schemaName="ldv_recurrencerule" displayName="Recurrence Rule" />
+        <Required key="12" type="61" schemaName="ldv_CommonGenericSchemaJs" displayName="ldv_CommonGenericSchemaJs" solution="Active" />
+        <Dependent key="15" type="60" displayName="Information" parentDisplayName="Recurrence Rule Exception" id="{b8eb5e9d-326f-432a-aee4-cddb9a754019}" />
       </MissingDependency>
       <MissingDependency>
-        <Required key="20" type="61" schemaName="ldv_RecurrencePng16" displayName="ldv_RecurrencePng16" solution="Active" />
-        <Dependent key="19" type="1" schemaName="ldv_recurrencerule" displayName="Recurrence Rule" />
+        <Required key="12" type="61" schemaName="ldv_CommonGenericSchemaJs" displayName="ldv_CommonGenericSchemaJs" solution="Active" />
+        <Dependent key="16" type="60" displayName="Information" parentDisplayName="Custom Job" id="{4e624f83-afb3-4519-a30a-4ad805eda2a0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="17" type="61" schemaName="ldv_QueuePng16" displayName="ldv_QueuePng16" solution="Active" />
+        <Dependent key="10" type="50" schemaName="ldv_customjobengine:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="17" type="61" schemaName="ldv_QueuePng16" displayName="ldv_QueuePng16" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="18" type="61" schemaName="ldv_DraftPng32" displayName="ldv_DraftPng32" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="19" type="61" schemaName="ldv_DraftPng16" displayName="ldv_DraftPng16" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="20" type="61" schemaName="ldv_RetryPng16" displayName="ldv_RetryPng16" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="21" type="61" schemaName="ldv_StopPng16" displayName="ldv_StopPng16" solution="Active" />
+        <Dependent key="10" type="50" schemaName="ldv_customjobengine:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="21" type="61" schemaName="ldv_StopPng16" displayName="ldv_StopPng16" solution="Active" />
+        <Dependent key="7" type="50" schemaName="ldv_customjob:RibbonDiffXml" parentSchemaName="ribboncustomization" parentDisplayName="Application Ribbons" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="22" type="61" schemaName="ldv_CommonGenericJs" displayName="ldv_CommonGenericJs" solution="Active" />
+        <Dependent key="14" type="60" displayName="Information" parentDisplayName="Custom Job Engine" id="{8bb4395a-4212-4990-9ba4-888f6877a9f1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="22" type="61" schemaName="ldv_CommonGenericJs" displayName="ldv_CommonGenericJs" solution="Active" />
+        <Dependent key="13" type="60" displayName="Information" parentDisplayName="Recurrence Rule" id="{00101675-db35-4d51-9085-05769a16df22}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="22" type="61" schemaName="ldv_CommonGenericJs" displayName="ldv_CommonGenericJs" solution="Active" />
+        <Dependent key="15" type="60" displayName="Information" parentDisplayName="Recurrence Rule Exception" id="{b8eb5e9d-326f-432a-aee4-cddb9a754019}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="22" type="61" schemaName="ldv_CommonGenericJs" displayName="ldv_CommonGenericJs" solution="Active" />
+        <Dependent key="16" type="60" displayName="Information" parentDisplayName="Custom Job" id="{4e624f83-afb3-4519-a30a-4ad805eda2a0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="23" type="90" schemaName="LinkDev.Plugins.Common.RecurrenceExceptionHandler, LinkDev.Plugins.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5" displayName="LinkDev.Plugins.Common.RecurrenceExceptionHandler" solution="Active" />
+        <Dependent key="24" type="92" id="{a4ec1265-e98a-e611-9c0b-f8b156a3e077}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="23" type="90" schemaName="LinkDev.Plugins.Common.RecurrenceExceptionHandler, LinkDev.Plugins.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5" displayName="LinkDev.Plugins.Common.RecurrenceExceptionHandler" solution="Active" />
+        <Dependent key="25" type="92" id="{79358253-e98a-e611-9c0b-f8b156a3e077}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="23" type="90" schemaName="LinkDev.Plugins.Common.RecurrenceExceptionHandler, LinkDev.Plugins.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5" displayName="LinkDev.Plugins.Common.RecurrenceExceptionHandler" solution="Active" />
+        <Dependent key="26" type="92" id="{78358253-e98a-e611-9c0b-f8b156a3e077}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="27" type="90" schemaName="LinkDev.Plugins.Common.RecurrenceHandler, LinkDev.Plugins.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5" displayName="LinkDev.Plugins.Common.RecurrenceHandler" solution="Active" />
+        <Dependent key="28" type="92" id="{d8fa8467-c684-e611-9c07-f8b156a3e077}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="27" type="90" schemaName="LinkDev.Plugins.Common.RecurrenceHandler, LinkDev.Plugins.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5" displayName="LinkDev.Plugins.Common.RecurrenceHandler" solution="Active" />
+        <Dependent key="29" type="92" id="{9792a796-1f8a-e611-9c0b-f8b156a3e077}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="27" type="90" schemaName="LinkDev.Plugins.Common.RecurrenceHandler, LinkDev.Plugins.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96f110ab5b32e2f5" displayName="LinkDev.Plugins.Common.RecurrenceHandler" solution="Active" />
+        <Dependent key="30" type="92" id="{85bef1d3-9285-e611-9c07-f8b156a3e077}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

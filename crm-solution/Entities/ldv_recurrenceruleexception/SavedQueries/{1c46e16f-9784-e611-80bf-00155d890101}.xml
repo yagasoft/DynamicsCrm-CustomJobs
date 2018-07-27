@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries>
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <returnedtypecode>10028</returnedtypecode>
+    <savedqueryid>{1c46e16f-9784-e611-80bf-00155d890101}</savedqueryid>
+    <querytype>8192</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" output-format="xml-platform">
+        <entity name="ldv_recurrenceruleexception">
+          <attribute name="ldv_recurrenceruleexceptionid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="ownerid" operator="eq-userid" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.5.3.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="My Recurrence Rule Exceptions" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
