@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/yagasoft/DynamicsCrm-CustomJobs](https://badges.gitter.im/yagasoft/DynamicsCrm-CustomJobs.svg)](https://gitter.im/yagasoft/DynamicsCrm-CustomJobs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Version: 1.1
+### Version: 1.0.0.1
 ---
 
 A very powerful CRM solution that gives a multitude of options to control scheduling jobs in CRM.
