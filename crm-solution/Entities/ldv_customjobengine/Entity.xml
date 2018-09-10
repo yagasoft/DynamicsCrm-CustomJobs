@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity>
   <Name LocalizedName="Custom Job Engine" OriginalName="Custom Job Engine">ldv_customjobengine</Name>
-  <ObjectTypeCode>10007</ObjectTypeCode>
+  <ObjectTypeCode>10015</ObjectTypeCode>
   <EntityInfo>
     <entity Name="ldv_customjobengine">
       <LocalizedNames>
@@ -436,7 +436,7 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="ldv_customjobengine_ldv_ishourlytriggered">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Hourly Triggered" languagecode="1033" />
@@ -1106,7 +1106,7 @@
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <optionset Name="ldv_customjobengine_statecode">
             <OptionSetType>state</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Status" languagecode="1033" />
@@ -1160,7 +1160,7 @@
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <optionset Name="ldv_customjobengine_statuscode">
             <OptionSetType>status</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Status Reason" languagecode="1033" />
@@ -1328,7 +1328,7 @@
   <RibbonDiffXml />
   <CustomControlDefaultConfigs>
     <CustomControlDefaultConfig>
-      <PrimaryEntityTypeCode>10007</PrimaryEntityTypeCode>
+      <PrimaryEntityTypeCode>10015</PrimaryEntityTypeCode>
       <CustomControlDefaultConfigId>{d037647f-c396-e611-80bb-00155d5f3d01}</CustomControlDefaultConfigId>
       <ControlDescriptionXML>
         <controlDescriptions />

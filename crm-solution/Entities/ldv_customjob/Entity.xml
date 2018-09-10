@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity>
   <Name LocalizedName="Custom Job" OriginalName="Custom Job">ldv_customjob</Name>
-  <ObjectTypeCode>10006</ObjectTypeCode>
+  <ObjectTypeCode>10014</ObjectTypeCode>
   <EntityInfo>
     <entity Name="ldv_customjob">
       <LocalizedNames>
@@ -332,7 +332,7 @@
           <AppDefaultValue>1</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_iscontinueonerror">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Continue On Error" languagecode="1033" />
@@ -387,7 +387,7 @@
           <AppDefaultValue>1</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_isdeleteonsuccess">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Delete On Success" languagecode="1033" />
@@ -442,7 +442,7 @@
           <AppDefaultValue>1</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_isdeletesubjobsonsuccess">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Delete Sub-Jobs On Success" languagecode="1033" />
@@ -497,7 +497,7 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_isgeneratelogs">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Generate Logs" languagecode="1033" />
@@ -552,7 +552,7 @@
           <AppDefaultValue>1</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_isignorefailure">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Ignore Failure" languagecode="1033" />
@@ -607,7 +607,7 @@
           <AppDefaultValue>1</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_ismarkforwaiting">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Mark For Waiting" languagecode="1033" />
@@ -662,7 +662,7 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_isonlyworkinghours">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Only Working Hours" languagecode="1033" />
@@ -717,7 +717,7 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_isparentrecurrent">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Parent Recurrent" languagecode="1033" />
@@ -772,7 +772,7 @@
           <AppDefaultValue>0</AppDefaultValue>
           <optionset Name="ldv_customjob_ldv_isrecurrentjob">
             <OptionSetType>bit</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Recurrent Job" languagecode="1033" />
@@ -1909,7 +1909,7 @@
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <optionset Name="ldv_customjob_statecode">
             <OptionSetType>state</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Status" languagecode="1033" />
@@ -1963,7 +1963,7 @@
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <optionset Name="ldv_customjob_statuscode">
             <OptionSetType>status</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Status Reason" languagecode="1033" />
@@ -2166,7 +2166,7 @@
   <RibbonDiffXml />
   <CustomControlDefaultConfigs>
     <CustomControlDefaultConfig>
-      <PrimaryEntityTypeCode>10006</PrimaryEntityTypeCode>
+      <PrimaryEntityTypeCode>10014</PrimaryEntityTypeCode>
       <CustomControlDefaultConfigId>{d236647f-c396-e611-80bb-00155d5f3d01}</CustomControlDefaultConfigId>
       <ControlDescriptionXML>
         <controlDescriptions />

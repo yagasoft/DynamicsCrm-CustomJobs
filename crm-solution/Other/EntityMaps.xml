@@ -30,11 +30,6 @@
     <AttributeMaps />
   </EntityMap>
   <EntityMap>
-    <EntitySource>ldv_recurrencerule</EntitySource>
-    <EntityTarget>ldv_customjob</EntityTarget>
-    <AttributeMaps />
-  </EntityMap>
-  <EntityMap>
     <EntitySource>systemuser</EntitySource>
     <EntityTarget>ldv_customjob</EntityTarget>
     <AttributeMaps />

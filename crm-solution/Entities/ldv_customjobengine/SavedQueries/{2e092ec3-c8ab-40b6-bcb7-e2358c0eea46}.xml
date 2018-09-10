@@ -6,10 +6,10 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <returnedtypecode>10007</returnedtypecode>
+    <returnedtypecode>10015</returnedtypecode>
     <savedqueryid>{2e092ec3-c8ab-40b6-bcb7-e2358c0eea46}</savedqueryid>
     <layoutxml>
-      <grid name="resultset" object="10007" jump="ldv_name" select="1" icon="1" preview="1">
+      <grid name="resultset" object="10015" jump="ldv_name" select="1" icon="1" preview="1">
         <row name="result" id="ldv_customjobengineid">
           <cell name="ldv_name" width="300" />
           <cell name="ldv_maxjobsperrun" width="125" />

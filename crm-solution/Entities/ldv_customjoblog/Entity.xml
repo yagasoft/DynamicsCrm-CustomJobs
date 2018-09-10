@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity>
   <Name LocalizedName="Custom Job Log" OriginalName="Custom Job Log">ldv_customjoblog</Name>
-  <ObjectTypeCode>10009</ObjectTypeCode>
+  <ObjectTypeCode>10017</ObjectTypeCode>
   <EntityInfo>
     <entity Name="ldv_customjoblog">
       <LocalizedNames>
@@ -675,7 +675,7 @@
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <optionset Name="ldv_customjoblog_statecode">
             <OptionSetType>state</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Status" languagecode="1033" />
@@ -729,7 +729,7 @@
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <optionset Name="ldv_customjoblog_statuscode">
             <OptionSetType>status</OptionSetType>
-            <IntroducedVersion>4.3.2.2</IntroducedVersion>
+            <IntroducedVersion>1.2.1.1</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
             <displaynames>
               <displayname description="Status Reason" languagecode="1033" />
@@ -893,7 +893,7 @@
   <RibbonDiffXml />
   <CustomControlDefaultConfigs>
     <CustomControlDefaultConfig>
-      <PrimaryEntityTypeCode>10009</PrimaryEntityTypeCode>
+      <PrimaryEntityTypeCode>10017</PrimaryEntityTypeCode>
       <CustomControlDefaultConfigId>{ba38647f-c396-e611-80bb-00155d5f3d01}</CustomControlDefaultConfigId>
       <ControlDescriptionXML>
         <controlDescriptions />
