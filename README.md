@@ -32,12 +32,18 @@ A very powerful CRM solution that gives a multitude of options to control schedu
       + Can define range of dates
       + Can define days, months, … etc.
       + Exclusions can be grouped for easier reference
+  + Platforms
+    + Integrated into CRM
+	+ Windows Service
+	+ Soon: Azure WebJob
   + Supports logging, including exception details on every execution of an action
   + Contingency processes for failure recovery
 
 ### Guide
 
+  + Set parameter values in Common or Generic Configuration table
   + Create a record in the Custom Job Engine entity
+	+ Not required for 'Service' platform
 	+ "Start the Engine"
   + Create a job in the Custom Job Entity
 	+ "Enqueue" the job
@@ -53,6 +59,9 @@ I will post a complete guide soon.
 		
 ## Changes
 
+#### _v3.2.1.1 (2021-01-01)_
++ Added: Windows Service
++ Fixed: issues
 #### _v3.1.1.1 (2019-02-27)_
 + Changed: moved to a new namespace
 #### _v2.1.1.1 (2018-09-06)_
