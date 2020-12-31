@@ -141,14 +141,14 @@ namespace Yagasoft.CustomJobs.Job
 				return true;
 			}
 			
-			log.Log("Converting FetchXML to QueryExpression ...", LogLevel.Debug);
+			log.Log("Converting FetchXML to QueryExpression ...");
 			var query = ((FetchXmlToQueryExpressionResponse)
 				service.Execute(
 					new FetchXmlToQueryExpressionRequest
 					{
 						FetchXml = job.TargetXML
 					})).Query;
-			log.Log("Converted.", LogLevel.Debug);
+			log.Log("Converted.");
 
 			// we only need to check if there are more pages or not
 			query.ColumnSet = new ColumnSet(false);
@@ -161,8 +161,8 @@ namespace Yagasoft.CustomJobs.Job
 					PagingCookie = job.PagingCookie
 				};
 
-			log.Log($"Retrieving a max of {query.PageInfo.Count} per page ...", LogLevel.Debug);
-			log.Log($"Retrieving page {query.PageInfo.PageNumber} ...", LogLevel.Debug);
+			log.Log($"Retrieving a max of {query.PageInfo.Count} per page ...");
+			log.Log($"Retrieving page {query.PageInfo.PageNumber} ...");
 			var result = service.RetrieveMultiple(query);
 			log.Log($"More records: {result.MoreRecords}.");
 

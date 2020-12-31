@@ -1208,7 +1208,6 @@ var constructorNotImplementedError = "Constructor not implemented this is a stat
   }
   Sdk.AuditDetail.call(this, auditRecord);
   /*
-  TODO: Document this
   The InvalidNewValueAttributes property is not implemented because I could not
   set an invalid property value and view how the results are returned in the XML.
   The platform prevents entry of invalid values, so I'm not clear about what this 
@@ -1394,7 +1393,6 @@ var constructorNotImplementedError = "Constructor not implemented this is a stat
   }
   Sdk.AuditDetail.call(this, auditRecord);
   /*
-TODO: Document this
 The InvalidNewPrivileges property is not implemented because I could not
 set an invalid privilege value and view how the results are returned in the XML.
 The platform prevents entry of invalid values, so I'm not clear about what this 
@@ -5159,7 +5157,6 @@ property is supposed to capture.
      return aad;
      break;
     case "RelationshipAuditDetail":
-     //TODO: Document this as an issue
      //This *should* work but I have no data for testing. Can't apply a change that makes this get logged in the Audit table.
      try {
       var rad = new Sdk.RelationshipAuditDetail();

@@ -4073,7 +4073,6 @@ XrmServiceToolkit.Extension = function ()
 				var fetchXml = jQueryXrmCustomFilterView.config[customFilterView].fetchXml;
 				var layoutXml = jQueryXrmCustomFilterView.config[customFilterView].layoutXml;
 
-				//TODO: Adding logics for various field and conditions. More tests required. 
 				if (dynamic != null)
 				{
 					for (var a = 0; a < dynamic.length; a++)

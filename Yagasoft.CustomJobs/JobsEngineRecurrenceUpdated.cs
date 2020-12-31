@@ -30,15 +30,15 @@ namespace Yagasoft.CustomJobs
 
 		protected override void ExecuteLogic()
 		{
-			var target = ((Entity)context.InputParameters["Target"]).ToEntity<CustomJob>();
+			var target = ((Entity)Context.InputParameters["Target"]).ToEntity<CustomJob>();
 
 			if (target.RecurrenceUpdatedTrigger == null)
 			{
-				log.Log("Recurrence update not triggered. Exiting ...");
+				Log.Log("Recurrence update not triggered. Exiting ...");
 				return;
 			}
 
-			var postImage = context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
+			var postImage = Context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
 
 			if (postImage == null)
 			{
@@ -51,24 +51,24 @@ namespace Yagasoft.CustomJobs
 					Id = target.Id
 				};
 
-			log.Log($"Loading related recurrences.", LogLevel.Debug);
-			customJob.LoadRelation(CustomJob.RelationNames.Recurrences, service);
+			Log.Log($"Loading related recurrences.");
+			customJob.LoadRelation(CustomJob.RelationNames.Recurrences, Service);
 
 			if (customJob.Recurrences == null)
 			{
 				if (postImage.RecurrentJob == true)
 				{
-					log.Log("Setting to non-recurrent ...", LogLevel.Debug);
-					service.Update(
+					Log.Log("Setting to non-recurrent ...");
+					Service.Update(
 						new CustomJob
 						{
 							Id = customJob.Id,
 							RecurrentJob = false
 						});
-					log.Log("Set to non-recurrent.");
+					Log.Log("Set to non-recurrent.");
 				}
 
-				log.Log($"No recurrences set. Exiting ...");
+				Log.Log($"No recurrences set. Exiting ...");
 				return;
 			}
 
@@ -76,10 +76,10 @@ namespace Yagasoft.CustomJobs
 
 			foreach (var recurrenceRule in customJob.Recurrences)
 			{
-				log.Log($"Getting next recurrence for {recurrenceRule.Id}.", LogLevel.Debug);
-				var action = new GlobalActions.ys_CustomJobGetNextRecurrenceDate(recurrenceRule.ToEntityReference(), service);
+				Log.Log($"Getting next recurrence for {recurrenceRule.Id}.");
+				var action = new GlobalActions.ys_CustomJobGetNextRecurrenceDate(recurrenceRule.ToEntityReference(), Service);
 				var nextRecurrence = action.Execute().NextTargetDate;
-				log.Log($"Next recurrence: '{nextRecurrence}'.");
+				Log.Log($"Next recurrence: '{nextRecurrence}'.");
 
 				if (nextRecurrence > new DateTime(1900) && (targetDate == null || nextRecurrence < targetDate))
 				{
@@ -89,8 +89,8 @@ namespace Yagasoft.CustomJobs
 
 			if (targetDate == null)
 			{
-				log.Log("Updating latest run message and date.", LogLevel.Debug);
-				service.Update(
+				Log.Log("Updating latest run message and date.");
+				Service.Update(
 					new CustomJob
 					{
 						Id = target.Id,
@@ -100,13 +100,13 @@ namespace Yagasoft.CustomJobs
 						Status = CustomJob.StatusEnum.Inactive,
 						StatusReason = CustomJob.StatusReasonEnum.Success
 					});
-				log.Log("Updated.");
+				Log.Log("Updated.");
 
 				return;
 			}
 
-			log.Log("Updating target date.", LogLevel.Debug);
-			service.Update(
+			Log.Log("Updating target date.");
+			Service.Update(
 				new CustomJob
 				{
 					Id = customJob.Id,

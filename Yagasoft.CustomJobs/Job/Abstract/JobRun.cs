@@ -54,8 +54,8 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 					?? (runStatus.IsSuccess ? "Successful run." : "Failed run.");
 			}
 
-			log.Log($"Updating latest run message: '{runStatus.LatestRunMessage}' ...", LogLevel.Debug);
-			log.Log($"Updating latest date: '{Job.TargetDate ?? DateTime.UtcNow}' UTC ...", LogLevel.Debug);
+			log.Log($"Updating latest run message: '{runStatus.LatestRunMessage}' ...");
+			log.Log($"Updating latest date: '{Job.TargetDate ?? DateTime.UtcNow}' UTC ...");
 			Service.Update(
 				new CustomJob
 				{
@@ -66,9 +66,9 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 			log.Log($"Updated latest run message: '{runStatus.LatestRunMessage}'.");
 			log.Log($"Updated latest date: '{Job.TargetDate ?? DateTime.UtcNow}' UTC.");
 
-			if (Job.GenerateLogs == true)
+			if (Job.GenerateLogs == true && (!runStatus.IsSuccess || (runStatus.IsSuccess && Job.OnlyLogFailures != true)))
 			{
-				log.Log("Creating log entry ...", LogLevel.Debug);
+				log.Log("Creating log entry ...");
 				var logEntry =
 					new CustomJobLog
 					{
@@ -122,7 +122,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 
 				if (!isFailedExist)
 				{
-					log.Log("Deleting job ...", LogLevel.Debug);
+					log.Log("Deleting job ...");
 					Service.Delete(CustomJob.EntityLogicalName, Job.Id);
 					log.Log("Deleted job.");
 				}

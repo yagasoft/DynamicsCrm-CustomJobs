@@ -31,7 +31,7 @@ namespace Yagasoft.CustomJobs
 	[Log]
 	internal class JobsEngineJobHandlerLogic : PluginLogic<JobsEngineJobHandler>
 	{
-		private GenericConfiguration config;
+		private CommonConfiguration config;
 		private string orgId;
 
 		public JobsEngineJobHandlerLogic() : base(null, PluginStage.All)
@@ -40,9 +40,8 @@ namespace Yagasoft.CustomJobs
 		[NoLog]
 		protected override void ExecuteLogic()
 		{
-			orgId = context.OrganizationId.ToString();
-			config = GetGenericConfig(service, orgId).ToEntity<GenericConfiguration>();
-			config.DefaultCalendar.Require(nameof(config.DefaultCalendar));
+			orgId = Context.OrganizationId.ToString();
+			config = GetGenericConfig(Service, orgId).ToEntity<CommonConfiguration>();
 
 			CustomJob target = null;
 			CustomJob image = null;
@@ -50,12 +49,12 @@ namespace Yagasoft.CustomJobs
 			try
 			{
 				// get the triggering record
-				var targetGeneric = (Entity)context.InputParameters["Target"];
+				var targetGeneric = (Entity)Context.InputParameters["Target"];
 				target = targetGeneric.ToEntity<CustomJob>();
-				image = context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
+				image = Context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
 
 				// sync
-				if (context.Mode == 0)
+				if (Context.Mode == 0)
 				{
 					PerformSyncActions(targetGeneric);
 					return;
@@ -71,8 +70,8 @@ namespace Yagasoft.CustomJobs
 					{
 						try
 						{
-							log.Log("Logging failure ...", LogLevel.Debug);
-							service.Update(
+							Log.Log("Logging failure ...");
+							Service.Update(
 								new CustomJob
 								{
 									Id = target.Id,
@@ -80,18 +79,18 @@ namespace Yagasoft.CustomJobs
 									PreviousTargetDate = DateTime.UtcNow,
 									TargetDate = null
 								});
-							log.Log("Logged.");
+							Log.Log("Logged.");
 
 							// if a recurrent job throws an exception (parent), then check for retry
 							// normally those jobs create sub-jobs that handle their own retry, but this is in case
 							// the main job itself fails, which should be extremely rare
 							if (image?.RecurrentJob == true && image.RetrySchedule != null)
 							{
-								UpdateRetryTargetDate(service, target, log);
+								UpdateRetryTargetDate(Service, target, Log);
 
-								log.Log($"Updating status of job to 'Waiting' ...");
-								SetStatus(service, CustomJob.StatusReasonEnum.Waiting, target.Id, false);
-								log.Log($"Updated status of job 'Waiting'.");
+								Log.Log($"Updating status of job to 'Waiting' ...");
+								SetStatus(Service, CustomJob.StatusReasonEnum.Waiting, target.Id, false);
+								Log.Log($"Updated status of job 'Waiting'.");
 							}
 						}
 						catch
@@ -101,21 +100,21 @@ namespace Yagasoft.CustomJobs
 
 						if (image?.RetrySchedule == null)
 						{
-							log.Log($"Setting job to 'Failure' ...", LogLevel.Debug);
-							service.Update(
+							Log.Log($"Setting job to 'Failure' ...");
+							Service.Update(
 								new CustomJob
 								{
 									Id = target.Id,
 									Status = CustomJob.StatusEnum.Inactive,
 									StatusReason = CustomJob.StatusReasonEnum.Failure
 								});
-							log.Log($"Set job to 'Failure'.");
+							Log.Log($"Set job to 'Failure'.");
 						}
 					}
 				}
 				catch
 				{
-					log.Log("Failed to set job 'failed' status.", LogLevel.Debug);
+					Log.Log("Failed to set job 'failed' status.");
 				}
 
 				throw;
@@ -131,13 +130,13 @@ namespace Yagasoft.CustomJobs
 			var customJob = new CustomJob();
 
 			// post
-			if (context.Stage == 40)
+			if ((Context as IPluginExecutionContext)?.Stage == 40)
 			{
-				log.Log("Processing post-operation actions ...", LogLevel.Debug);
+				Log.Log("Processing post-operation actions ...");
 
-				var postImage = context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
+				var postImage = Context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
 
-				if (postImage == null && context.MessageName == "Update")
+				if (postImage == null && Context.MessageName == "Update")
 				{
 					throw new InvalidPluginExecutionException("A full post image must be registered on this plugin step.");
 				}
@@ -153,25 +152,25 @@ namespace Yagasoft.CustomJobs
 
 				if (string.IsNullOrEmpty(customJob.Name))
 				{
-					log.Log("Name is empty, updating ...", LogLevel.Debug);
-					service.Update(
+					Log.Log("Name is empty, updating ...");
+					Service.Update(
 						new CustomJob
 						{
 							Id = customJob.Id,
 							Name = BuildJobName(customJob)
 						});
-					log.Log("Name was empty, updated.");
+					Log.Log("Name was empty, updated.");
 				}
 
 				return;
 			}
 
-			if (context.MessageName == "Update")
+			if (Context.MessageName == "Update")
 			{
-				log.Log("Update message, fetching target job from CRM ...", LogLevel.Debug);
-				customJob = service.Retrieve(targetGeneric.LogicalName, targetGeneric.Id, new ColumnSet(true))
+				Log.Log("Update message, fetching target job from CRM ...");
+				customJob = Service.Retrieve(targetGeneric.LogicalName, targetGeneric.Id, new ColumnSet(true))
 					.ToEntity<CustomJob>();
-				log.Log("Fetched target job from CRM.", LogLevel.Debug);
+				Log.Log("Fetched target job from CRM.");
 			}
 
 			foreach (var attribute in targetGeneric.Attributes)
@@ -182,32 +181,32 @@ namespace Yagasoft.CustomJobs
 			// fill page if empty
 			if (customJob.RecordsPerPage != null && customJob.PageNumber == null)
 			{
-				log.Log("Records per page set, but not the page number; setting to '1'.");
+				Log.Log("Records per page set, but not the page number; setting to '1'.");
 				targetGeneric[CustomJob.Fields.PageNumber] = 1;
 			}
 
 			// clear failed targets as we are starting over and reset retry runs
 			if (customJob.StatusReason == CustomJob.StatusReasonEnum.Draft)
 			{
-				log.Log("Draft status.");
-				log.Log("Clearing retry run, page number, cookie, and last message.");
+				Log.Log("Draft status.");
+				Log.Log("Clearing retry run, page number, cookie, and last message.");
 				targetGeneric[CustomJob.Fields.CurrentRetryRun] = null;
 				targetGeneric[CustomJob.Fields.PageNumber] = null;
 				targetGeneric[CustomJob.Fields.PagingCookie] = null;
 				targetGeneric[CustomJob.Fields.LatestRunMessage] = null;
 
-				log.Log("Loading failed targets for this job ...", LogLevel.Debug);
+				Log.Log("Loading failed targets for this job ...");
 				var tempJob =
 					new CustomJob
 					{
 						Id = customJob.Id
 					};
-				tempJob.LoadRelation(CustomJob.RelationNames.CustomJobFailedTargetsOfCustomJob, service);
-				log.Log("Loaded failed targets for this job.", LogLevel.Debug);
+				tempJob.LoadRelation(CustomJob.RelationNames.CustomJobFailedTargetsOfCustomJob, Service);
+				Log.Log("Loaded failed targets for this job.");
 
 				if (tempJob.CustomJobFailedTargetsOfCustomJob != null)
 				{
-					log.Log($"Failed targets: {tempJob.CustomJobFailedTargetsOfCustomJob.Length}.");
+					Log.Log($"Failed targets: {tempJob.CustomJobFailedTargetsOfCustomJob.Length}.");
 					var failures = tempJob.CustomJobFailedTargetsOfCustomJob;
 
 					var request =
@@ -222,7 +221,7 @@ namespace Yagasoft.CustomJobs
 								}
 						};
 
-					log.Log($"Deleting failed targets ...", LogLevel.Debug);
+					Log.Log($"Deleting failed targets ...");
 					for (var i = 0; i < Math.Ceiling(failures.Length / 1000d); i++)
 					{
 						request.Requests.Clear();
@@ -234,9 +233,9 @@ namespace Yagasoft.CustomJobs
 										failure.Id)
 								}));
 
-						service.Execute(request);
+						Service.Execute(request);
 					}
-					log.Log($"Deleted failed targets.");
+					Log.Log($"Deleted failed targets.");
 				}
 			}
 
@@ -244,33 +243,33 @@ namespace Yagasoft.CustomJobs
 			if (customJob.StatusReason == CustomJob.StatusReasonEnum.Draft
 				|| customJob.StatusReason == CustomJob.StatusReasonEnum.Cancelled)
 			{
-				log.Log($"{customJob.StatusReason} status.");
+				Log.Log($"{customJob.StatusReason} status.");
 				var tempJob =
 					new CustomJob
 					{
 						Id = customJob.Id
 					};
 
-				log.Log("Loading active children of this job ...", LogLevel.Debug);
+				Log.Log("Loading active children of this job ...");
 				var filter = new FilterExpression();
 				filter.AddCondition(CustomJob.Fields.Status, ConditionOperator.Equal, (int)CustomJob.StatusEnum.Active);
-				tempJob.LoadRelation(CustomJob.RelationNames.CustomJobsOfParentJob, service, false, filter);
-				log.Log("Loaded active children of this job.", LogLevel.Debug);
+				tempJob.LoadRelation(CustomJob.RelationNames.CustomJobsOfParentJob, Service, false, filter);
+				Log.Log("Loaded active children of this job.");
 
 				if (tempJob.CustomJobsOfParentJob != null)
 				{
-					log.Log($"Active children: {tempJob.CustomJobsOfParentJob.Length}.");
+					Log.Log($"Active children: {tempJob.CustomJobsOfParentJob.Length}.");
 					foreach (var job in tempJob.CustomJobsOfParentJob)
 					{
-						log.Log($"Setting sub job '{job.Id}' to cancelled ...", LogLevel.Debug);
-						service.Update(
+						Log.Log($"Setting sub job '{job.Id}' to cancelled ...");
+						Service.Update(
 							new CustomJob
 							{
 								Id = job.Id,
 								Status = CustomJob.StatusEnum.Inactive,
 								StatusReason = CustomJob.StatusReasonEnum.Cancelled
 							});
-						log.Log($"Set sub job '{job.Id}' to cancelled.");
+						Log.Log($"Set sub job '{job.Id}' to cancelled.");
 					}
 				}
 			}
@@ -288,17 +287,17 @@ namespace Yagasoft.CustomJobs
 			if (string.IsNullOrEmpty(customJob.Name) || isNamingFieldsUpdated)
 			{
 				targetGeneric[CustomJob.Fields.Name] = BuildJobName(customJob);
-				log.Log($"Set job name to '{targetGeneric[CustomJob.Fields.Name]}'.");
+				Log.Log($"Set job name to '{targetGeneric[CustomJob.Fields.Name]}'.");
 			}
 
 			if (customJob.StatusReason == CustomJob.StatusReasonEnum.Draft
 				&& customJob.MarkForWaiting == true && customJob.TargetDate != null
-				&& context.MessageName != "Create")
+				&& Context.MessageName != "Create")
 			{
-				log.Log("Setting job to waiting because of flag ...", LogLevel.Debug);
+				Log.Log("Setting job to waiting because of flag ...");
 				targetGeneric[CustomJob.Fields.MarkForWaiting] = false;
 				targetGeneric[CustomJob.Fields.StatusReason] = CustomJob.StatusReasonEnum.Waiting.ToOptionSetValue();
-				log.Log("Set job to waiting because of flag.");
+				Log.Log("Set job to waiting because of flag.");
 			}
 		}
 
@@ -308,9 +307,9 @@ namespace Yagasoft.CustomJobs
 
 			CustomJob preImage = null;
 
-			if (context.MessageName == "Update")
+			if (Context.MessageName == "Update")
 			{
-				preImage = context.PreEntityImages?.FirstOrDefault().Value?.ToEntity<CustomJob>();
+				preImage = Context.PreEntityImages?.FirstOrDefault().Value?.ToEntity<CustomJob>();
 
 				if (preImage == null)
 				{
@@ -318,9 +317,9 @@ namespace Yagasoft.CustomJobs
 				}
 			}
 
-			if (context.MessageName == "Create" && !string.IsNullOrEmpty(customJob.Name))
+			if (Context.MessageName == "Create" && !string.IsNullOrEmpty(customJob.Name))
 			{
-				log.Log("'Create' message and name is filled; using the custom name.");
+				Log.Log("'Create' message and name is filled; using the custom name.");
 				return customJob.Name;
 			}
 
@@ -332,9 +331,9 @@ namespace Yagasoft.CustomJobs
 					Workflow = customJob.Workflow
 				};
 
-			log.Log("Loading lookup labels ...", LogLevel.Debug);
-			customJobTemp.LoadLookupLabels(service);
-			log.Log("Loaded lookup labels.", LogLevel.Debug);
+			Log.Log("Loading lookup labels ...");
+			customJobTemp.LoadLookupLabels(Service);
+			Log.Log("Loaded lookup labels.");
 
 			var label = customJobTemp.WorkflowLabels?.FirstOrDefault(p => p.Key == 1033).Value;
 			var newName = $"{customJob.TargetLogicalName}" +
@@ -343,11 +342,11 @@ namespace Yagasoft.CustomJobs
 					: customJob.TargetID) + ")" +
 				$"{(string.IsNullOrEmpty(customJobTemp.ActionName) ? "" : " : " + customJobTemp.ActionName)}" +
 				$"{(string.IsNullOrEmpty(label) ? "" : " : " + label)}";
-			log.Log($"Assumed new name: {newName}.");
+			Log.Log($"Assumed new name: {newName}.");
 
-			if (context.MessageName == "Update" && preImage != null)
+			if (Context.MessageName == "Update" && preImage != null)
 			{
-				log.Log($"Updating message; comparing updated name.", LogLevel.Debug);
+				Log.Log($"Updating message; comparing updated name.");
 				customJobTemp =
 					new CustomJob
 					{
@@ -356,9 +355,9 @@ namespace Yagasoft.CustomJobs
 						Workflow = preImage.Workflow
 					};
 
-				log.Log("Loading lookup labels of pre-image ...", LogLevel.Debug);
-				customJobTemp.LoadLookupLabels(service);
-				log.Log("Loaded lookup labels of pre-image.", LogLevel.Debug);
+				Log.Log("Loading lookup labels of pre-image ...");
+				customJobTemp.LoadLookupLabels(Service);
+				Log.Log("Loaded lookup labels of pre-image.");
 
 				var preLabel = customJobTemp.WorkflowLabels?.FirstOrDefault(p => p.Key == 1033).Value;
 				var preName = $"{preImage.TargetLogicalName}" +
@@ -367,11 +366,11 @@ namespace Yagasoft.CustomJobs
 						: preImage.TargetID) + ")" +
 					$"{(string.IsNullOrEmpty(customJobTemp.ActionName) ? "" : " : " + customJobTemp.ActionName)}" +
 					$"{(string.IsNullOrEmpty(preLabel) ? "" : " : " + preLabel)}";
-				log.Log($"Pre-image name: {preName}.");
+				Log.Log($"Pre-image name: {preName}.");
 
 				var existingName = customJob.Name;
 				newName = (string.IsNullOrEmpty(existingName) || preName == existingName) ? newName : existingName;
-				log.Log($"Final new name: {newName}.");
+				Log.Log($"Final new name: {newName}.");
 			}
 
 			return newName.Trim(' ').Trim(':').Trim(' ');
@@ -381,14 +380,14 @@ namespace Yagasoft.CustomJobs
 		{
 			postImage.Require(nameof(postImage));
 
-			if (postImage.ActionName != null && postImage.Workflow != null)
+			if (postImage.ActionName != null && postImage.Workflow != null && postImage.URL.IsFilled())
 			{
-				throw new InvalidPluginExecutionException("Either an action or workflow can be specified.");
+				throw new InvalidPluginExecutionException("Either an action or workflow or URL can be specified.");
 			}
 
-			if (string.IsNullOrEmpty(postImage.ActionName) && postImage.Workflow == null)
+			if (string.IsNullOrEmpty(postImage.ActionName) && postImage.Workflow == null && postImage.URL.IsEmpty())
 			{
-				throw new InvalidPluginExecutionException("An action or workflow must be specified.");
+				throw new InvalidPluginExecutionException("An action or workflow or URL must be specified.");
 			}
 
 			if (postImage.TargetID != null && postImage.TargetXML != null)
@@ -409,11 +408,11 @@ namespace Yagasoft.CustomJobs
 		{
 			targetGeneric.Require(nameof(targetGeneric));
 
-			var preImage = context.PreEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
+			var preImage = Context.PreEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
 
 			if (preImage == null)
 			{
-				if (context.MessageName == "Create")
+				if (Context.MessageName == "Create")
 				{
 					preImage = targetGeneric.ToEntity<CustomJob>();
 				}
@@ -423,7 +422,7 @@ namespace Yagasoft.CustomJobs
 				}
 			}
 
-			var postImage = context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
+			var postImage = Context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
 
 			if (postImage == null)
 			{
@@ -431,44 +430,50 @@ namespace Yagasoft.CustomJobs
 			}
 
 			var target = targetGeneric.ToEntity<CustomJob>();
-			log.SetRegarding(target.LogicalName, target.Id, postImage.Name);
-			log.SetTitle(postImage, "ldv_name");
+			Log.SetRegarding(target.LogicalName, target.Id, postImage.Name);
+			Log.SetTitle(postImage, "ldv_name");
 
 			if (postImage.StatusReason != CustomJob.StatusReasonEnum.Queued)
 			{
-				log.Log($"'{postImage.StatusReason}' status.");
+				Log.Log($"'{postImage.StatusReason}' status.");
 				var timerModified = target.Timer != preImage.Timer || target.TimerBase != preImage.TimerBase;
 				var targetDateEmpty = postImage.TargetDate == null;
 				var timerParamSet = postImage.Timer != null;
 
 				if ((timerModified || targetDateEmpty) && timerParamSet)
 				{
-					log.Log("Timer modified. Calculating target date ...", LogLevel.Debug);
+					Log.Log("Timer modified. Calculating target date ...");
 
 					var baseDate = postImage.TimerBase ?? DateTime.UtcNow;
 					var timer = postImage.Timer ?? 1;
 					var targetDate =
-						postImage.OnlyWorkingHours == true
-							? SlaHelpers.GetDueDate(Guid.Parse(config.DefaultCalendar), baseDate, timer, service, orgId)
+						postImage.OnlyWorkingHours == true && config.DefaultCalendar.IsNotEmpty()
+							? SlaHelpers.GetDueDate(Guid.Parse(config.DefaultCalendar), baseDate, timer, Service, orgId)
 							: baseDate.AddMinutes(timer);
 
-					log.Log($"New target date: '{targetDate}'.");
+					Log.Log($"New target date: '{targetDate}'.");
 
-					log.Log("Setting job target date ...", LogLevel.Debug);
-					service.Update(
+					Log.Log("Setting job target date ...");
+					Service.Update(
 						new CustomJob
 						{
 							Id = target.Id,
 							TargetDate = targetDate,
 							TimerBase = baseDate
 						});
-					log.Log("Set job target date.");
+					Log.Log("Set job target date.");
 				}
 
-				log.Log("Job is not queued, exiting ...");
+				Log.Log("Job is not queued, exiting ...");
 				return;
 			}
 
+			if (config.JobsPlatform != CommonConfiguration.JobsPlatformEnum.CRM)
+			{
+				throw new InvalidPluginExecutionException($"Cannot process the job because target platform is not set to CRM"
+					+ $" (current: {config.JobsPlatform}).");
+			}
+			
 			ProcessQueuedJob(postImage);
 		}
 
@@ -476,24 +481,24 @@ namespace Yagasoft.CustomJobs
 		{
 			postImage.Require(nameof(postImage));
 
-			var isRetry = context.PreEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>().StatusReason
+			var isRetry = Context.PreEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>().StatusReason
 				== CustomJob.StatusReasonEnum.Retry;
 
 			if (isRetry)
 			{
-				log.Log("Retrying ...");
+				Log.Log("Retrying ...");
 			}
 
-			log.Log("Setting job to 'running' ...", LogLevel.Debug);
-			service.Update(
+			Log.Log("Setting job to 'running' ...");
+			Service.Update(
 				new CustomJob
 				{
 					Id = postImage.Id,
 					StatusReason = CustomJob.StatusReasonEnum.Running
 				});
-			log.Log("Set job to 'running'.");
+			Log.Log("Set job to 'running'.");
 
-			var run = JobRunFactory.GetJobRun(postImage, isRetry, service, serviceFactory, log);
+			var run = JobRunFactory.GetJobRun(postImage, isRetry, Service, ServiceFactory, Log);
 			run.Process();
 		}
 	}

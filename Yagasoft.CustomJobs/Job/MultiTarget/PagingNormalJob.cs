@@ -54,14 +54,14 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 			if (!string.IsNullOrEmpty(Job.TargetLogicalName))
 			{
-				log.Log("Converting FetchXML to QueryExpression ...", LogLevel.Debug);
+				log.Log("Converting FetchXML to QueryExpression ...");
 				var query = ((FetchXmlToQueryExpressionResponse)
 					Service.Execute(
 						new FetchXmlToQueryExpressionRequest
 						{
 							FetchXml = Job.TargetXML
 						})).Query;
-				log.Log("Converted.", LogLevel.Debug);
+				log.Log("Converted.");
 
 				query.PageInfo =
 					new PagingInfo
@@ -71,8 +71,8 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 						PagingCookie = Job.PagingCookie
 					};
 
-				log.Log($"Retrieving a max of {query.PageInfo.Count} per page ...", LogLevel.Debug);
-				log.Log($"Retrieving page {query.PageInfo.PageNumber} ...", LogLevel.Debug);
+				log.Log($"Retrieving a max of {query.PageInfo.Count} per page ...");
+				log.Log($"Retrieving page {query.PageInfo.PageNumber} ...");
 				var result = Service.RetrieveMultiple(query);
 				targets.AddRange(result.Entities.Select(entity => entity.Id));
 				log.Log($"Found {result.Entities.Count}.");
@@ -89,11 +89,11 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 		protected override JobRunStatus ProcessSuccessPaging(JobPagingInfo pagingInfo)
 		{
-			log.Log($"Updating paging info of job, page {pagingInfo.NextPage} ...", LogLevel.Debug);
+			log.Log($"Updating paging info of job, page {pagingInfo.NextPage} ...");
 			UpdatePaging(Service, Job.Id, pagingInfo);
 			log.Log($"Updated paging info of job, page {pagingInfo.NextPage}.");
 
-			log.Log($"Updating status of job to 'waiting' ...", LogLevel.Debug);
+			log.Log($"Updating status of job to 'waiting' ...");
 			SetStatus(Service, CustomJob.StatusReasonEnum.Waiting, Job.Id, false);
 			log.Log($"Updated status of job to 'waiting.");
 
@@ -154,7 +154,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 					if (IsWaitingOnSubJobs(Service, parentId))
 					{
-						log.Log($"Updating status of job parent '{parentId}' to 'failed' ...", LogLevel.Debug);
+						log.Log($"Updating status of job parent '{parentId}' to 'failed' ...");
 						Close(Service, CustomJob.StatusReasonEnum.Failure, parentId, true);
 						log.Log($"Updated status of job parent '{parentId}' to 'failed'.");
 					}
@@ -166,7 +166,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 			}
 			else
 			{
-				log.Log($"Creating a retry sub-job ...", LogLevel.Debug);
+				log.Log($"Creating a retry sub-job ...");
 				var extendingJob = BuildSubJob(Job, CustomJob.StatusReasonEnum.Retry, $"Retry Page {Job.PageNumber ?? 1}");
 				extendingJob.CurrentRetryRun = 1;
 				extendingJob.Id = Service.Create(extendingJob);
@@ -174,7 +174,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 				newFailures = AssociateFailedTargets(failures, extendingJob.Id);
 
-				log.Log($"Updating status of job 'waiting on subs' ...", LogLevel.Debug);
+				log.Log($"Updating status of job 'waiting on subs' ...");
 				SetStatus(Service, CustomJob.StatusReasonEnum.WaitingOnSubJobs, Job.Id, false);
 				log.Log($"Updating status of job 'waiting on subs'.");
 			}

@@ -3,7 +3,27 @@
 /// <reference path="Sdk.Soap.vsdoc.js" />
 /// <reference path="Xrm.Page.js" />
 /// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/CrmSchemaJs.js" />
-/// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/Scripts/ldv_CommonGeneric.js" />
+/// <reference path="ldv_CommonGeneric.js" />
+
+var Ys = (function(ys)
+{
+    const customJob = (function()
+    {
+        const fields =
+        {
+            Url: "ys_url"
+        };
+
+        return {
+            Fields: fields
+        };
+    })();
+    return Object.assign(ys,
+        {
+            CustomJob: customJob
+        });
+})(Ys || {});
+
 
 function CustomJob_OnLoad()
 {
@@ -23,6 +43,7 @@ function CustomJob_OnLoad()
 
 	Workflow_OnChange();
 	Action_OnChange();
+	Url_OnChange();
 
 	TargetName_OnChange(true);
 	RecordsPerPage_OnChange();
@@ -139,13 +160,21 @@ function Workflow_OnChange()
 			SetFieldValue(Sdk.CustomJob.SerialisedInputParams, null, true);
 		}
 
+		if (GetFieldValue(Ys.CustomJob.Fields.Url))
+		{
+			SetFieldValue(Ys.CustomJob.Fields.Url, null, true);
+			SetFieldValue(Sdk.CustomJob.SerialisedInputParams, null, true);
+		}
+
 		SetFieldRequired(Sdk.CustomJob.ActionName, false);
+		SetFieldRequired(Ys.CustomJob.Fields.Url, false);
 		SetFieldRequired(Sdk.CustomJob.TargetLogicalName, true);
 	}
 	else
 	{
 		SetFieldRequired(Sdk.CustomJob.ActionName, true);
 		SetFieldRequired(Sdk.CustomJob.TargetLogicalName, false);
+		SetFieldRequired(Ys.CustomJob.Fields.Url, true);
 	}
 }
 
@@ -158,11 +187,43 @@ function Action_OnChange()
 			SetFieldValue(Sdk.CustomJob.Workflow, null, true);
 		}
 
+		if (GetFieldValue(Ys.CustomJob.Fields.Url))
+		{
+			SetFieldValue(Ys.CustomJob.Fields.Url, null, true);
+		}
+
 		SetFieldRequired(Sdk.CustomJob.Workflow, false);
+		SetFieldRequired(Ys.CustomJob.Fields.Url, false);
 	}
 	else
 	{
 		SetFieldRequired(Sdk.CustomJob.Workflow, true);
+        SetFieldRequired(Ys.CustomJob.Fields.Url, true);
+	}
+}
+
+function Url_OnChange()
+{
+	if (GetFieldValue(Ys.CustomJob.Fields.Url))
+	{
+		if (GetFieldValue(Sdk.CustomJob.Workflow))
+		{
+			SetFieldValue(Sdk.CustomJob.Workflow, null, true);
+		}
+
+		if (GetFieldValue(Sdk.CustomJob.ActionName))
+		{
+			SetFieldValue(Sdk.CustomJob.ActionName, null, true);
+		}
+
+		SetFieldRequired(Sdk.CustomJob.Workflow, false);
+		SetFieldRequired(Sdk.CustomJob.ActionName, false);
+	}
+	else
+	{
+        SetFieldRequired(Sdk.CustomJob.Workflow, true);
+        SetFieldRequired(Sdk.CustomJob.ActionName, true);
+        SetFieldRequired(Sdk.CustomJob.TargetLogicalName, false);
 	}
 }
 
@@ -294,6 +355,7 @@ function HideNonUsedSections()
 {
 	var isAction = GetFieldValue(Sdk.CustomJob.ActionName);
 	var isWf = GetFieldValue(Sdk.CustomJob.Workflow);
+	var isUrl = GetFieldValue(Ys.CustomJob.Fields.Url);
 
 	var isTimer = GetFieldValue(Sdk.CustomJob.Timer);
 
@@ -310,6 +372,15 @@ function HideNonUsedSections()
 	if (!isAction)
 	{
 		SetFieldVisible(Sdk.CustomJob.ActionName, false);
+	}
+
+	if (!isUrl)
+	{
+		SetFieldVisible(Ys.CustomJob.Fields.Url, false);
+	}
+
+	if (!isAction && !isWf)
+	{
 		SetFieldVisible(Sdk.CustomJob.SerialisedInputParams, false);
 	}
 

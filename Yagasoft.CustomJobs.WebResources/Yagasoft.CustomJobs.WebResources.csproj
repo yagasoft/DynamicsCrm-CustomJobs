@@ -71,6 +71,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\ldv_CommonGeneric.js" />
     <Content Include="Scripts\ldv_CustomJobEngineRibbon.js" />
     <Content Include="Scripts\ldv_CustomJobRibbon.js" />
     <Content Include="Scripts\ldv_CustomJob.js" />

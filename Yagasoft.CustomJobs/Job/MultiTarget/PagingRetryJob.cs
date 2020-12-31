@@ -52,7 +52,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 				if (IsWaitingOnSubJobs(Service, parentId))
 				{
-					log.Log($"Updating paging info of parent job, page {pagingInfo.NextPage} ...", LogLevel.Debug);
+					log.Log($"Updating paging info of parent job, page {pagingInfo.NextPage} ...");
 					UpdatePaging(Service, parentId, pagingInfo);
 					log.Log($"Updated paging info of parent job, page {pagingInfo.NextPage}.");
 				}
@@ -78,17 +78,17 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 					{
 						if (Job.IgnoreFailure == true)
 						{
-							log.Log($"Updating paging info of job, page {pagingInfo.NextPage} ...", LogLevel.Debug);
+							log.Log($"Updating paging info of job, page {pagingInfo.NextPage} ...");
 							UpdatePaging(Service, parentId, pagingInfo);
 							log.Log($"Updated paging info of job, page {pagingInfo.NextPage}.");
 
-							log.Log($"Updating status of job parent '{parentId}' to 'waiting' ...", LogLevel.Debug);
+							log.Log($"Updating status of job parent '{parentId}' to 'waiting' ...");
 							SetStatus(Service, CustomJob.StatusReasonEnum.Waiting, parentId, IsParentRecurrentJob());
 							log.Log($"Updated status of job parent '{parentId}' to 'waiting'.");
 						}
 						else
 						{
-							log.Log($"Updating status of job parent '{parentId}' to 'failed' ...", LogLevel.Debug);
+							log.Log($"Updating status of job parent '{parentId}' to 'failed' ...");
 							Close(Service, CustomJob.StatusReasonEnum.Failure, Job.ParentJob.Value, true);
 							log.Log($"Updated status of job parent '{parentId}' to 'failed'.");
 						}
@@ -106,7 +106,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 				IncrementRetry(Job.CurrentRetryRun ?? 0);
 
-				log.Log($"Updating status of job to 'retry' ...", LogLevel.Debug);
+				log.Log($"Updating status of job to 'retry' ...");
 				SetStatus(Service, CustomJob.StatusReasonEnum.Retry, Job.Id, false);
 				log.Log($"Updated status of job 'retry'.");
 			}
@@ -125,7 +125,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 			foreach (var failedTarget in remainingFailed)
 			{
-				log.Log($"Associate failed target '{failedTarget.ID}' to parent '{Job.ParentJob}'  ...", LogLevel.Debug);
+				log.Log($"Associate failed target '{failedTarget.ID}' to parent '{Job.ParentJob}'  ...");
 				Service.Update(new CustomJobFailedTarget
 							   {
 								   Id = failedTarget.Id,

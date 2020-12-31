@@ -28,17 +28,17 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 
 			if (page != null && count != null)
 			{
-				log.Log($"Loading retry targets with page {page.Value} and count {count.Value} ...", LogLevel.Debug);
+				log.Log($"Loading retry targets with page {page.Value} and count {count.Value} ...");
 				job.LoadRelation(CustomJob.RelationNames.CustomJobFailedTargetsOfCustomJob, Service, false,
 					count.Value, page.Value, CustomJobFailedTarget.Fields.ID);
 				log.Log($"Loaded retry targets with page {page.Value} and count {count.Value}.");
 			}
 			else
 			{
-				log.Log($"Loading retry targets ...", LogLevel.Debug);
+				log.Log($"Loading retry targets ...");
 				job.LoadRelation(CustomJob.RelationNames.CustomJobFailedTargetsOfCustomJob, Service,
 					CustomJobFailedTarget.Fields.ID);
-				log.Log($"Loaded retry targets.", LogLevel.Debug);
+				log.Log($"Loaded retry targets.");
 			}
 
 			var targets = job.CustomJobFailedTargetsOfCustomJob ?? new CustomJobFailedTarget[0];
@@ -62,7 +62,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 
 			foreach (var failedTarget in newFailedTargets)
 			{
-				log.Log($"Creating failed target record for '{failedTarget.ID}' ...", LogLevel.Debug);
+				log.Log($"Creating failed target record for '{failedTarget.ID}' ...");
 				failedTarget.CustomJob = jobId;
 				Service.Create(failedTarget);
 				log.Log($"Created failed target record for '{failedTarget.ID}'.");
@@ -87,7 +87,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 
 			foreach (var successfulTarget in successfulRetryTargets)
 			{
-				log.Log($"Deleting successful target record '{successfulTarget.ID}' ...", LogLevel.Debug);
+				log.Log($"Deleting successful target record '{successfulTarget.ID}' ...");
 				Service.Delete(CustomJobFailedTarget.EntityLogicalName, successfulTarget.Id);
 				log.Log($"Deleted successful target record '{successfulTarget.ID}'.");
 			}

@@ -31,6 +31,9 @@ namespace Yagasoft.CustomJobs
 		[ReferenceTarget("workflow")]
 		public InArgument<EntityReference> WorkflowRefArg { get; set; }
 
+		[Input("Url")]
+		public InArgument<string> UrlArg { get; set; }
+
 		[Input("Context User")]
 		[ReferenceTarget("systemuser")]
 		public InArgument<EntityReference> UserRefArg { get; set; }
@@ -78,35 +81,36 @@ namespace Yagasoft.CustomJobs
 	{
 		protected override void ExecuteLogic()
 		{
-			log.Log("Getting input arguments ...", LogLevel.Debug);
+			Log.Log("Getting input arguments ...");
 
-			var name = executionContext.GetValue(codeActivity.NameArg);
-			var actionName = executionContext.GetValue(codeActivity.ActionNameArg);
-			var inputParams = executionContext.GetValue(codeActivity.InputParamsArg);
-			var workflowRef = executionContext.GetValue(codeActivity.WorkflowRefArg);
-			var userRef = executionContext.GetValue(codeActivity.UserRefArg);
-			var targetDate = executionContext.GetValue(codeActivity.TargetDateArg);
-			var timer = executionContext.GetValue(codeActivity.TimerArg);
-			var timerBase = executionContext.GetValue(codeActivity.TimerBaseArg);
-			var workingHours = executionContext.GetValue(codeActivity.WorkingHoursArg);
-			var targetLogicalName = executionContext.GetValue(codeActivity.TargetLogicalNameArg);
-			var targetId = executionContext.GetValue(codeActivity.TargetIdArg);
-			var targetXml = executionContext.GetValue(codeActivity.TargetXmlArg);
-			var count = executionContext.GetValue(codeActivity.CountArg);
-			var recurrenceIdsCsv = executionContext.GetValue(codeActivity.RecurrenceIdsCsvArg);
+			var name = ExecutionContext.GetValue(codeActivity.NameArg);
+			var actionName = ExecutionContext.GetValue(codeActivity.ActionNameArg);
+			var inputParams = ExecutionContext.GetValue(codeActivity.InputParamsArg);
+			var workflowRef = ExecutionContext.GetValue(codeActivity.WorkflowRefArg);
+			var url = ExecutionContext.GetValue(codeActivity.UrlArg);
+			var userRef = ExecutionContext.GetValue(codeActivity.UserRefArg);
+			var targetDate = ExecutionContext.GetValue(codeActivity.TargetDateArg);
+			var timer = ExecutionContext.GetValue(codeActivity.TimerArg);
+			var timerBase = ExecutionContext.GetValue(codeActivity.TimerBaseArg);
+			var workingHours = ExecutionContext.GetValue(codeActivity.WorkingHoursArg);
+			var targetLogicalName = ExecutionContext.GetValue(codeActivity.TargetLogicalNameArg);
+			var targetId = ExecutionContext.GetValue(codeActivity.TargetIdArg);
+			var targetXml = ExecutionContext.GetValue(codeActivity.TargetXmlArg);
+			var count = ExecutionContext.GetValue(codeActivity.CountArg);
+			var recurrenceIdsCsv = ExecutionContext.GetValue(codeActivity.RecurrenceIdsCsvArg);
 
-			log.Log("Done.", LogLevel.Debug);
+			Log.Log("Done.");
 
-			log.Log("Validating input arguments ...", LogLevel.Debug);
+			Log.Log("Validating input arguments ...");
 
-			if (actionName != null && workflowRef != null)
+			if (actionName != null && workflowRef != null && url.IsFilled())
 			{
-				throw new InvalidPluginExecutionException("Either an action or workflow can be specified.");
+				throw new InvalidPluginExecutionException("Either an action or workflow or URL can be specified.");
 			}
 
-			if (actionName == null && workflowRef == null)
+			if (actionName == null && workflowRef == null && url.IsEmpty())
 			{
-				throw new InvalidPluginExecutionException("An action or workflow must be specified.");
+				throw new InvalidPluginExecutionException("An action or workflow or URL must be specified.");
 			}
 
 			if (targetDate != new DateTime(1, 1, 1) && timer != 0)
@@ -129,14 +133,14 @@ namespace Yagasoft.CustomJobs
 				throw new InvalidPluginExecutionException("Target logical name must be specified.");
 			}
 
-			if (workflowRef != null && !IsRecordExists(service, "workflow", workflowRef.Id))
+			if (workflowRef != null && !IsRecordExists(Service, "workflow", workflowRef.Id))
 			{
 				throw new InvalidPluginExecutionException($"Couldn't find workflow with ID '{workflowRef.Id}'.");
 			}
 
-			log.Log("Input arguments are valid.");
+			Log.Log("Input arguments are valid.");
 
-			log.Log("Validating recurrences ...", LogLevel.Debug);
+			Log.Log("Validating recurrences ...");
 
 			var recurrencesString = recurrenceIdsCsv?.Split(',');
 			var recurrences = new List<EntityReference>();
@@ -157,7 +161,7 @@ namespace Yagasoft.CustomJobs
 						throw new InvalidPluginExecutionException("Poorly formatted recurrence ID.");
 					}
 
-					if (!IsRecordExists(service, RecurrenceRule.EntityLogicalName, guid))
+					if (!IsRecordExists(Service, RecurrenceRule.EntityLogicalName, guid))
 					{
 						throw new InvalidPluginExecutionException($"Couldn't find recurrence with ID '{guid}'.");
 					}
@@ -166,9 +170,9 @@ namespace Yagasoft.CustomJobs
 				}
 			}
 
-			log.Log("Recurrences are valid.");
+			Log.Log("Recurrences are valid.");
 
-			log.Log("Creating job ...", LogLevel.Debug);
+			Log.Log("Creating job ...");
 
 			var job = new CustomJob
 					  {
@@ -189,26 +193,26 @@ namespace Yagasoft.CustomJobs
 					  };
 			job.MarkForWaiting = job.Timer != null || job.RecurrentJob == true;
 
-			var id = service.Create(job);
+			var id = Service.Create(job);
 
-			log.Log($"Job created with ID '{id}'.");
+			Log.Log($"Job created with ID '{id}'.");
 
 			if (recurrences.Any())
 			{
-				log.Log("Associating recurrences ...", LogLevel.Debug);
+				Log.Log("Associating recurrences ...");
 
-				service.Associate(CustomJob.EntityLogicalName, id, new Relationship(CustomJob.Relations.NToN.Recurrences),
+				Service.Associate(CustomJob.EntityLogicalName, id, new Relationship(CustomJob.Relations.NToN.Recurrences),
 					new EntityReferenceCollection(recurrences));
 
-				log.Log("Done.", LogLevel.Debug);
+				Log.Log("Done.");
 			}
 
 			if (job.MarkForWaiting != true)
 			{
-				SetStatus(service, CustomJob.StatusReasonEnum.Waiting, id, false);
+				SetStatus(Service, CustomJob.StatusReasonEnum.Waiting, id, false);
 			}
 
-			executionContext.SetValue(codeActivity.NewJobArg, new EntityReference(CustomJob.EntityLogicalName, id));
+			ExecutionContext.SetValue(codeActivity.NewJobArg, new EntityReference(CustomJob.EntityLogicalName, id));
 		}
 	}
 }

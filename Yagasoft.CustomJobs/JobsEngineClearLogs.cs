@@ -37,15 +37,15 @@ namespace Yagasoft.CustomJobs
 	{
 		protected override void ExecuteLogic()
 		{
-			var job = codeActivity.CustomJobReference.Get(executionContext);
+			var job = codeActivity.CustomJobReference.Get(ExecutionContext);
 
-			log.Log($"Fetching all logs related to the job '{job.Id}' ...", LogLevel.Debug);
-			var logs = (from logQ in new XrmServiceContext(service).CustomJobLogSet
+			Log.Log($"Fetching all logs related to the job '{job.Id}' ...");
+			var logs = (from logQ in new XrmServiceContext(Service).CustomJobLogSet
 						where logQ.CustomJob == job.Id
 						select logQ.CustomJobLogId).ToList();
-			log.Log($"Fetched all logs related to the job '{job.Id}': {logs.Count}.");
+			Log.Log($"Fetched all logs related to the job '{job.Id}': {logs.Count}.");
 
-			log.Log($"Deleting log entries ...", LogLevel.Debug);
+			Log.Log($"Deleting Log entries ...");
 
 			var request = new ExecuteMultipleRequest
 						  {
@@ -66,10 +66,10 @@ namespace Yagasoft.CustomJobs
 						Target = new EntityReference(CustomJobLog.EntityLogicalName, logId.Value)
 					}));
 
-				service.Execute(request);
+				Service.Execute(request);
 			}
 
-			log.Log($"Deleted log entries.");
+			Log.Log($"Deleted Log entries.");
 		}
 	}
 }

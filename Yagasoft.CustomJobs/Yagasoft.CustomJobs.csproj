@@ -90,6 +90,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CrmSchema.tt</DependentUpon>
     </Compile>
+    <Compile Include="CrmSchemaBase.cs">
+      <DependentUpon>CrmSchema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CrmSchemaContracts.cs">
+      <DependentUpon>CrmSchema.tt</DependentUpon>
+    </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="JobsEngineClearLogs.cs" />
     <Compile Include="JobsEngineJobHandler.cs" />
@@ -114,14 +120,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="CrmSchema.dat" />
+    <None Include="CrmSchema-Config.json" />
     <None Include="CrmSchema.tt">
       <Generator>CrmCodeGenerator2011</Generator>
       <LastGenOutput>CrmSchema.cs</LastGenOutput>
     </None>
     <None Include="key.snk" />
     <None Include="packages.config" />
-    <None Include="PluginRegExt.dat" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

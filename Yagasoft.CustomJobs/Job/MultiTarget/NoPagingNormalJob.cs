@@ -28,13 +28,13 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 
 			if (!string.IsNullOrEmpty(Job.TargetLogicalName))
 			{
-				log.Log("Converting FetchXML to QueryExpression ...", LogLevel.Debug);
+				log.Log("Converting FetchXML to QueryExpression ...");
 				var query = ((FetchXmlToQueryExpressionResponse)
 					Service.Execute(new FetchXmlToQueryExpressionRequest
 									{
 										FetchXml = Job.TargetXML
 									})).Query;
-				log.Log("Converted.", LogLevel.Debug);
+				log.Log("Converted.");
 
 				query.PageInfo = new PagingInfo
 								 {
@@ -43,12 +43,12 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 									 PagingCookie = Job.PagingCookie
 								 };
 
-				log.Log($"Retrieving a max of {query.PageInfo.Count} per page ...", LogLevel.Debug);
+				log.Log($"Retrieving a max of {query.PageInfo.Count} per page ...");
 				EntityCollection result;
 
 				do
 				{
-					log.Log($"Retrieving page {query.PageInfo.PageNumber} ...", LogLevel.Debug);
+					log.Log($"Retrieving page {query.PageInfo.PageNumber} ...");
 					result = Service.RetrieveMultiple(query);
 					targets.AddRange(result.Entities.Select(entity => entity.Id));
 					log.Log($"Found {result.Entities.Count}.");

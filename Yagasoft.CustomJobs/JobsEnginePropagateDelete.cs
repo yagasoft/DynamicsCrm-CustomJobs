@@ -33,27 +33,27 @@ namespace Yagasoft.CustomJobs
 
 		protected override void ExecuteLogic()
 		{
-			var targetRef = (EntityReference) context.InputParameters["Target"];
+			var targetRef = (EntityReference) Context.InputParameters["Target"];
 
 			if (targetRef.LogicalName == CustomJobLog.EntityLogicalName)
 			{
-				log.Log("Processing log deletion ...", LogLevel.Debug);
+				Log.Log("Processing Log deletion ...");
 				var jobLog = new CustomJobLog
 							 {
 								 Id = targetRef.Id
 							 };
-				jobLog.LoadRelation(CustomJobLog.RelationNames.CustomJobFailedTargetsOfLogEntry, service);
+				jobLog.LoadRelation(CustomJobLog.RelationNames.CustomJobFailedTargetsOfLogEntry, Service);
 				var failures = jobLog.CustomJobFailedTargetsOfLogEntry;
 
 				if (failures != null)
 				{
-					log.Log($"Found {failures.Length} failed job entries.");
+					Log.Log($"Found {failures.Length} failed job entries.");
 
 					foreach (var failure in failures)
 					{
-						log.Log($"Deleting '{failure.Id}' ...", LogLevel.Debug);
-						service.Delete(CustomJobFailedTarget.EntityLogicalName, failure.Id);
-						log.Log($"Deleted '{failure.Id}'.");
+						Log.Log($"Deleting '{failure.Id}' ...");
+						Service.Delete(CustomJobFailedTarget.EntityLogicalName, failure.Id);
+						Log.Log($"Deleted '{failure.Id}'.");
 					}
 				}
 			}

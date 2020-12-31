@@ -154,7 +154,7 @@ namespace Yagasoft.CustomJobs
 			}
 			else
 			{
-				log.Log($"Getting next retry occurrence for {job.RetrySchedule}.", LogLevel.Debug);
+				log.Log($"Getting next retry occurrence for {job.RetrySchedule}.");
 				var action = new GlobalActions.ys_CustomJobGetNextRecurrenceDate(
 					new EntityReference(RecurrenceRule.EntityLogicalName, job.RetrySchedule.Value), service);
 				nextRecurrence = action.Execute().NextTargetDate;
@@ -163,7 +163,7 @@ namespace Yagasoft.CustomJobs
 
 			var targetDate = nextRecurrence > new DateTime(1900) ? nextRecurrence : null;
 
-			log.Log($"Updating target date to '{targetDate}' UTC ...", LogLevel.Debug);
+			log.Log($"Updating target date to '{targetDate}' UTC ...");
 			service.Update(
 				new CustomJob
 				{

@@ -56,7 +56,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 			if (Guid.TryParse(Job.ActionName, out workflowId)
 				|| ((workflowId = Job.Workflow.GetValueOrDefault()) != Guid.Empty))
 			{
-				log.Log($"Running workflow '{workflowId}' ...", LogLevel.Debug);
+				log.Log($"Running workflow '{workflowId}' ...");
 
 				if (targets?.Any() == true)
 				{
@@ -101,7 +101,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 					action.Parameters.AddRange(GetInputs());
 				}
 
-				log.Log($"Executing action '{Job.ActionName}' ...", LogLevel.Debug);
+				log.Log($"Executing action '{Job.ActionName}' ...");
 
 				if (targets?.Any() == true)
 				{
@@ -109,7 +109,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 					{
 						try
 						{
-							log.Log($"Executing action on '{target}' ...", LogLevel.Debug);
+							log.Log($"Executing action on '{target}' ...");
 							action["Target"] = new EntityReference(Job.TargetLogicalName, target);
 							contextService.Execute(action);
 						}
@@ -129,7 +129,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 				{
 					try
 					{
-						log.Log($"Executing global action ...", LogLevel.Debug);
+						log.Log($"Executing global action ...");
 						contextService.Execute(action);
 					}
 					catch (Exception ex)
@@ -152,7 +152,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 			if (Job.ContextUser != null)
 			{
 				contextService = ServiceFactory.CreateOrganizationService(Job.ContextUser);
-				log.Log($"Got context service for user '{Job.ContextUser}'.", LogLevel.Debug);
+				log.Log($"Got context service for user '{Job.ContextUser}'.");
 			}
 
 			return contextService;
@@ -166,14 +166,14 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 
 				if (IsWaitingOnSubJobs(Service, parentId))
 				{
-					log.Log($"Setting status of parent '{parentId}' to 'waiting' ...", LogLevel.Debug);
+					log.Log($"Setting status of parent '{parentId}' to 'waiting' ...");
 					SetStatus(Service, CustomJob.StatusReasonEnum.Waiting, parentId, IsParentRecurrentJob());
 					log.Log($"Set status of parent '{parentId}' to 'waiting'.");
 				}
 			}
 			else if (IsRecurrentJob())
 			{
-				log.Log($"Setting status to 'waiting' ...", LogLevel.Debug);
+				log.Log($"Setting status to 'waiting' ...");
 				SetStatus(Service, CustomJob.StatusReasonEnum.Waiting, Job.Id, IsParentRecurrentJob());
 				log.Log($"Set status to 'waiting'.");
 			}
@@ -200,13 +200,13 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 					{
 						if (Job.IgnoreFailure == true)
 						{
-							log.Log($"Setting status of parent '{parentId}' to 'waiting' ...", LogLevel.Debug);
+							log.Log($"Setting status of parent '{parentId}' to 'waiting' ...");
 							SetStatus(Service, CustomJob.StatusReasonEnum.Waiting, parentId, IsParentRecurrentJob());
 							log.Log($"Set status of parent '{parentId}' to 'waiting'.");
 						}
 						else
 						{
-							log.Log($"Setting status of parent '{parentId}' to 'failed' ...", LogLevel.Debug);
+							log.Log($"Setting status of parent '{parentId}' to 'failed' ...");
 							Close(Service, CustomJob.StatusReasonEnum.Failure, parentId, true);
 							log.Log($"Set status of parent '{parentId}' to 'failed'.");
 						}
@@ -246,7 +246,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 				}
 
 				IncrementRetry(Job.CurrentRetryRun ?? 0);
-				log.Log($"Setting status of job to 'retry' ...", LogLevel.Debug);
+				log.Log($"Setting status of job to 'retry' ...");
 				SetStatus(Service, CustomJob.StatusReasonEnum.Retry, Job.Id, false);
 				log.Log($"Set status of job to 'retry'.");
 			}
@@ -280,7 +280,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 
 				try
 				{
-					parameters = SerialiserHelpers.DeserializeXml<IDictionary<string, object>>(Job.SerialisedInputParams);
+					parameters = SerialiserHelpers.DeserialiseStrictXml<IDictionary<string, object>>(Job.SerialisedInputParams);
 				}
 				catch
 				{
@@ -326,7 +326,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 
 		protected void IncrementRetry(int currentRun)
 		{
-			log.Log($"Updating current retry run to {currentRun + 1} ...", LogLevel.Debug);
+			log.Log($"Updating current retry run to {currentRun + 1} ...");
 			Service.Update(
 				new CustomJob
 				{

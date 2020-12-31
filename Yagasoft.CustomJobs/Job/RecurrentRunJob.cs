@@ -17,12 +17,12 @@ namespace Yagasoft.CustomJobs.Job
 
 		protected override JobRunStatus ProcessRecurrence()
 		{
-			log.Log("Creating sub-job ...", LogLevel.Debug);
+			log.Log("Creating sub-job ...");
 			var extendingJob = Helpers.BuildSubJob(Job, CustomJob.StatusReasonEnum.Waiting, $"Recurrence '{Job.TargetDate}' UTC");
 			Service.Create(extendingJob);
 			log.Log($"Created sub-job '{extendingJob.Name}'.");
 
-			log.Log("Updating status to 'waiting on subs' ...", LogLevel.Debug);
+			log.Log("Updating status to 'waiting on subs' ...");
 			Service.Update(
 				new CustomJob
 				{

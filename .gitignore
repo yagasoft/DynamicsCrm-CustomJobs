@@ -454,3 +454,9 @@ nuget-access-key.txt
 
 # Logs
 log.csv
+
+# tools
+.ys
+PluginRegExt-Config.json
+PluginRegExt-Connection.dat
+CrmSchema-Connection.dat
