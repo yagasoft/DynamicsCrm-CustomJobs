@@ -39,6 +39,10 @@ A very powerful CRM solution that gives a multitude of options to control schedu
   + Supports logging, including exception details on every execution of an action
   + Contingency processes for failure recovery
 
+### Install
+
+Import solution found at [Dynamics365-YsCommonSolution](https://github.com/yagasoft/Dynamics365-YsCommonSolution).
+
 ### Guide
 
   + Set parameter values in Common or Generic Configuration table
@@ -54,7 +58,7 @@ I will post a complete guide soon.
 
   + Common.cs, CommonGeneric.js, and CrmSchema.js
     + Can be found in the DynamicsCrm-Libraries repository
-  + Generic Base solution ([DynamicsCrm-BaseSolution](https://github.com/yagasoft/DynamicsCrm-BaseSolution))
+  + Generic Base solution ([Dynamics365-YsCommonSolution](https://github.com/yagasoft/Dynamics365-YsCommonSolution))
   + CRM Logger solution ([DynamicsCrm-CrmLogger](https://github.com/yagasoft/DynamicsCrm-CrmLogger))
 		
 ## Changes
