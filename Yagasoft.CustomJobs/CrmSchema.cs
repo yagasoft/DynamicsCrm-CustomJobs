@@ -2514,7 +2514,7 @@ namespace Yagasoft.CustomJobs
 		public const string DisplayName = "Custom Job";
 		public const string SchemaName = "ldv_customjob";
 		public const string EntityLogicalName = "ldv_customjob";
-		public const int EntityTypeCode = 10015;
+		public const int EntityTypeCode = 10110;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3565,6 +3565,20 @@ namespace Yagasoft.CustomJobs
 			}
 		}
 
+		[AttributeLogicalName("ys_lockid")]
+		public string LockID
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_lockid");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_lockid", value);
+			}
+		}
+
         /// <summary>
         /// [MaxLength=4000] 
 		/// 'ys_URL'.<br />
@@ -3919,6 +3933,7 @@ namespace Yagasoft.CustomJobs
 			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
 			public const string VersionNumber = "versionnumber";
 			public const string OnlyLogFailures = "ys_isonlylogfailures";
+			public const string LockID = "ys_lockid";
 			public const string URL = "ys_url";
 
 			#endregion
@@ -3981,7 +3996,7 @@ namespace Yagasoft.CustomJobs
 		public const string DisplayName = "Custom Job Engine";
 		public const string SchemaName = "ldv_customjobengine";
 		public const string EntityLogicalName = "ldv_customjobengine";
-		public const int EntityTypeCode = 10016;
+		public const int EntityTypeCode = 10111;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -4621,6 +4636,20 @@ namespace Yagasoft.CustomJobs
 			}
 		}
 
+		[AttributeLogicalName("ys_lock")]
+		public string Lock
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_lock");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_lock", value);
+			}
+		}
+
 		#endregion
 
 		#region Relationships
@@ -4714,7 +4743,7 @@ namespace Yagasoft.CustomJobs
 		public const string DisplayName = "Custom Job Failed Target";
 		public const string SchemaName = "ldv_customjobfailedtarget";
 		public const string EntityLogicalName = "ldv_customjobfailedtarget";
-		public const int EntityTypeCode = 10017;
+		public const int EntityTypeCode = 10112;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -5421,7 +5450,7 @@ namespace Yagasoft.CustomJobs
 		public const string DisplayName = "Custom Job Log";
 		public const string SchemaName = "ldv_customjoblog";
 		public const string EntityLogicalName = "ldv_customjoblog";
-		public const int EntityTypeCode = 10018;
+		public const int EntityTypeCode = 10113;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -6025,7 +6054,7 @@ namespace Yagasoft.CustomJobs
 		public const string DisplayName = "Common Configuration";
 		public const string SchemaName = "ldv_genericconfiguration";
 		public const string EntityLogicalName = "ldv_genericconfiguration";
-		public const int EntityTypeCode = 10005;
+		public const int EntityTypeCode = 10114;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -6426,6 +6455,11 @@ namespace Yagasoft.CustomJobs
 			}
 		}
 
+        /// <summary>
+        /// [Required][MaxLength=4000] 
+		/// 'ldv_OrganisationBaseURL'.<br />
+        /// The base URL for this organisation. E.g. 'https://domain/org'.
+        /// </summary>
 		[AttributeLogicalName("ldv_organisationbaseurl")]
 		public string OrganisationBaseURL
 		{
@@ -6717,6 +6751,41 @@ namespace Yagasoft.CustomJobs
 			}
 		}
 
+        /// <summary>
+        /// [Required] 
+		/// 'ys_EscalationUserId'.<br />
+        /// The user to use when escalating the plugin context. Can be used to perform operations that are not available for the executing user.
+        /// </summary>
+		[AttributeLogicalName("ys_escalationuserid")]
+		public Guid? EscalationUser
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_escalationuserid");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_escalationuserid", new EntityReference("systemuser", value.Value));
+                else
+	                SetAttributeValue("ys_escalationuserid", value);
+			}
+		}
+
+        public string EscalationUserName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_escalationuserid");
+                return value?.Name;
+            }
+        }
+
+        /// <summary>
+        /// [Required][Range(0, 2147483647)] 
+		/// 'ys_JobCheckInterval'.<br />
+        /// Only applied to non-CRM modes.
+        /// </summary>
 		[AttributeLogicalName("ys_jobcheckinterval")]
 		public int? JobCheckInterval
 		{
@@ -6764,7 +6833,7 @@ namespace Yagasoft.CustomJobs
         /// <summary>
         /// [Required][Range(2, 10000)] 
 		/// 'ys_MaxDegreeofParallelism'.<br />
-        /// Max number of threads to use in Threaded mode.
+        /// Max number of threads to use in Threaded mode. Only applied to non-CRM modes.
         /// </summary>
 		[AttributeLogicalName("ys_maxdegreeofparallelism")]
 		public int? MaxDegreeofParallelism
@@ -6794,6 +6863,30 @@ namespace Yagasoft.CustomJobs
 			}
 		}
 
+        /// <summary>
+        /// [Required][MaxLength=4000] 
+		/// 'ys_RowURLTemplate'.<br />
+        /// The query string part of a row URL. Replace the ID and table name with '{id}' and '{table}', respectively. E.g. 'appid=123&amp;pagetype=entityrecord&amp;etn={table}&amp;id={id}'.
+        /// </summary>
+		[AttributeLogicalName("ys_rowurltemplate")]
+		public string RowURLTemplate
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_rowurltemplate");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_rowurltemplate", value);
+			}
+		}
+
+        /// <summary>
+        /// [Required] 
+		/// 'ys_TargetExecutionModeCode'.<br />
+        /// Only applied to non-CRM modes.
+        /// </summary>
 		[AttributeLogicalName("ys_targetexecutionmodecode")]
 		public TargetExecutionModeEnum? TargetExecutionMode
 		{
@@ -6913,6 +7006,10 @@ namespace Yagasoft.CustomJobs
 	
 		public enum TargetExecutionModeEnum
 		{
+			Sequential = 717860000,
+			ExecuteMultiple = 717860001,
+			Threaded = 717860002,
+			Combined = 717860003,
 		}
 	
 		#endregion
@@ -6950,7 +7047,7 @@ namespace Yagasoft.CustomJobs
 		public const string DisplayName = null;
 		public const string SchemaName = "ldv_ldv_customjob_ldv_recurrencerule";
 		public const string EntityLogicalName = "ldv_ldv_customjob_ldv_recurrencerule";
-		public const int EntityTypeCode = 10019;
+		public const int EntityTypeCode = 10121;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -7113,7 +7210,7 @@ namespace Yagasoft.CustomJobs
 		public const string DisplayName = "Recurrence Rule";
 		public const string SchemaName = "ldv_recurrencerule";
 		public const string EntityLogicalName = "ldv_recurrencerule";
-		public const int EntityTypeCode = 10006;
+		public const int EntityTypeCode = 10117;
 		
 		public class RelationName : RelationNameBase
 		{

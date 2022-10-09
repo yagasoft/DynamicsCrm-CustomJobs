@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Yagasoft.Plugins.AutoNumber")]
+[assembly: AssemblyTitle("Yagasoft.Plugins.CustomJobs")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Yagasoft.Plugins.AutoNumber")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCompany("Ahmed Elsawalhy (Yagasoft.com)")]
+[assembly: AssemblyProduct("Yagasoft.Plugins.CustomJobs")]
+[assembly: AssemblyCopyright("Copyright © Ahmed Elsawalhy 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

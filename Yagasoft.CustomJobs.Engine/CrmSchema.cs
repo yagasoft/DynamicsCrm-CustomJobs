@@ -2421,6 +2421,46 @@ namespace Yagasoft.CustomJobs.Engine
 	[DebuggerNonUserCode]
 	public static class GlobalActions
 	{
+		public class ys_GenericCustomJobActionGetNextJobBatch : CrmActionBase<ys_GenericCustomJobActionGetNextJobBatch.Inputs, ys_GenericCustomJobActionGetNextJobBatch.Outputs>
+		{
+			public ys_GenericCustomJobActionGetNextJobBatch() : base("ys_GenericCustomJobActionGetNextJobBatch") { }
+			public ys_GenericCustomJobActionGetNextJobBatch(IOrganizationService service) : base(service, "ys_GenericCustomJobActionGetNextJobBatch") { }
+				
+			public ys_GenericCustomJobActionGetNextJobBatch(
+				System.Int32 Percentage
+				, System.String LockId
+				, IOrganizationService service = null) : this()
+			{
+				Service = service;
+				InputParams.Percentage = Percentage;
+				InputParams.LockId = LockId;
+			}
+			public class Inputs : InputsBase
+			{
+				public Inputs() : base() { }
+				public Inputs(OrganizationRequest request) : base(request) { }
+
+				public System.Int32 Percentage
+				{
+					get => (System.Int32) Request["Percentage"];
+					set => Request["Percentage"] = value;
+				}
+				public System.String LockId
+				{
+					get => (System.String) Request["LockId"];
+					set => Request["LockId"] = value;
+				}
+			}
+				
+			public class Outputs : OutputsBase
+			{
+				public Outputs() : base() { }
+				public Outputs(OrganizationResponse response) : base(response) { }
+
+				public System.String Jobs => (System.String) Response["Jobs"];
+			}
+		}
+
 		public class ys_CustomJobGetNextRecurrenceDate : CrmActionBase<ys_CustomJobGetNextRecurrenceDate.Inputs, ys_CustomJobGetNextRecurrenceDate.Outputs>
 		{
 			public ys_CustomJobGetNextRecurrenceDate() : base("ys_CustomJobGetNextRecurrenceDate") { }
@@ -2494,7 +2534,7 @@ namespace Yagasoft.CustomJobs.Engine
 		public const string DisplayName = "Custom Job";
 		public const string SchemaName = "ldv_customjob";
 		public const string EntityLogicalName = "ldv_customjob";
-		public const int EntityTypeCode = 10015;
+		public const int EntityTypeCode = 10110;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3113,6 +3153,20 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+		[AttributeLogicalName("ys_lockid")]
+		public string LockID
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_lockid");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_lockid", value);
+			}
+		}
+
         /// <summary>
         /// [MaxLength=4000] 
 		/// 'ys_URL'.<br />
@@ -3339,6 +3393,7 @@ namespace Yagasoft.CustomJobs.Engine
 			public const string Status = "statecode";
 			public const string StatusReason = "statuscode";
 			public const string OnlyLogFailures = "ys_isonlylogfailures";
+			public const string LockID = "ys_lockid";
 			public const string URL = "ys_url";
 
 			#endregion
@@ -3376,7 +3431,7 @@ namespace Yagasoft.CustomJobs.Engine
 		public const string DisplayName = "Custom Job Failed Target";
 		public const string SchemaName = "ldv_customjobfailedtarget";
 		public const string EntityLogicalName = "ldv_customjobfailedtarget";
-		public const int EntityTypeCode = 10017;
+		public const int EntityTypeCode = 10112;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3602,7 +3657,7 @@ namespace Yagasoft.CustomJobs.Engine
 		public const string DisplayName = "Custom Job Log";
 		public const string SchemaName = "ldv_customjoblog";
 		public const string EntityLogicalName = "ldv_customjoblog";
-		public const int EntityTypeCode = 10018;
+		public const int EntityTypeCode = 10113;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3845,7 +3900,7 @@ namespace Yagasoft.CustomJobs.Engine
 		public const string DisplayName = "Common Configuration";
 		public const string SchemaName = "ldv_genericconfiguration";
 		public const string EntityLogicalName = "ldv_genericconfiguration";
-		public const int EntityTypeCode = 10005;
+		public const int EntityTypeCode = 10114;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3892,6 +3947,11 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+        /// <summary>
+        /// [Required][Range(0, 2147483647)] 
+		/// 'ys_JobCheckInterval'.<br />
+        /// Only applied to non-CRM modes.
+        /// </summary>
 		[AttributeLogicalName("ys_jobcheckinterval")]
 		public int? JobCheckInterval
 		{
@@ -3939,7 +3999,7 @@ namespace Yagasoft.CustomJobs.Engine
         /// <summary>
         /// [Required][Range(2, 10000)] 
 		/// 'ys_MaxDegreeofParallelism'.<br />
-        /// Max number of threads to use in Threaded mode.
+        /// Max number of threads to use in Threaded mode. Only applied to non-CRM modes.
         /// </summary>
 		[AttributeLogicalName("ys_maxdegreeofparallelism")]
 		public int? MaxDegreeofParallelism
@@ -3969,6 +4029,11 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+        /// <summary>
+        /// [Required] 
+		/// 'ys_TargetExecutionModeCode'.<br />
+        /// Only applied to non-CRM modes.
+        /// </summary>
 		[AttributeLogicalName("ys_targetexecutionmodecode")]
 		public TargetExecutionModeEnum? TargetExecutionMode
 		{
@@ -4074,7 +4139,7 @@ namespace Yagasoft.CustomJobs.Engine
 		public const string DisplayName = "Recurrence Rule";
 		public const string SchemaName = "ldv_recurrencerule";
 		public const string EntityLogicalName = "ldv_recurrencerule";
-		public const int EntityTypeCode = 10006;
+		public const int EntityTypeCode = 10117;
 		
 		public class RelationName : RelationNameBase
 		{

@@ -145,6 +145,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 			return result;
 		}
 
+		[NoLog]
 		protected IOrganizationService GetServiceInContext()
 		{
 			var contextService = Service;

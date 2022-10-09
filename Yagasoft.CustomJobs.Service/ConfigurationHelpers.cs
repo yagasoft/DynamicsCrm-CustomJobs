@@ -36,15 +36,14 @@ namespace Yagasoft.CustomJobs.Service
 		/// Validates the keys exit in the config file.
 		/// </summary>
 		/// <param name="keys">The keys.</param>
-		/// <exception cref="ConfigurationErrorsException">Missing '{missingKeys.StringAggregate(",")}' keys from configuration.</exception>
+		/// <exception cref="ConfigurationErrorsException">Missing '{missingKeys.StringAggregate()}' keys from configuration.</exception>
 		public static void ValidateKeys(params string[] keys)
 		{
 			var missingKeys = keys.Except(ConfigurationManager.AppSettings.AllKeys).ToList();
 
 			if (missingKeys.Any())
 			{
-				throw new ConfigurationErrorsException(
-					$"Missing '{missingKeys.StringAggregate(",")}' keys from configuration.");
+				throw new ConfigurationErrorsException($"Missing '{missingKeys.StringAggregate()}' keys from configuration.");
 			}
 		}
 	}

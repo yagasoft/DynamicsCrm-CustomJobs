@@ -7,7 +7,9 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Microsoft.Xrm.Sdk.Query;
+
 using Yagasoft.CustomJobs.Engine;
 using Yagasoft.CustomJobs.Engine.Config;
 using Yagasoft.Libraries.Common;
@@ -15,14 +17,17 @@ using Yagasoft.Libraries.EnhancedOrgService.Helpers;
 using Yagasoft.Libraries.EnhancedOrgService.Params;
 using Yagasoft.Libraries.EnhancedOrgService.Router;
 using Yagasoft.Libraries.EnhancedOrgService.Services.Enhanced;
+
 using Timer = System.Timers.Timer;
 
 #endregion
 
 namespace Yagasoft.CustomJobs.Service
 {
+	[Log]
 	public partial class CustomJobService : ServiceBase
 	{
+		private string serviceId;
 		private CustomJobEngine customJobEngine;
 
 		private TimeSpan jobCheckInterval;
@@ -46,8 +51,11 @@ namespace Yagasoft.CustomJobs.Service
 
 		private readonly CancellationTokenSource exitCancellationToken = new();
 
+		private static CrmLog debugLog;
+
 		public CustomJobService()
 		{
+			debugLog = GetLog("Debug");
 			InitializeComponent();
 		}
 
@@ -69,16 +77,20 @@ namespace Yagasoft.CustomJobs.Service
 
 			try
 			{
+				log = GetLog("Initialisation");
+
 				while (!isRunning && !isExit)
 				{
 					try
 					{
-						log = GetLog("Initialisation");
+						serviceId = ConfigHelpers.Get("ServiceId");
+						serviceId = serviceId == "MyService" ? Guid.NewGuid().ToString() : serviceId;
+						log.Log($"Service ID: {serviceId}");
 
 						InitialiseConnections(log);
 
 						log.Log("Retrieving CRM configuration ...");
-						var config = CrmHelpers.GetGenericConfig(service, "123").ToEntity<CommonConfiguration>();
+						var config = CrmHelpers.GetGenericConfig(service, Guid.NewGuid()).ToEntity<CommonConfiguration>();
 
 						if (config.JobsPlatform != CommonConfiguration.JobsPlatformEnum.Service)
 						{
@@ -102,8 +114,13 @@ namespace Yagasoft.CustomJobs.Service
 
 						semaphore = new SemaphoreSlim(config.MaxJobsPerRun.GetValueOrDefault(1));
 
+						if (!int.TryParse(ConfigHelpers.Get("JobsPercentage"), out var jobsPercentage))
+						{
+							jobsPercentage = 100;
+						}
+
 						log.Log($"Starting engine ...");
-						customJobEngine = new CustomJobEngine(jobTimeout);
+						customJobEngine = new CustomJobEngine(jobsPercentage, serviceId, debugLog);
 
 						jobQueueThread = new Thread(RunJobQueue);
 						fixDataThread = new Thread(RunFixData);
@@ -125,8 +142,11 @@ namespace Yagasoft.CustomJobs.Service
 					catch (Exception ex)
 					{
 						// TODO log to Event Log
-						log ??= GetLog("Initialisation");
 						log.Log(ex, information: ex.BuildExceptionMessage());
+					}
+					finally
+					{
+						log.Flush(); // TODO async
 					}
 
 					if (!isRunning && !isExit)
@@ -137,6 +157,12 @@ namespace Yagasoft.CustomJobs.Service
 			}
 			catch (OperationCanceledException)
 			{ }
+			catch (Exception ex)
+			{
+				// TODO log to Event Log
+				log?.Log(ex, information: ex.BuildExceptionMessage());
+				log?.ExecutionFailed();
+			}
 			finally
 			{
 				if (!isRunning)
@@ -174,18 +200,24 @@ namespace Yagasoft.CustomJobs.Service
 			if (connections.Length > 1)
 			{
 				log.Log($"Starting load-balanced CRM service ...");
+
+				var serviceParams =
+					new ServiceParams
+					{
+						OperationHistoryLimit = 1,
+						ConnectionParams = new ConnectionParams(),
+						PoolParams = new PoolParams { PoolSize = maxConnectionsPerNode }
+					}.AutoSetMaxPerformanceParams();
+
 				service =
-					EnhancedServiceHelper.GetSelfBalancingService(
-						connections.Select(e =>
-							new EnhancedServiceParams(e)
+					EnhancedServiceHelper.GetSelfBalancingService(serviceParams,
+						connections.Select(
+							e =>
 							{
-								PoolParams =
-									new PoolParams
-									{
-										PoolSize = maxConnectionsPerNode
-									},
-								OperationHistoryLimit = 1
-							}.AutoSetMaxPerformanceParams()),
+								var poolParams = serviceParams.Copy();
+								poolParams.ConnectionParams.ConnectionString = e;
+								return EnhancedServiceHelper.GetPool(poolParams);
+							}),
 						new RouterRules
 						{
 							RouterMode = RouterMode.LeastLatency
@@ -194,49 +226,88 @@ namespace Yagasoft.CustomJobs.Service
 			else
 			{
 				log.Log($"Starting CRM service ...");
-				service = EnhancedServiceHelper.GetPool(connections.First()).GetService(maxConnectionsPerNode);
+				service = EnhancedServiceHelper.GetPoolingService(connections.First(), maxConnectionsPerNode);
 			}
 		}
 
+		[LogExecEnd]
 		protected override void OnStop()
 		{
 			lock (initLockObj)
 			{
-				isExit = false;
+				var log = GetLog("Decommission");
+
+				isExit = true;
 				isRunning = false;
 
-				if (!exitCancellationToken.IsCancellationRequested)
+				try
 				{
-					exitCancellationToken.Cancel();
+					if (!exitCancellationToken.IsCancellationRequested)
+					{
+						exitCancellationToken.Cancel();
+					}
+
+					log.Log("Waiting for jobQueueThread ...");
+					jobQueueThread?.Join();
+
+					log.Log("Waiting for jobExecutionThread ...");
+					jobExecutionThread?.Join();
+
+					log.Log("Waiting for fixDataThread ...");
+					fixDataThread?.Join();
+
+					if (service != null)
+					{
+						try
+						{
+							ResetServiceLockedJobs(log);
+						}
+						catch (OperationCanceledException)
+						{ }
+						catch (Exception ex)
+						{
+							log.ExecutionFailed();
+							log.Log(ex);
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+					log?.ExecutionFailed();
+					log?.Log(ex);
+					// TODO log to Event Log
+				}
+				finally
+				{
+					log?.LogExecutionEnd();
 				}
 			}
 		}
 
 		private void RunJobQueue()
 		{
+			CrmLog log = null;
+
 			try
 			{
+				log = GetLog("QueueJobs");
+
 				while (isRunning)
 				{
 					try
 					{
-						CrmLog log = null;
-
 						try
 						{
-							log = GetLog("QueueJobs");
 							var jobBatch = customJobEngine.GetNextJobBatch(service, log);
 							customJobEngine.QueueJobs(jobBatch, service, log);
 						}
 						catch (Exception ex)
 						{
-							log ??= GetLog("QueueJobs");
 							log.Log(ex, information: ex.BuildExceptionMessage());
-							log.ExecutionFailed();
 						}
 						finally
 						{
-							log?.LogExecutionEnd();
+							log.Flush();   // TODO async
 							Task.Delay(jobCheckInterval).Wait(exitCancellationToken.Token);
 						}
 					}
@@ -249,32 +320,42 @@ namespace Yagasoft.CustomJobs.Service
 			}
 			catch (OperationCanceledException)
 			{ }
+			catch (Exception ex)
+			{
+				// TODO log to Event Log
+				log?.Log(ex, information: ex.BuildExceptionMessage());
+				log?.ExecutionFailed();
+			}
+			finally
+			{
+				log?.LogExecutionEnd();
+			}
 		}
 
 		private void RunFixData()
 		{
+			CrmLog log = null;
+
 			try
 			{
+				log = GetLog("FixData");
+
 				while (isRunning)
 				{
 					try
 					{
-						CrmLog log = null;
-
 						try
 						{
-							log = GetLog("FixData");
 							customJobEngine.FixDataCorruptJobs(service, log);
 						}
 						catch (Exception ex)
 						{
-							log ??= GetLog("FixData");
 							log.Log(ex, information: ex.BuildExceptionMessage());
 							log.ExecutionFailed();
 						}
 						finally
 						{
-							log?.LogExecutionEnd();
+							log.Flush();   // TODO async
 							Task.Delay(jobCheckInterval).Wait(exitCancellationToken.Token);
 						}
 					}
@@ -287,6 +368,16 @@ namespace Yagasoft.CustomJobs.Service
 			}
 			catch (OperationCanceledException)
 			{ }
+			catch (Exception ex)
+			{
+				// TODO log to Event Log
+				log?.Log(ex, information: ex.BuildExceptionMessage());
+				log?.ExecutionFailed();
+			}
+			finally
+			{
+				log?.LogExecutionEnd();
+			}
 		}
 
 		private void RunJobExecution()
@@ -299,7 +390,7 @@ namespace Yagasoft.CustomJobs.Service
 					{
 						var job = customJobEngine.Jobs.Dequeue(exitCancellationToken);
 
-						Task.Run(
+						Task.Factory.StartNew(
 							() =>
 							{
 								try
@@ -309,23 +400,32 @@ namespace Yagasoft.CustomJobs.Service
 									try
 									{
 										semaphore.Wait(exitCancellationToken.Token);
-										
+
 										var jobRow = service.Retrieve<CustomJob>(CustomJob.EntityLogicalName,
 											job, new ColumnSet(CustomJob.Fields.ParentJob));
 										log = GetLog((jobRow.ParentJob ?? job).ToString().ToUpper());
-										
+
 										customJobEngine.ProcessQueuedJob(job, engineParams, service, log);
 									}
 									catch (OperationCanceledException)
 									{ }
 									catch (Exception ex)
 									{
+										log?.ExecutionFailed();
+										log?.LogExecutionEnd();
+
 										log ??= GetLog("JobStartFail");
 										log.Log(ex, information: ex.BuildExceptionMessage());
-										log.ExecutionFailed();
 									}
 									finally
 									{
+										log ??= GetLog("JobStartFail");
+
+										if (IsJobExist(job, log))
+										{
+											ResetJob(job, log);
+										}
+
 										log?.LogExecutionEnd();
 										semaphore.Release();
 									}
@@ -334,13 +434,13 @@ namespace Yagasoft.CustomJobs.Service
 								{
 									// TODO log to Event Log
 								}
-
-								return null;
 							},
 							CancellationTokenSource.CreateLinkedTokenSource(
 								new CancellationTokenSource(TimeSpan
 									.FromMilliseconds(jobTimeout.TotalMilliseconds)).Token,
-								exitCancellationToken.Token).Token);
+								exitCancellationToken.Token).Token,
+							TaskCreationOptions.LongRunning,
+							TaskScheduler.Default);
 					}
 					catch (OperationCanceledException)
 					{ }
@@ -353,8 +453,75 @@ namespace Yagasoft.CustomJobs.Service
 			}
 			catch (OperationCanceledException)
 			{ }
+			catch (Exception ex)
+			{
+				// TODO log to Event Log
+			}
 		}
 
+		private void ResetServiceLockedJobs(CrmLog log)
+		{
+			log.Log($"Retrieving service-locked jobs ...");
+
+			var query = new FetchExpression(
+				$@"<fetch no-lock='true'>
+  <entity name='{CustomJob.EntityLogicalName}'>
+    <attribute name='{CustomJob.Fields.CustomJobId}' />
+    <filter>
+      <condition attribute='{CustomJob.Fields.LockID}' operator='eq' value='{serviceId}' />
+    </filter>
+  </entity>
+</fetch>");
+
+			var jobs = service.RetrieveMultiple(query).Entities.ToEntity<CustomJob>().Select(j => j.Id).ToArray();
+			log.Log($"Found: {jobs.Length}");
+
+			foreach (var job in jobs)
+			{
+				ResetJob(job, log);
+			}
+		}
+
+		private void ResetJob(Guid job, CrmLog log)
+		{
+			try
+			{
+				log.Log($"Resetting lock on {job} ...");
+				service.Update(
+					new CustomJob
+					{
+						Id = job,
+						LockID = null
+					});
+			}
+			catch (Exception ex)
+			{
+				log.Log($"Failed to reset lock.");
+				log.Log(ex);
+			}
+		}
+
+		private bool IsJobExist(Guid job, CrmLog log)
+		{
+			log.Log($"Checking job '{job}' still exists ...");
+
+			var query = new FetchExpression(
+				$@"<fetch no-lock='true'>
+  <entity name='{CustomJob.EntityLogicalName}'>
+    <attribute name='{CustomJob.Fields.CustomJobId}' />
+    <filter>
+      <condition attribute='{CustomJob.Fields.CustomJobId}' operator='eq' value='{job}' />
+    </filter>
+  </entity>
+</fetch>");
+
+			var isExist = service.RetrieveMultiple(query).Entities.FirstOrDefault()?.ToEntity<CustomJob>().Id != null;
+			log.Log($"isExist: {isExist}");
+
+			return isExist;
+		}
+
+		[NoLog]
 		private static CrmLog GetLog(string id)
 		{
 			var folder = ConfigHelpers.Get("LogFolderPath");

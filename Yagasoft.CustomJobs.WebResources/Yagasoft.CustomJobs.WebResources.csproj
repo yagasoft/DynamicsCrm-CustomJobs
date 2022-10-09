@@ -86,11 +86,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.11.1.js" />
-    <Content Include="Scripts\SDK.Metadata.Query.vsdoc.js" />
-    <Content Include="Scripts\Sdk.PublishXml.js" />
     <Content Include="Scripts\Sdk.Soap.vsdoc.js" />
     <Content Include="Scripts\Xrm.Page.js" />
-    <Content Include="Scripts\XrmServiceToolkit.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

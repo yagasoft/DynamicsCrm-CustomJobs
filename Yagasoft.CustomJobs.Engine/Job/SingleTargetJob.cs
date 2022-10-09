@@ -51,7 +51,7 @@ namespace Yagasoft.CustomJobs.Engine.Job
 
 					if (!Guid.TryParse(Job.TargetID, out targetId))
 					{
-						throw new InvalidPluginExecutionException($"Couldn't find proper target ID in job.");
+						throw new FormatException($"Couldn't find proper target ID in job.");
 					}
 
 					target = targetId;

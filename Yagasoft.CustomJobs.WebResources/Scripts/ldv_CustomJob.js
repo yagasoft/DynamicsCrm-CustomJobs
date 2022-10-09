@@ -25,9 +25,11 @@ var Ys = (function(ys)
 })(Ys || {});
 
 
-function CustomJob_OnLoad()
+function CustomJob_OnLoad(executionContext)
 {
-	SetFieldSubmitMode(Sdk.CustomJob.StatusReason, SubmitMode.Always);
+    SetAnchoredExecutionContext(executionContext);
+
+    SetFieldSubmitMode(Sdk.CustomJob.StatusReason, SubmitMode.Always);
 	SetFieldSubmitMode(Sdk.CustomJob.RecurrenceUpdatedTrigger, SubmitMode.Always);
 	SetFieldSubmitMode(Sdk.CustomJob.RecurrentJob, SubmitMode.Always);
 
@@ -48,7 +50,7 @@ function CustomJob_OnLoad()
 	TargetName_OnChange(true);
 	RecordsPerPage_OnChange();
 
-	LoadAutoAdvancedFind(Sdk.CustomJob.TargetXML, Sdk.CustomJob.TargetLogicalName);
+	//LoadAutoAdvancedFind(Sdk.CustomJob.TargetXML, Sdk.CustomJob.TargetLogicalName);
 
     if (GetFieldValue(Sdk.CustomJob.StatusReason) !== Sdk.CustomJob.StatusReasonEnum.Draft)
 	{
@@ -76,6 +78,8 @@ function TargetName_OnChange(isOnLoad)
 		SetSectionsVisible(['TargetTab:SingleRecordSection', 'TargetTab:MultipleRecordsSection',
 			'TargetTab:TargetXmlSection'], true);
 
+        LoadAdvancedFind(Sdk.CustomJob.TargetXML, null, 200, 'ldv_targetlogicalname');
+
 		TargetId_OnChange();
 		TargetXml_OnChange();
 	}
@@ -97,7 +101,7 @@ function TargetName_OnChange(isOnLoad)
 		ClearFieldValue(Sdk.CustomJob.ActionName);
 	}
 
-	SetupActionNames(entityName, Sdk.CustomJob.ActionName);
+	//SetupActionNames(entityName, Sdk.CustomJob.ActionName);
 }
 
 function TargetId_OnChange()
@@ -152,6 +156,8 @@ function RecordsPerPage_OnChange()
 
 function Workflow_OnChange()
 {
+    ResetProcesses();
+
 	if (GetFieldValue(Sdk.CustomJob.Workflow))
 	{
 		if (GetFieldValue(Sdk.CustomJob.ActionName))
@@ -166,20 +172,16 @@ function Workflow_OnChange()
 			SetFieldValue(Sdk.CustomJob.SerialisedInputParams, null, true);
 		}
 
-		SetFieldRequired(Sdk.CustomJob.ActionName, false);
-		SetFieldRequired(Ys.CustomJob.Fields.Url, false);
 		SetFieldRequired(Sdk.CustomJob.TargetLogicalName, true);
 	}
-	else
-	{
-		SetFieldRequired(Sdk.CustomJob.ActionName, true);
-		SetFieldRequired(Sdk.CustomJob.TargetLogicalName, false);
-		SetFieldRequired(Ys.CustomJob.Fields.Url, true);
-	}
+
+    RequireProcesses();
 }
 
 function Action_OnChange()
 {
+    ResetProcesses();
+
 	if (GetFieldValue(Sdk.CustomJob.ActionName))
 	{
 		if (GetFieldValue(Sdk.CustomJob.Workflow))
@@ -191,19 +193,15 @@ function Action_OnChange()
 		{
 			SetFieldValue(Ys.CustomJob.Fields.Url, null, true);
 		}
+	}
 
-		SetFieldRequired(Sdk.CustomJob.Workflow, false);
-		SetFieldRequired(Ys.CustomJob.Fields.Url, false);
-	}
-	else
-	{
-		SetFieldRequired(Sdk.CustomJob.Workflow, true);
-        SetFieldRequired(Ys.CustomJob.Fields.Url, true);
-	}
+    RequireProcesses();
 }
 
 function Url_OnChange()
 {
+    ResetProcesses();
+
 	if (GetFieldValue(Ys.CustomJob.Fields.Url))
 	{
 		if (GetFieldValue(Sdk.CustomJob.Workflow))
@@ -215,16 +213,28 @@ function Url_OnChange()
 		{
 			SetFieldValue(Sdk.CustomJob.ActionName, null, true);
 		}
+	}
 
-		SetFieldRequired(Sdk.CustomJob.Workflow, false);
-		SetFieldRequired(Sdk.CustomJob.ActionName, false);
-	}
-	else
-	{
-        SetFieldRequired(Sdk.CustomJob.Workflow, true);
+    RequireProcesses();
+}
+
+function ResetProcesses()
+{
+    SetFieldRequired(Sdk.CustomJob.ActionName, false);
+    SetFieldRequired(Sdk.CustomJob.Workflow, false);
+    SetFieldRequired(Sdk.CustomJob.TargetLogicalName, false);
+    SetFieldRequired(Ys.CustomJob.Fields.Url, false);
+}
+
+function RequireProcesses()
+{
+    if (!GetFieldValue(Sdk.CustomJob.Workflow) && !GetFieldValue(Sdk.CustomJob.ActionName)
+        && !GetFieldValue(Ys.CustomJob.Fields.Url))
+    {
         SetFieldRequired(Sdk.CustomJob.ActionName, true);
-        SetFieldRequired(Sdk.CustomJob.TargetLogicalName, false);
-	}
+        SetFieldRequired(Sdk.CustomJob.Workflow, true);
+        SetFieldRequired(Ys.CustomJob.Fields.Url, true);
+    }
 }
 
 function Timer_OnChange()
@@ -295,7 +305,7 @@ function IsRecurrentJob(callback)
 				type: "GET",
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
-				url: Xrm.Page.context.getClientUrl() +
+				url: Xrm.Utility.getGlobalContext().getClientUrl() +
 					"/XRMServices/2011/OrganizationData.svc/ldv_customjobSet?" +
 					"$select=ldv_ldv_customjob_ldv_recurrencerule/ldv_recurrenceruleId" +
 					"&$expand=ldv_ldv_customjob_ldv_recurrencerule" +
@@ -447,7 +457,7 @@ function SetupActionNames(logicalName, fieldName)
 		type: "GET",
 		contentType: "application/json; charset=utf-8",
 		datatype: "json",
-		url: Xrm.Page.context.getClientUrl() + "/api/data/v8.1/sdkmessages" +
+		url: Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v8.1/sdkmessages" +
 			"?$select=name" +
 			"&$expand=sdkmessageid_sdkmessagefilter($select=primaryobjecttypecode)" +
 			"&$filter=template eq false and  customizationlevel eq 1",

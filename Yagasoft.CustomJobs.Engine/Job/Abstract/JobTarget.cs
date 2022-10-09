@@ -117,7 +117,8 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 								new ParallelOptions { MaxDegreeOfParallelism = degreeOfParallelism },
 								(iRequests, state) =>
 								{
-									var iResponses = CrmHelpers.ExecuteBulk(Service, iRequests.Select(e => e.Request), true, 999,
+									var iResponses = CrmHelpers.ExecuteBulk(Service,
+										iRequests.Select(e => e.Request).ToArray(), true, 999,
 										Job.ContinueOnError == true);
 
 									foreach (var response in iResponses.Where(p => p.Value.Fault != null))
@@ -360,6 +361,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 			}
 		}
 
+		[NoLog]
 		protected IOrganizationService GetServiceInContext()
 		{
 			var contextService = Service;
@@ -518,8 +520,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 
 					if (parameters == null)
 					{
-						// TODO replace exceptions
-						throw new InvalidPluginExecutionException("Failed to parse input params.");
+						throw new FormatException("Failed to parse input params.");
 					}
 				}
 			}

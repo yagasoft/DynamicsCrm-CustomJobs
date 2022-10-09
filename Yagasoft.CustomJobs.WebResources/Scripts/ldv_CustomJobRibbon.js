@@ -1,27 +1,31 @@
 ﻿/// <reference path="Sdk.Soap.vsdoc.js" />
 /// <reference path="jquery-1.11.1.js" />
 /// <reference path="Sdk.Soap.vsdoc.js" />
-/// <reference path="Xrm.Page.js" />
-/// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/Scripts/ldv_CommonGeneric.js" />
-/// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/CrmSchemaJs.js" />
+/// <reference path="ldv_CommonGeneric.js" />
 
 var $ = window.$ || parent.$;
 
-function SetToDraft()
+function SetToDraft(formContext)
 {
+    BuildAnchoredExecutionContext(formContext);
+
     SetFieldValue(Sdk.CustomJob.StatusReason, Sdk.CustomJob.StatusReasonEnum.Draft, true);
 	SaveForm();
 }
 
-function EnqueueJob()
+function EnqueueJob(formContext)
 {
+    BuildAnchoredExecutionContext(formContext);
+
 	SetFieldValue(Sdk.CustomJob.RecurrenceUpdatedTrigger, new Date().toString(), true);
     SetFieldValue(Sdk.CustomJob.StatusReason, Sdk.CustomJob.StatusReasonEnum.Waiting, true);
 	SaveForm();
 }
 
-function CancelJob()
+function CancelJob(formContext)
 {
+    BuildAnchoredExecutionContext(formContext);
+
 	if (window.confirm('Are you sure you want to cancel this job?'))
 	{
 		ShowBusyIndicator('Cancelling job ...', 'jobCancel');
@@ -30,7 +34,7 @@ function CancelJob()
 				type: "PATCH",
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
-				url: Xrm.Page.context.getClientUrl() + "/api/data/v8.0/ldv_customjobs(" + GetRecordId(true) + ")",
+				url: Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v8.0/ldv_customjobs(" + GetRecordId(true) + ")",
 				data: JSON.stringify({ statecode: 1, statuscode: 753240008 }),
 				beforeSend: function(xmlHttpRequest)
 				{
@@ -55,33 +59,39 @@ function CancelJob()
 	}
 }
 
-function IsSetToDraftEnabled()
+function IsSetToDraftEnabled(formContext)
 {
+    BuildAnchoredExecutionContext(formContext);
+
 	return GetAllowedStatuses().indexOf('753240006') >= 0 && GetFieldValue('statecode') === 0
-		&& Xrm.Page.ui.getFormType() !== 1;
+		&& formContext.ui.getFormType() !== 1;
 }
 
-function IsEnqueueJobEnabled()
+function IsEnqueueJobEnabled(formContext)
 {
+    BuildAnchoredExecutionContext(formContext);
+
 	return GetAllowedStatuses().indexOf('753240005') >= 0 && GetFieldValue('statecode') === 0
-		&& Xrm.Page.ui.getFormType() !== 1;
+		&& formContext.ui.getFormType() !== 1;
 }
 
-function IsCancelJobEnabled()
+function IsCancelJobEnabled(formContext)
 {
-	return GetFieldValue('statecode') === 0 && Xrm.Page.ui.getFormType() !== 1;
+    BuildAnchoredExecutionContext(formContext);
+
+	return GetFieldValue('statecode') === 0 && formContext.ui.getFormType() !== 1;
 }
 
 function GetAllowedStatuses()
 {
-	var options = $.map(Xrm.Page.getAttribute('statuscode').getOptions(),
+	var options = $.map(AnchoredExecutionContext.getFormContext().getAttribute('statuscode').getOptions(),
 		function(e)
 		{
 			return e.value + '';
 		});
 
 	var selectedIndex = options
-		.indexOf(Xrm.Page.getAttribute('statuscode').getSelectedOption().value + '');
+		.indexOf(AnchoredExecutionContext.getFormContext().getAttribute('statuscode').getSelectedOption().value + '');
 
 	if (selectedIndex >= 0)
 	{
@@ -91,15 +101,17 @@ function GetAllowedStatuses()
 	return options;
 }
 
-function ClearLogs()
+function ClearLogs(formContext)
 {
+    BuildAnchoredExecutionContext(formContext);
+
 	ShowBusyIndicator("Clearing logs ...", 'logClearance');
 	
 	$.ajax({
 			type: "POST",
 			contentType: "application/json; charset=utf-8",
 			datatype: "json",
-			url: Xrm.Page.context.getClientUrl() + "/api/data/v8.1/" +
+			url: Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v8.1/" +
 				"ldv_customjobs(" + GetRecordId(true) + ")" +
 				"/Microsoft.Dynamics.CRM.ys_CustomJobClearLogs",
 			beforeSend: function(xmlHttpRequest)

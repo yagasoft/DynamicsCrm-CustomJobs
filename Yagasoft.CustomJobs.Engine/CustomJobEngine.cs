@@ -14,93 +14,50 @@ using Yagasoft.Libraries.Common;
 
 namespace Yagasoft.CustomJobs.Engine
 {
+	[Log]
 	public class CustomJobEngine
 	{
-		public BlockingQueue<Guid> Jobs = new();
+		public readonly BlockingQueue<Guid> Jobs = new();
 
-		private readonly TimeSpan timeout;
+		private readonly int jobsPercentage;
+		private readonly string serviceId;
 
 		private readonly object jobQueryLock = new();
 
-		public CustomJobEngine(TimeSpan timeout)
+		private readonly CrmLog debugLog;
+
+		public CustomJobEngine(int jobsPercentage, string serviceId, CrmLog debugLog)
 		{
-			this.timeout = timeout;
+			this.jobsPercentage = jobsPercentage;
+			this.serviceId = serviceId;
+			this.debugLog = debugLog;
 		}
 
-		public IEnumerable<Guid> GetNextJobBatch(IOrganizationService service, CrmLog log)
+		public IReadOnlyCollection<Guid> GetNextJobBatch(IOrganizationService service, CrmLog log)
 		{
 			service.Require(nameof(service));
 			log.Require(nameof(log));
-
-			var xrmContext = new XrmServiceContext(service) { MergeOption = MergeOption.NoTracking };
 
 			log.LogInfo("Fetching job records ...");
 
-			CustomJob[] jobRecords;
+			var jobIds = new GlobalActions
+				.ys_GenericCustomJobActionGetNextJobBatch(jobsPercentage, serviceId)
+				.Execute(service)
+				.Jobs;
 
-			lock (jobQueryLock)
-			{
-				jobRecords =
-					(from job in xrmContext.CustomJobSet
-					 where ((job.TargetDate == null || job.TargetDate < DateTime.UtcNow)
-						 && (job.StatusReason == CustomJob.StatusReasonEnum.Waiting
-							 || job.StatusReason == CustomJob.StatusReasonEnum.Retry))
-						 || (job.ModifiedOn < (DateTime.UtcNow - timeout)
-							 && (job.StatusReason == CustomJob.StatusReasonEnum.Running
-								 || job.StatusReason == CustomJob.StatusReasonEnum.Queued))
-					 select new CustomJob
-							{
-								CustomJobId = job.CustomJobId,
-								StatusReason = job.StatusReason
-							}).ToArray();
-			}
+			log.LogInfo($"Found {jobIds.Split(',').Length} jobs.");
+			log.LogInfo($"Job IDs.", jobIds);
 
-			log.LogInfo($"Fetched job records '{jobRecords.Length}'.");
-
-			log.LogInfo("Fetching parent job records with no children ...");
-
-			var parentQuery = new FetchExpression(
-				string.Intern($@"<fetch no-lock='true'>
-  <entity name='ldv_customjob'>
-    <attribute name='ldv_customjobid' />
-    <attribute name='statuscode' />
-    <filter>
-      <condition attribute='statuscode' operator='eq' value='{(int)CustomJob.StatusReasonEnum.WaitingOnSubJobs}' />
-      <condition entityname='subjob' attribute='ldv_customjobid' operator='null' />
-    </filter>
-    <link-entity name='ldv_customjob' from='ldv_parentjobid' to='ldv_customjobid' link-type='outer' alias='subjob' >
-      <filter>
-        <condition attribute='statecode' operator='eq' value='{CustomJob.StatusEnum.Active}' />
-      </filter>
-    </link-entity>
-  </entity>
-</fetch>"));
-
-			DataCollection<Entity> parentJobs;
-
-			lock (jobQueryLock)
-			{
-				parentJobs = service.RetrieveMultiple(parentQuery).Entities;
-			}
-
-			log.LogInfo($"Fetched parent job records '{jobRecords.Length}'.");
-
-			jobRecords = jobRecords.Union(parentJobs.Select(j => j.ToEntity<CustomJob>())
-				.Select(j => new CustomJob { CustomJobId = j.CustomJobId, StatusReason = j.StatusReason })).ToArray();
-
-			log.LogInfo($"Fetched" +
-				$" {jobRecords.Count(job => new[] { CustomJob.StatusReasonEnum.Queued, CustomJob.StatusReasonEnum.Running, CustomJob.StatusReasonEnum.WaitingOnSubJobs }.Contains(job.StatusReason.GetValueOrDefault()))}"
-				+ $" stalled job records.");
-
-			return jobRecords.Select(j => j.Id);
+			return jobIds.Split(',')
+				.Select(j => Guid.TryParse(j, out var jobId) ? (Guid?)jobId : null)
+				.Where(j => j != null)
+				.Select(j => j.Value).ToArray();
 		}
 
-		public void QueueJobs(IEnumerable<Guid> jobRecordsParam, IOrganizationService service, CrmLog log)
+		public void QueueJobs(IReadOnlyCollection<Guid> jobRecords, IOrganizationService service, CrmLog log)
 		{
 			service.Require(nameof(service));
 			log.Require(nameof(log));
-
-			var jobRecords = jobRecordsParam?.ToArray();
 			jobRecords.Require(nameof(jobRecords));
 
 			if (jobRecords?.Any() != true)
@@ -120,8 +77,7 @@ namespace Yagasoft.CustomJobs.Engine
 				Jobs.Enqueue(jobRecord);
 			}
 
-			log.Log(new LogEntry("Queue Information",
-				information: jobRecords.Select(record => record.ToString()).Aggregate((r1, r2) => r1 + "\r\n" + r2)));
+			log.Log(new LogEntry("Queue Information", information: jobRecords.StringAggregate("\r\n")));
 		}
 
 		public void FixDataCorruptJobs(IOrganizationService service, CrmLog log)

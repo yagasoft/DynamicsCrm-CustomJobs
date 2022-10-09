@@ -30,7 +30,7 @@ namespace Yagasoft.CustomJobs
 			var target = (Entity)Context.InputParameters["Target"];
 			Log.SetRegarding(Context.PrimaryEntityName, target.Id);
 
-			var config = CrmHelpers.GetGenericConfig(Service, Context.OrganizationId.ToString()).ToEntity<CommonConfiguration>();
+			var config = CrmHelpers.GetGenericConfig(Service, Context.OrganizationId).ToEntity<CommonConfiguration>();
 
 			if (config.JobsPlatform != CommonConfiguration.JobsPlatformEnum.CRM)
 			{
@@ -67,13 +67,13 @@ namespace Yagasoft.CustomJobs
 			Log.Log("Fetching parent job records ...");
 
 			var parentQuery = new FetchExpression(
-				$@"
+			    string.Intern($@"
 <fetch no-lock='true'>
   <entity name='ldv_customjob'>
     <attribute name='ldv_customjobid' />
     <attribute name='statuscode' />
     <filter>
-      <condition attribute='statuscode' operator='eq' value='{CustomJob.StatusReasonEnum.WaitingOnSubJobs}' />
+      <condition attribute='statuscode' operator='eq' value='{(int)CustomJob.StatusReasonEnum.WaitingOnSubJobs}' />
       <condition entityname='subjob' attribute='ldv_customjobid' operator='null' />
     </filter>
     <link-entity name='ldv_customjob' from='ldv_parentjobid' to='ldv_customjobid' link-type='outer' alias='subjob' >
@@ -82,7 +82,7 @@ namespace Yagasoft.CustomJobs
       </filter>
     </link-entity>
   </entity>
-</fetch>");
+</fetch>"));
 			var parentJobs = Service.RetrieveMultiple(parentQuery).Entities;
 
 			Log.Log($"Fetched parent job records '{jobRecords.Count}'.");

@@ -7,27 +7,31 @@
 
 var $ = window.$ || parent.$;
 
-function StopEngine()
+function RunEngine(formContext)
 {
+    BuildAnchoredExecutionContext(formContext);
+
+    SetFieldSubmitMode(Sdk.CustomJobEngine.StatusReason, SubmitMode.Always);
+    SetFieldValue(Sdk.CustomJobEngine.HourlyTriggered, false, true);
+    SetFieldValue(Sdk.CustomJobEngine.StatusReason, Sdk.CustomJobEngine.StatusReasonEnum.Running, true);
+    SaveForm();
+}
+
+function StopEngine(formContext)
+{
+    BuildAnchoredExecutionContext(formContext);
+
 	SetFieldSubmitMode(Sdk.CustomJobEngine.StatusReason, SubmitMode.Always);
     SetFieldValue(Sdk.CustomJobEngine.StatusReason, Sdk.CustomJobEngine.StatusReasonEnum.Stopped, true);
 	SaveForm();
 }
 
-function RunEngine()
+function IsRunEnabled(formContext)
 {
-	SetFieldSubmitMode(Sdk.CustomJobEngine.StatusReason, SubmitMode.Always);
-    SetFieldValue(Sdk.CustomJobEngine.HourlyTriggered, false, true);
-    SetFieldValue(Sdk.CustomJobEngine.StatusReason, Sdk.CustomJobEngine.StatusReasonEnum.Running, true);
-	SaveForm();
+    return formContext.getAttribute(Sdk.CustomJobEngine.StatusReason).getValue() === 753240000;
 }
 
-function IsStopEnabled()
+function IsStopEnabled(formContext)
 {
-	return Xrm.Page.getAttribute(Sdk.CustomJobEngine.StatusReason).getValue() === 1;
-}
-
-function IsRunEnabled()
-{
-	return Xrm.Page.getAttribute(Sdk.CustomJobEngine.StatusReason).getValue() === 753240000;
+	return formContext.getAttribute(Sdk.CustomJobEngine.StatusReason).getValue() === 1;
 }

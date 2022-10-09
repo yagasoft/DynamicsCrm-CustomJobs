@@ -32,7 +32,7 @@ namespace Yagasoft.CustomJobs
 	internal class JobsEngineJobHandlerLogic : PluginLogic<JobsEngineJobHandler>
 	{
 		private CommonConfiguration config;
-		private string orgId;
+		private Guid orgId;
 
 		public JobsEngineJobHandlerLogic() : base(null, PluginStage.All)
 		{ }
@@ -40,7 +40,7 @@ namespace Yagasoft.CustomJobs
 		[NoLog]
 		protected override void ExecuteLogic()
 		{
-			orgId = Context.OrganizationId.ToString();
+			orgId = Context.OrganizationId;
 			config = GetGenericConfig(Service, orgId).ToEntity<CommonConfiguration>();
 
 			CustomJob target = null;
