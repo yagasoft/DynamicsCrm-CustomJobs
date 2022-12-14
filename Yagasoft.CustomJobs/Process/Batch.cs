@@ -35,7 +35,8 @@ namespace Yagasoft.CustomJobs.Process
 			var jobRecords =
 				(from job in xrmContext.CustomJobSet
 				 where
-					 (
+					(	
+						(
 						 (job.TargetDate == null || job.TargetDate < DateTime.UtcNow)
 							 &&
 							 (job.StatusReason == CustomJob.StatusReasonEnum.Waiting
@@ -48,7 +49,9 @@ namespace Yagasoft.CustomJobs.Process
 								 &&
 								 (job.StatusReason == CustomJob.StatusReasonEnum.Running
 									 || job.StatusReason == CustomJob.StatusReasonEnum.Queued)
-							 )
+						 )
+					)
+					&& job.Status == CustomJob.StatusEnum.Active
 				 select new CustomJob
 						{
 							CustomJobId = job.CustomJobId,
@@ -73,6 +76,8 @@ namespace Yagasoft.CustomJobs.Process
           <condition attribute='{CustomJob.Fields.LockID}' operator='eq' value='{lockId}' />
           <condition attribute='{CustomJob.Fields.ModifiedOn}' operator='lt' value='{(DateTime.UtcNow - timeout)}' />
       </filter>
+      <condition attribute='{CustomJob.Fields.Status}' operator='eq' value='{(int)
+	      CustomJob.StatusEnum.Active}' />
     </filter>
     <link-entity name='{CustomJob.EntityLogicalName}' from='{CustomJob.Fields.ParentJob}' to='{CustomJob.Fields.CustomJobId}' link-type='outer' alias='subjob' >
       <filter>

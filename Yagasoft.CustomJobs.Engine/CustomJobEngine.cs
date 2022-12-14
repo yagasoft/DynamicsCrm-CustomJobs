@@ -65,19 +65,31 @@ namespace Yagasoft.CustomJobs.Engine
 				return;
 			}
 
+			var enqueuedJobs = new List<Guid>();
+
 			foreach (var jobRecord in jobRecords)
 			{
-				service.Update(
-					new CustomJob
-					{
-						Id = jobRecord,
-						StatusReason = CustomJob.StatusReasonEnum.Queued
-					});
+				try
+				{
+					service.Update(
+						new CustomJob
+						{
+							Id = jobRecord,
+							StatusReason = CustomJob.StatusReasonEnum.Queued
+						});
 
-				Jobs.Enqueue(jobRecord);
+					Jobs.Enqueue(jobRecord);
+					enqueuedJobs.Add(jobRecord);
+				}
+				catch (Exception ex)
+				{
+					// TODO log to Event Log
+					log.LogError($"Job '{jobRecord}' failed to enqueue.");
+					log.Log(ex, information: ex.BuildExceptionMessage());
+				}
 			}
 
-			log.Log(new LogEntry("Queue Information", information: jobRecords.StringAggregate("\r\n")));
+			log.Log(new LogEntry("Queue Information", information: enqueuedJobs.StringAggregate("\r\n")));
 		}
 
 		public void FixDataCorruptJobs(IOrganizationService service, CrmLog log)

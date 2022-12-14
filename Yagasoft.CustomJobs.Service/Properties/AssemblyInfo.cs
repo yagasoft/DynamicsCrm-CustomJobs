@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ahmed Elsawalhy (yagasoft.com)")]
 [assembly: AssemblyProduct("Yagasoft.CustomJobs.Service")]
-[assembly: AssemblyCopyright("Yagasoft 2020")]
+[assembly: AssemblyCopyright("Yagasoft 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("3.3.1.1")]
+[assembly: AssemblyFileVersion("3.3.1.1")]
