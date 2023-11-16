@@ -12,7 +12,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 	[Log]
 	internal abstract class NoPagingJob : MultiTargetJob
 	{
-		protected NoPagingJob(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		protected NoPagingJob(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 			: base(job, engineParams, service, log)
 		{ }
 

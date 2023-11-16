@@ -103,6 +103,8 @@ namespace Yagasoft.CustomJobs.Process
 
 			var jobIds = jobRecords.Select(j => j.Id).ToArray();
 			log.LogInfo($"Job IDs.", jobIds.StringAggregate());
+			
+			// TODO lock the jobs themselves with the lock ID given to avoid race condition in the service
 
 			return jobIds;
 		}

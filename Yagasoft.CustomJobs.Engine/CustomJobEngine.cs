@@ -24,16 +24,16 @@ namespace Yagasoft.CustomJobs.Engine
 
 		private readonly object jobQueryLock = new();
 
-		private readonly CrmLog debugLog;
+		private readonly ILogger debugLog;
 
-		public CustomJobEngine(int jobsPercentage, string serviceId, CrmLog debugLog)
+		public CustomJobEngine(int jobsPercentage, string serviceId, ILogger debugLog)
 		{
 			this.jobsPercentage = jobsPercentage;
 			this.serviceId = serviceId;
 			this.debugLog = debugLog;
 		}
 
-		public IReadOnlyCollection<Guid> GetNextJobBatch(IOrganizationService service, CrmLog log)
+		public IReadOnlyCollection<Guid> GetNextJobBatch(IOrganizationService service, ILogger log)
 		{
 			service.Require(nameof(service));
 			log.Require(nameof(log));
@@ -54,7 +54,7 @@ namespace Yagasoft.CustomJobs.Engine
 				.Select(j => j.Value).ToArray();
 		}
 
-		public void QueueJobs(IReadOnlyCollection<Guid> jobRecords, IOrganizationService service, CrmLog log)
+		public void QueueJobs(IReadOnlyCollection<Guid> jobRecords, IOrganizationService service, ILogger log)
 		{
 			service.Require(nameof(service));
 			log.Require(nameof(log));
@@ -89,10 +89,10 @@ namespace Yagasoft.CustomJobs.Engine
 				}
 			}
 
-			log.Log(new LogEntry("Queue Information", information: enqueuedJobs.StringAggregate("\r\n")));
+			log.Log(new LogEntry("Queue Information", enqueuedJobs.StringAggregate("\r\n")));
 		}
 
-		public void FixDataCorruptJobs(IOrganizationService service, CrmLog log)
+		public void FixDataCorruptJobs(IOrganizationService service, ILogger log)
 		{
 			service.Require(nameof(service));
 			log.Require(nameof(log));
@@ -131,7 +131,7 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
-		public void ProcessQueuedJob(Guid? id, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		public void ProcessQueuedJob(Guid? id, EngineParams engineParams, IOrganizationService service, ILogger log)
 		{
 			id.Require(nameof(id));
 			log.Require(nameof(log));

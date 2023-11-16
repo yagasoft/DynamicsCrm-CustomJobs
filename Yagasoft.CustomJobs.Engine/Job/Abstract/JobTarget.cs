@@ -38,11 +38,11 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 		protected CustomJob Job;
 		protected EngineParams Params;
 		protected IOrganizationService Service;
-		protected CrmLog Log;
+		protected ILogger Log;
 
 		private static readonly HttpClient httpClient = new();
 
-		protected JobTarget(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		protected JobTarget(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 		{
 			Job = job;
 			Params = engineParams;

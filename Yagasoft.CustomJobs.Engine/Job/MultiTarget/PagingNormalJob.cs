@@ -18,7 +18,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.MultiTarget
 	[Log]
 	internal class PagingNormalJob : PagingJob
 	{
-		public PagingNormalJob(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		public PagingNormalJob(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 			: base(job, engineParams, service, log)
 		{ }
 

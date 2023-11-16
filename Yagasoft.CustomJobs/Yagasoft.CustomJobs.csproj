@@ -44,7 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrmLogger.Fody, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CrmLogger.Fody.1.5.1\lib\net452\CrmLogger.Fody.dll</HintPath>
+      <HintPath>..\packages\CrmLogger.Fody.2.1.2\lib\net452\CrmLogger.Fody.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

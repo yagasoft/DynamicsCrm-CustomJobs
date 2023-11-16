@@ -15,7 +15,7 @@ namespace Yagasoft.CustomJobs.Engine.Job
 	[Log]
 	internal class SingleTargetJob : JobTarget
 	{
-		public SingleTargetJob(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		public SingleTargetJob(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 			: base(job, engineParams, service, log)
 		{ }
 

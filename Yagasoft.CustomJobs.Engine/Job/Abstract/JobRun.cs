@@ -27,9 +27,9 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 		protected IOrganizationService Service;
 		protected CustomJob Job;
 		protected EngineParams EngineParams;
-		protected CrmLog log;
+		protected ILogger log;
 
-		protected JobRun(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		protected JobRun(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 		{
 			Job = job;
 			EngineParams = engineParams;

@@ -12,7 +12,7 @@ namespace Yagasoft.CustomJobs.Engine.Job
 	[Log]
 	internal class RecurrentRunJob : JobRun
 	{
-		public RecurrentRunJob(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		public RecurrentRunJob(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 			: base(job, engineParams, service, log)
 		{ }
 

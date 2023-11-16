@@ -10,14 +10,17 @@ using System.Threading.Tasks;
 
 using Microsoft.Xrm.Sdk.Query;
 
+using NLog;
+
 using Yagasoft.CustomJobs.Engine;
 using Yagasoft.CustomJobs.Engine.Config;
+using Yagasoft.CustomJobs.Service.Log;
 using Yagasoft.Libraries.Common;
 using Yagasoft.Libraries.EnhancedOrgService.Helpers;
 using Yagasoft.Libraries.EnhancedOrgService.Params;
 using Yagasoft.Libraries.EnhancedOrgService.Router;
 using Yagasoft.Libraries.EnhancedOrgService.Services.Enhanced;
-
+using ILogger = Yagasoft.Libraries.Common.ILogger;
 using Timer = System.Timers.Timer;
 
 #endregion
@@ -51,11 +54,11 @@ namespace Yagasoft.CustomJobs.Service
 
 		private readonly CancellationTokenSource exitCancellationToken = new();
 
-		private static CrmLog debugLog;
+		private static ILogger debugLog;
 
 		public CustomJobService()
 		{
-			debugLog = GetLog("Debug");
+			debugLog = JobLogger.GetLogger("debug");
 			InitializeComponent();
 		}
 
@@ -73,11 +76,11 @@ namespace Yagasoft.CustomJobs.Service
 
 		private void InitialiseService()
 		{
-			CrmLog log = null;
+			ILogger log = null;
 
 			try
 			{
-				log = GetLog("Initialisation");
+				log = JobLogger.GetLogger("init");
 
 				while (!isRunning && !isExit)
 				{
@@ -144,10 +147,6 @@ namespace Yagasoft.CustomJobs.Service
 						// TODO log to Event Log
 						log.Log(ex, information: ex.BuildExceptionMessage());
 					}
-					finally
-					{
-						log.Flush(); // TODO async
-					}
 
 					if (!isRunning && !isExit)
 					{
@@ -174,7 +173,7 @@ namespace Yagasoft.CustomJobs.Service
 			}
 		}
 
-		private void InitialiseConnections(CrmLog log)
+		private void InitialiseConnections(ILogger log)
 		{
 			if (!int.TryParse(ConfigHelpers.Get("MaxConnectionsPerNode"), out maxConnectionsPerNode))
 			{
@@ -217,7 +216,7 @@ namespace Yagasoft.CustomJobs.Service
 								var poolParams = serviceParams.Copy();
 								poolParams.ConnectionParams.ConnectionString = e;
 								return EnhancedServiceHelper.GetPool(poolParams);
-							}),
+							}).ToArray(),
 						new RouterRules
 						{
 							RouterMode = RouterMode.LeastLatency
@@ -230,12 +229,11 @@ namespace Yagasoft.CustomJobs.Service
 			}
 		}
 
-		[LogExecEnd]
 		protected override void OnStop()
 		{
 			lock (initLockObj)
 			{
-				var log = GetLog("Decommission");
+				var log = JobLogger.GetLogger("decommission");
 
 				isExit = true;
 				isRunning = false;
@@ -286,11 +284,11 @@ namespace Yagasoft.CustomJobs.Service
 
 		private void RunJobQueue()
 		{
-			CrmLog log = null;
+			ILogger log = null;
 
 			try
 			{
-				log = GetLog("QueueJobs");
+				log = JobLogger.GetLogger("queue");
 
 				while (isRunning)
 				{
@@ -307,7 +305,6 @@ namespace Yagasoft.CustomJobs.Service
 						}
 						finally
 						{
-							log.Flush();   // TODO async
 							Task.Delay(jobCheckInterval).Wait(exitCancellationToken.Token);
 						}
 					}
@@ -334,11 +331,11 @@ namespace Yagasoft.CustomJobs.Service
 
 		private void RunFixData()
 		{
-			CrmLog log = null;
+			ILogger log = null;
 
 			try
 			{
-				log = GetLog("FixData");
+				log = JobLogger.GetLogger("fixer");
 
 				while (isRunning)
 				{
@@ -355,7 +352,6 @@ namespace Yagasoft.CustomJobs.Service
 						}
 						finally
 						{
-							log.Flush();   // TODO async
 							Task.Delay(jobCheckInterval).Wait(exitCancellationToken.Token);
 						}
 					}
@@ -395,7 +391,7 @@ namespace Yagasoft.CustomJobs.Service
 							{
 								try
 								{
-									CrmLog log = null;
+									ILogger log = null;
 
 									try
 									{
@@ -403,7 +399,7 @@ namespace Yagasoft.CustomJobs.Service
 
 										var jobRow = service.Retrieve<CustomJob>(CustomJob.EntityLogicalName,
 											job, new ColumnSet(CustomJob.Fields.ParentJob));
-										log = GetLog((jobRow.ParentJob ?? job).ToString().ToUpper());
+										log = JobLogger.GetLogger((jobRow.ParentJob ?? job).ToString().ToUpper());
 
 										customJobEngine.ProcessQueuedJob(job, engineParams, service, log);
 									}
@@ -414,12 +410,12 @@ namespace Yagasoft.CustomJobs.Service
 										log?.ExecutionFailed();
 										log?.LogExecutionEnd();
 
-										log ??= GetLog("JobStartFail");
+										log ??= JobLogger.GetLogger("exec");
 										log.Log(ex, information: ex.BuildExceptionMessage());
 									}
 									finally
 									{
-										log ??= GetLog("JobStartFail");
+										log ??= JobLogger.GetLogger("exec");
 
 										if (IsJobExist(job, log))
 										{
@@ -459,7 +455,7 @@ namespace Yagasoft.CustomJobs.Service
 			}
 		}
 
-		private void ResetServiceLockedJobs(CrmLog log)
+		private void ResetServiceLockedJobs(ILogger log)
 		{
 			log.Log($"Retrieving service-locked jobs ...");
 
@@ -482,7 +478,7 @@ namespace Yagasoft.CustomJobs.Service
 			}
 		}
 
-		private void ResetJob(Guid job, CrmLog log)
+		private void ResetJob(Guid job, ILogger log)
 		{
 			try
 			{
@@ -501,7 +497,7 @@ namespace Yagasoft.CustomJobs.Service
 			}
 		}
 
-		private bool IsJobExist(Guid job, CrmLog log)
+		private bool IsJobExist(Guid job, ILogger log)
 		{
 			log.Log($"Checking job '{job}' still exists ...");
 
@@ -519,56 +515,6 @@ namespace Yagasoft.CustomJobs.Service
 			log.Log($"isExist: {isExist}");
 
 			return isExist;
-		}
-
-		[NoLog]
-		private static CrmLog GetLog(string id)
-		{
-			var folder = ConfigHelpers.Get("LogFolderPath");
-			folder = folder == "." ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs") : folder;
-
-			var level = ConfigHelpers.Get("LogLevel");
-			var dateFormat = ConfigHelpers.Get("LogFileDateFormat");
-
-			int? frequency = null;
-
-			if (int.TryParse(ConfigHelpers.Get("LogFileSplitFrequency"), out var frequencyParse))
-			{
-				frequency = frequencyParse;
-			}
-
-			if (!int.TryParse(ConfigHelpers.Get("LogFileSplitMode"), out var splitMode))
-			{
-				splitMode = (int)SplitMode.Size;
-			}
-
-			if (!bool.TryParse(ConfigHelpers.Get("LogFileGroupById"), out var groupById))
-			{
-				groupById = true;
-			}
-
-			if (!int.TryParse(ConfigHelpers.Get("LogFileMaxSizeKb"), out var maxSizeKb))
-			{
-				maxSizeKb = int.MaxValue;
-			}
-
-			if (groupById)
-			{
-				folder = Path.Combine(folder, id);
-			}
-
-			var log = new CrmLog(true, (LogLevel)int.Parse(level));
-
-			log.InitOfflineLog(Path.Combine(folder, $"Log-{id}.csv"), false,
-				new FileConfiguration
-				{
-					FileSplitMode = (SplitMode)splitMode,
-					MaxFileSizeKb = maxSizeKb < 1 ? int.MaxValue : maxSizeKb,
-					FileSplitFrequency = (SplitFrequency?)frequency,
-					FileDateFormat = DateTime.Now.ToString(dateFormat)
-				});
-
-			return log;
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 {
 	internal abstract class PagingJob : MultiTargetJob
 	{
-		protected PagingJob(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		protected PagingJob(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 			: base(job, engineParams, service, log)
 		{
 		}

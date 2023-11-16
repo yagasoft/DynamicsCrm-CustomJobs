@@ -16,7 +16,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.MultiTarget
 	[Log]
 	internal class PagingRetryJob : PagingJob
 	{
-		public PagingRetryJob(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		public PagingRetryJob(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 			: base(job, engineParams, service, log)
 		{ }
 

@@ -143,7 +143,7 @@ namespace Yagasoft.CustomJobs.Engine
 						"\r\n\r\n" + ex.InnerException.StackTrace);
 		}
 
-		public static void UpdateRetryTargetDate(IOrganizationService service, CustomJob job, CrmLog log)
+		public static void UpdateRetryTargetDate(IOrganizationService service, CustomJob job, ILogger log)
 		{
 			DateTime? nextRecurrence;
 

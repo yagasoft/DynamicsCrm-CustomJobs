@@ -1,4 +1,7 @@
-﻿namespace Yagasoft.CustomJobs.Service
+﻿using NLog;
+using Yagasoft.Libraries.Common;
+
+namespace Yagasoft.CustomJobs.Service
 {
 	partial class CustomJobService
 	{
@@ -11,13 +14,21 @@
 		/// Clean up any resources being used.
 		/// </summary>
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		[LogExecEnd]
 		protected override void Dispose(bool disposing)
 		{
-			if (disposing && (components != null))
+			try
 			{
-				components.Dispose();
+				if (disposing && (components != null))
+				{
+					components.Dispose();
+				}
+				base.Dispose(disposing);
 			}
-			base.Dispose(disposing);
+			finally
+			{
+				LogManager.Shutdown();
+			}
 		}
 
 		#region Component Designer generated code

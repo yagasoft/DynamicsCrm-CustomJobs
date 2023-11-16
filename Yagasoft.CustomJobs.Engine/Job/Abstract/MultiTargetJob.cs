@@ -15,7 +15,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 	[Log]
 	internal abstract class MultiTargetJob : JobTarget
 	{
-		protected MultiTargetJob(CustomJob job, EngineParams engineParams, IOrganizationService service, CrmLog log)
+		protected MultiTargetJob(CustomJob job, EngineParams engineParams, IOrganizationService service, ILogger log)
 			: base(job, engineParams, service, log)
 		{ }
 
