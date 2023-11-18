@@ -278,6 +278,7 @@ namespace Yagasoft.CustomJobs.Service
 				finally
 				{
 					log?.LogExecutionEnd();
+					debugLog?.LogExecutionEnd();
 				}
 			}
 		}
@@ -389,10 +390,10 @@ namespace Yagasoft.CustomJobs.Service
 						Task.Factory.StartNew(
 							() =>
 							{
+								ILogger log = null;
+
 								try
 								{
-									ILogger log = null;
-
 									try
 									{
 										semaphore.Wait(exitCancellationToken.Token);
@@ -408,7 +409,6 @@ namespace Yagasoft.CustomJobs.Service
 									catch (Exception ex)
 									{
 										log?.ExecutionFailed();
-										log?.LogExecutionEnd();
 
 										log ??= JobLogger.GetLogger("exec");
 										log.Log(ex, information: ex.BuildExceptionMessage());
@@ -421,14 +421,16 @@ namespace Yagasoft.CustomJobs.Service
 										{
 											ResetJob(job, log);
 										}
-
-										log?.LogExecutionEnd();
-										semaphore.Release();
 									}
 								}
 								catch
 								{
 									// TODO log to Event Log
+								}
+								finally
+								{
+										log?.LogExecutionEnd();
+									semaphore.Release();
 								}
 							},
 							CancellationTokenSource.CreateLinkedTokenSource(

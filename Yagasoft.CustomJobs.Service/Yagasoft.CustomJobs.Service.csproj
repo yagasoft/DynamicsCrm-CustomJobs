@@ -73,7 +73,7 @@
       <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.51\lib\net462\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Client, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Yagasoft.Libraries.EnhancedOrgService.6.2.3\lib\net462\Microsoft.Xrm.Client.dll</HintPath>
+      <HintPath>..\packages\Yagasoft.Libraries.EnhancedOrgService.6.2.5\lib\net462\Microsoft.Xrm.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.28\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
@@ -130,10 +130,10 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Yagasoft.Libraries.Common, Version=5.2.1.0, Culture=neutral, PublicKeyToken=d99f90f6e31ed2df, processorArchitecture=MSIL">
-      <HintPath>..\packages\Yagasoft.Libraries.Common.5.2.1\lib\net462\Yagasoft.Libraries.Common.dll</HintPath>
+      <HintPath>..\packages\Yagasoft.Libraries.Common.5.2.4\lib\net462\Yagasoft.Libraries.Common.dll</HintPath>
     </Reference>
     <Reference Include="Yagasoft.Libraries.EnhancedOrgService, Version=6.2.3.0, Culture=neutral, PublicKeyToken=d99f90f6e31ed2df, processorArchitecture=MSIL">
-      <HintPath>..\packages\Yagasoft.Libraries.EnhancedOrgService.6.2.3\lib\net462\Yagasoft.Libraries.EnhancedOrgService.dll</HintPath>
+      <HintPath>..\packages\Yagasoft.Libraries.EnhancedOrgService.6.2.5\lib\net462\Yagasoft.Libraries.EnhancedOrgService.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
