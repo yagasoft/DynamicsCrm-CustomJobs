@@ -14,12 +14,12 @@ using NLog;
 
 using Yagasoft.CustomJobs.Engine;
 using Yagasoft.CustomJobs.Engine.Config;
-using Yagasoft.CustomJobs.Service.Log;
 using Yagasoft.Libraries.Common;
 using Yagasoft.Libraries.EnhancedOrgService.Helpers;
 using Yagasoft.Libraries.EnhancedOrgService.Params;
 using Yagasoft.Libraries.EnhancedOrgService.Router;
 using Yagasoft.Libraries.EnhancedOrgService.Services.Enhanced;
+using Yagasoft.Log;
 using ILogger = Yagasoft.Libraries.Common.ILogger;
 using Timer = System.Timers.Timer;
 

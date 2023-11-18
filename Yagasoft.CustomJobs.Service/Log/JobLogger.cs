@@ -13,7 +13,7 @@ using Yagasoft.Libraries.Common;
 using ILogger = Yagasoft.Libraries.Common.ILogger;
 using LogLevel = Yagasoft.Libraries.Common.LogLevel;
 
-namespace Yagasoft.CustomJobs.Service.Log
+namespace Yagasoft.Log
 {
 	internal class JobLogger : LoggerBase
 	{
@@ -46,6 +46,8 @@ namespace Yagasoft.CustomJobs.Service.Log
 
 		private void InitialiseLog()
 		{
+			StartWorker();
+			
 			LogEntryGiven +=
 				(sender, args) =>
 				{
@@ -118,6 +120,19 @@ namespace Yagasoft.CustomJobs.Service.Log
 				logEntry.Assembly ?? Helpers.GetAssemblyName(-1, "Yagasoft.CustomJobs.Service"),
 				logEntry.CallingClass, logEntry.CallingFunction, logEntry.CallingLineNumber,
 				logEntry.RegardingType, logEntry.RegardingId, logEntry.RegardingName);
+		}
+	}
+
+	public static class JobLoggerExtensions
+	{
+		public static string Tag(this string message, params (object obj, (int pad, char character) padding)[] tags)
+		{
+			return message.Tag(tags.Select(p => p.obj.ToString().PadLeft(p.padding.pad, p.padding.character)).Cast<object>().ToArray());
+		}
+
+		public static string Tag(this string message, params object[] tags)
+		{
+			return $"[{tags.StringAggregate("][")}] {message}";
 		}
 	}
 }
