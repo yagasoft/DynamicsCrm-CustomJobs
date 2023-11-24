@@ -40,7 +40,7 @@ namespace Yagasoft.CustomJobs.Service
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.ServiceName = "Service1";
+			this.ServiceName = "Yagasoft.CustomJobs.Service";
 		}
 
 		#endregion

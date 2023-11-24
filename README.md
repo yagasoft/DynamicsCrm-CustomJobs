@@ -2,7 +2,6 @@
 
 [![Join the chat at https://gitter.im/yagasoft/DynamicsCrm-CustomJobs](https://badges.gitter.im/yagasoft/DynamicsCrm-CustomJobs.svg)](https://gitter.im/yagasoft/DynamicsCrm-CustomJobs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Version: 3.2.1.1
 ---
 
 A very powerful CRM solution that gives a multitude of options to control scheduling jobs in CRM.
@@ -62,7 +61,7 @@ I will post a complete guide soon.
   + CRM Logger solution ([DynamicsCrm-CrmLogger](https://github.com/yagasoft/DynamicsCrm-CrmLogger))
 		
 ## Changes
-
++ Check Releases page for the later changes
 #### _v3.2.1.1 (2021-01-01)_
 + Added: Windows Service
 + Fixed: issues
@@ -72,4 +71,4 @@ I will post a complete guide soon.
 + Changed: cleaned the project of obsolete components
 
 ---
-**Copyright &copy; by Ahmed Elsawalhy ([Yagasoft](http://yagasoft.com))** -- _GPL v3 Licence_
+**Copyright &copy; by Ahmed Elsawalhy ([Yagasoft](https://yagasoft.com))** -- _GPL v3 Licence_
