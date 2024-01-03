@@ -109,7 +109,8 @@ namespace Yagasoft.CustomJobs.Service
 							new EngineParams
 							{
 								TargetExecutionMode = config.TargetExecutionMode ?? CommonConfiguration.TargetExecutionModeEnum.Sequential,
-								MaximumDegreeOfParallelism = Math.Min(config.MaxDegreeofParallelism ?? 1, maxConnectionsPerNode)
+								MaximumDegreeOfParallelism = Math.Min(config.MaxDegreeofParallelism ?? 1, maxConnectionsPerNode),
+								JobTimeout = config.JobTimeout ?? 20
 							};
 
 						log.Log($"TargetExecutionMode: {engineParams.TargetExecutionMode}");
@@ -204,7 +205,7 @@ namespace Yagasoft.CustomJobs.Service
 					new ServiceParams
 					{
 						OperationHistoryLimit = 1,
-						ConnectionParams = new ConnectionParams(),
+						ConnectionParams = new ConnectionParams { Timeout = TimeSpan.FromMinutes(engineParams.JobTimeout) },
 						PoolParams = new PoolParams { PoolSize = maxConnectionsPerNode }
 					}.AutoSetMaxPerformanceParams();
 

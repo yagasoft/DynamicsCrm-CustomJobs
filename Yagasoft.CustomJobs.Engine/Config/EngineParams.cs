@@ -11,5 +11,7 @@ namespace Yagasoft.CustomJobs.Engine.Config
 	    public CommonConfiguration.TargetExecutionModeEnum TargetExecutionMode { get; set; } =
 			CommonConfiguration.TargetExecutionModeEnum.Sequential;
 	    public int MaximumDegreeOfParallelism { get; set; } = 10;
+
+	    public int JobTimeout { get; set; } = 20;
     }
 }
