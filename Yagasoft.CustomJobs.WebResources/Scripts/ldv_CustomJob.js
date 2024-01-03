@@ -30,7 +30,6 @@ function CustomJob_OnLoad(executionContext)
     SetAnchoredExecutionContext(executionContext);
 
     SetFieldSubmitMode(Sdk.CustomJob.StatusReason, SubmitMode.Always);
-	SetFieldSubmitMode(Sdk.CustomJob.RecurrenceUpdatedTrigger, SubmitMode.Always);
 	SetFieldSubmitMode(Sdk.CustomJob.RecurrentJob, SubmitMode.Always);
 
 	if (GetFormType() === FormType.Create)
@@ -352,7 +351,6 @@ function SetFormLockedState()
 				Sdk.CustomJob.LatestRunMessage,
 				Sdk.CustomJob.PageNumber,
 				Sdk.CustomJob.CurrentRetryRun,
-				Sdk.CustomJob.RecurrenceUpdatedTrigger,
 				Sdk.CustomJob.RunTrigger]);
 	}
 	else

@@ -8,7 +8,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 	internal abstract class PagingJob : MultiTargetJob
 	{
 		public PagingJob(CustomJob job, IOrganizationService service, IOrganizationServiceFactory serviceFactory,
-			CrmLog log) : base(job, service, serviceFactory, log)
+			ILogger log) : base(job, service, serviceFactory, log)
 		{
 		}
 

@@ -4101,7 +4101,6 @@ namespace Yagasoft.CustomJobs.Engine
 			Sequential = 717860000,
 			ExecuteMultiple = 717860001,
 			Threaded = 717860002,
-			Combined = 717860003,
 		}
 	
 		#endregion

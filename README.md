@@ -34,7 +34,6 @@ A very powerful CRM solution that gives a multitude of options to control schedu
   + Platforms
     + Integrated into CRM
 	+ Windows Service
-	+ Soon: Azure WebJob
   + Supports logging, including exception details on every execution of an action
   + Contingency processes for failure recovery
 
@@ -51,7 +50,7 @@ Import solution found at [Dynamics365-YsCommonSolution](https://github.com/yagas
   + Create a job in the Custom Job Entity
 	+ "Enqueue" the job
 
-I will post a complete guide soon.
+Guide can be found [here](https://blog.yagasoft.com/2024/01/dynamics-custom-jobs-supercharged-overview-mage-series).
 
 ### Dependencies
 

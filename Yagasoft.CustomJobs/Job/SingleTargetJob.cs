@@ -15,7 +15,7 @@ namespace Yagasoft.CustomJobs.Job
 	internal class SingleTargetJob : JobTarget
 	{
 		public SingleTargetJob(CustomJob job, IOrganizationService service, IOrganizationServiceFactory factory,
-			CrmLog log) : base(job, service, factory, log)
+			ILogger log) : base(job, service, factory, log)
 		{ }
 
 		internal override JobRunStatus ProcessTarget()

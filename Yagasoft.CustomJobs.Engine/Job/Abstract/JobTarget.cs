@@ -61,9 +61,11 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 			var contextService = GetServiceInContext();
 			var targets = pagingInfo.Targets;
 
+			var degreeOfParallelism = Params.MaximumDegreeOfParallelism;
+
 			if (Job.URL.IsFilled())
 			{
-				CallUrl(targets, result);
+				CallUrl(targets, result, degreeOfParallelism);
 			}
 			else if (string.IsNullOrEmpty(Job.TargetLogicalName))
 			{
@@ -91,8 +93,6 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 
 					var requests = PrepareTargetRequests(targets, workflowId).ToArray();
 
-					var degreeOfParallelism = Params.MaximumDegreeOfParallelism;
-
 					switch (Params.TargetExecutionMode)
 					{
 						case CommonConfiguration.TargetExecutionModeEnum.Sequential:
@@ -104,7 +104,6 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 					switch (Params.TargetExecutionMode)
 					{
 						case CommonConfiguration.TargetExecutionModeEnum.ExecuteMultiple:
-						case CommonConfiguration.TargetExecutionModeEnum.Combined:
 						{
 							ConcurrentBag<KeyValuePair<OrganizationRequest, ExecuteBulkResponse>> faults = new();
 
@@ -270,7 +269,7 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 			Log.Log($"Executed action '{Job.ActionName}'.");
 		}
 
-		private void CallUrl(List<Guid> targets, ExecutionFailures result)
+		private void CallUrl(List<Guid> targets, ExecutionFailures result, int degreeOfParallelism)
 		{
 			var jobId = Job.Id.ToString().ToUpper();
 
@@ -298,24 +297,26 @@ namespace Yagasoft.CustomJobs.Engine.Job.Abstract
 
 			if (targets?.Any() == true)
 			{
-				foreach (var target in targets)
-				{
-					try
+				Parallel.ForEach(targets,
+					new ParallelOptions { MaxDegreeOfParallelism = degreeOfParallelism },
+					(target, state) =>
 					{
-						query["targetId"] = target.ToString().ToUpper();
-						CallEndpoint(uriBuilder, query, target, parameters);
-					}
-					catch (Exception ex)
-					{
-						Log.Log($"Failed at '{target}':'{ex.Message}'.");
-						result.Exceptions[target] = ex;
-
-						if (Job.ContinueOnError == false)
+						try
 						{
-							break;
+							query["targetId"] = target.ToString().ToUpper();
+							CallEndpoint(uriBuilder, query, target, parameters);
 						}
-					}
-				}
+						catch (Exception ex)
+						{
+							Log.Log($"Failed at '{target}':'{ex.Message}'.");
+							result.Exceptions[target] = ex;
+
+							if (Job.ContinueOnError == false)
+							{
+								state.Stop();
+							}
+						}
+					});
 			}
 			else if (Job.TargetLogicalName.IsEmpty())
 			{

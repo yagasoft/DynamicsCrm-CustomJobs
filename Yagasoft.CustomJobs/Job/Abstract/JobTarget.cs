@@ -30,10 +30,10 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 		protected CustomJob Job;
 		protected IOrganizationService Service;
 		protected IOrganizationServiceFactory ServiceFactory;
-		protected CrmLog log;
+		protected ILogger log;
 
 		protected JobTarget(CustomJob job, IOrganizationService service, IOrganizationServiceFactory serviceFactory,
-			CrmLog log)
+			ILogger log)
 		{
 			Job = job;
 			Service = service;

@@ -110,8 +110,8 @@ namespace Yagasoft.CustomJobs
 						});
 				}
 
-				Log.Log(new LogEntry("Queue Information",
-					information: jobRecords.Select(record => record.ToString()).Aggregate((r1, r2) => r1 + "\r\n" + r2)));
+				Log.Log("Queue Information",
+					information: jobRecords.Select(record => record.ToString()).Aggregate((r1, r2) => r1 + "\r\n" + r2));
 			}
 
 			Log.Log("Fetching date-corrupted records ...");

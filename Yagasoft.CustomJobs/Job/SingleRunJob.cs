@@ -13,7 +13,7 @@ namespace Yagasoft.CustomJobs.Job
 	{
 		protected JobTarget JobTarget;
 
-		public SingleRunJob(CustomJob job, JobTarget target, IOrganizationService service, CrmLog log)
+		public SingleRunJob(CustomJob job, JobTarget target, IOrganizationService service, ILogger log)
 			: base(job, service, log)
 		{
 			JobTarget = target;

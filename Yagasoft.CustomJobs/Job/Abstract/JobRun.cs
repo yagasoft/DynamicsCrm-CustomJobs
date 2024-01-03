@@ -25,9 +25,9 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 	{
 		protected IOrganizationService Service;
 		protected CustomJob Job;
-		protected CrmLog log;
+		protected ILogger log;
 
-		protected JobRun(CustomJob job, IOrganizationService service, CrmLog log)
+		protected JobRun(CustomJob job, IOrganizationService service, ILogger log)
 		{
 			Job = job;
 			Service = service;

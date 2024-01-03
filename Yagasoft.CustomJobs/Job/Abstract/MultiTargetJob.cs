@@ -15,7 +15,7 @@ namespace Yagasoft.CustomJobs.Job.Abstract
 	internal abstract class MultiTargetJob : JobTarget
 	{
 		protected MultiTargetJob(CustomJob job, IOrganizationService service, IOrganizationServiceFactory serviceFactory,
-			CrmLog log) : base(job, service, serviceFactory, log)
+			ILogger log) : base(job, service, serviceFactory, log)
 		{ }
 
 		protected List<CustomJobFailedTarget> GetRetryTargets(int? page = null, int? count = null)

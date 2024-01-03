@@ -14,7 +14,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 	internal class NoPagingRetryJob : NoPagingJob
 	{
 		public NoPagingRetryJob(CustomJob job, IOrganizationService service, IOrganizationServiceFactory serviceFactory,
-			CrmLog log) : base(job, service, serviceFactory, log)
+			ILogger log) : base(job, service, serviceFactory, log)
 		{ }
 
 		protected override JobPagingInfo GetTargets()

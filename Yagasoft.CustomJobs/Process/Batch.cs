@@ -15,7 +15,7 @@ namespace Yagasoft.CustomJobs.Process
 	public static class Batch
 	{
 		public static IReadOnlyCollection<Guid> GetNextJobBatch(int percentage, string lockId, TimeSpan timeout,
-			IOrganizationService service, CrmLog log)
+			IOrganizationService service, ILogger log)
 		{
 			service.Require(nameof(service));
 			log.Require(nameof(log));
@@ -109,7 +109,7 @@ namespace Yagasoft.CustomJobs.Process
 			return jobIds;
 		}
 
-		public static void Lock(IOrganizationService service, CrmLog log)
+		public static void Lock(IOrganizationService service, ILogger log)
 		{
 			service.Require(nameof(service));	
 			log.Require(nameof(log));

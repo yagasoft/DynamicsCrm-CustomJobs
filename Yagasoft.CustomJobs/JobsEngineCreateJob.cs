@@ -201,8 +201,15 @@ namespace Yagasoft.CustomJobs
 			{
 				Log.Log("Associating recurrences ...");
 
-				Service.Associate(CustomJob.EntityLogicalName, id, new Relationship(CustomJob.Relations.NToN.Recurrences),
-					new EntityReferenceCollection(recurrences));
+				foreach (var recurrence in recurrences)
+				{
+					Service.Create(
+						new CustomJobRecurrence
+						{
+							CustomJob = id,
+							RecurrenceRule = recurrence.Id
+						});
+				}
 
 				Log.Log("Done.");
 			}

@@ -15,7 +15,7 @@ namespace Yagasoft.CustomJobs.Job
 	internal static class JobRunFactory
 	{
 		internal static JobRun GetJobRun(CustomJob job, bool isRetry, IOrganizationService service,
-			IOrganizationServiceFactory factory, CrmLog log)
+			IOrganizationServiceFactory factory, ILogger log)
 		{
 			try
 			{
@@ -70,7 +70,7 @@ namespace Yagasoft.CustomJobs.Job
 			}
 		}
 
-		private static bool IsRecurrent(CustomJob job, CrmLog log)
+		private static bool IsRecurrent(CustomJob job, ILogger log)
 		{
 			try
 			{
@@ -91,7 +91,7 @@ namespace Yagasoft.CustomJobs.Job
 			}
 		}
 
-		private static bool IsSingleOrNoTarget(CustomJob job, CrmLog log)
+		private static bool IsSingleOrNoTarget(CustomJob job, ILogger log)
 		{
 			try
 			{
@@ -113,7 +113,7 @@ namespace Yagasoft.CustomJobs.Job
 			}
 		}
 
-		private static bool IsPaging(CustomJob job, CrmLog log)
+		private static bool IsPaging(CustomJob job, ILogger log)
 		{
 			try
 			{
@@ -134,7 +134,7 @@ namespace Yagasoft.CustomJobs.Job
 			}
 		}
 
-		private static bool IsSinglePage(CustomJob job, CrmLog log, IOrganizationService service)
+		private static bool IsSinglePage(CustomJob job, ILogger log, IOrganizationService service)
 		{
 			if (string.IsNullOrWhiteSpace(job.TargetXML) || IsSingleOrNoTarget(job, log))
 			{

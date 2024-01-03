@@ -12,7 +12,7 @@ namespace Yagasoft.CustomJobs.Job
 	[Log]
 	internal class RecurrentRunJob : JobRun
 	{
-		public RecurrentRunJob(CustomJob job, IOrganizationService service, CrmLog log) : base(job, service, log)
+		public RecurrentRunJob(CustomJob job, IOrganizationService service, ILogger log) : base(job, service, log)
 		{ }
 
 		protected override JobRunStatus ProcessRecurrence()

@@ -16,7 +16,7 @@ namespace Yagasoft.CustomJobs.Job.MultiTarget
 	internal class PagingRetryJob : PagingJob
 	{
 		public PagingRetryJob(CustomJob job, IOrganizationService service, IOrganizationServiceFactory serviceFactory,
-			CrmLog log) : base(job, service, serviceFactory, log)
+			ILogger log) : base(job, service, serviceFactory, log)
 		{ }
 
 		internal override JobRunStatus ProcessTarget()

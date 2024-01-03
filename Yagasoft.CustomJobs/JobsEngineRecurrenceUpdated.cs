@@ -38,81 +38,8 @@ namespace Yagasoft.CustomJobs
 				return;
 			}
 
-			var postImage = Context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
-
-			if (postImage == null)
-			{
-				throw new InvalidPluginExecutionException("A full post image must be registered on this plugin step.");
-			}
-
-			var customJob =
-				new CustomJob
-				{
-					Id = target.Id
-				};
-
-			Log.Log($"Loading related recurrences.");
-			customJob.LoadRelation(CustomJob.RelationNames.Recurrences, Service);
-
-			if (customJob.Recurrences == null)
-			{
-				if (postImage.RecurrentJob == true)
-				{
-					Log.Log("Setting to non-recurrent ...");
-					Service.Update(
-						new CustomJob
-						{
-							Id = customJob.Id,
-							RecurrentJob = false
-						});
-					Log.Log("Set to non-recurrent.");
-				}
-
-				Log.Log($"No recurrences set. Exiting ...");
-				return;
-			}
-
-			DateTime? targetDate = null;
-
-			foreach (var recurrenceRule in customJob.Recurrences)
-			{
-				Log.Log($"Getting next recurrence for {recurrenceRule.Id}.");
-				var action = new GlobalActions.ys_CustomJobGetNextRecurrenceDate(recurrenceRule.ToEntityReference(), Service);
-				var nextRecurrence = action.Execute().NextTargetDate;
-				Log.Log($"Next recurrence: '{nextRecurrence}'.");
-
-				if (nextRecurrence > new DateTime(1900) && (targetDate == null || nextRecurrence < targetDate))
-				{
-					targetDate = nextRecurrence;
-				}
-			}
-
-			if (targetDate == null)
-			{
-				Log.Log("Updating latest run message and date.");
-				Service.Update(
-					new CustomJob
-					{
-						Id = target.Id,
-						LatestRunMessage = "Recurrence reached its cycle end.",
-						TargetDate = null,
-						PreviousTargetDate = DateTime.UtcNow,
-						Status = CustomJob.StatusEnum.Inactive,
-						StatusReason = CustomJob.StatusReasonEnum.Success
-					});
-				Log.Log("Updated.");
-
-				return;
-			}
-
-			Log.Log("Updating target date.");
-			Service.Update(
-				new CustomJob
-				{
-					Id = customJob.Id,
-					RecurrentJob = customJob.Recurrences.Any(),
-					TargetDate = targetDate
-				});
+			Recurrence.Helpers.SetTargetDate(target.Id, Recurrence.Helpers.LoadRules(target.Id, Service, Log), Service, Log);
 		}
+
 	}
 }

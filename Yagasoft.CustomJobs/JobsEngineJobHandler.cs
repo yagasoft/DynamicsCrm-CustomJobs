@@ -431,7 +431,7 @@ namespace Yagasoft.CustomJobs
 
 			var target = targetGeneric.ToEntity<CustomJob>();
 			Log.SetRegarding(target.LogicalName, target.Id, postImage.Name);
-			Log.SetTitle(postImage, "ldv_name");
+			Log.SetTitle(postImage.Name);
 
 			if (postImage.StatusReason != CustomJob.StatusReasonEnum.Queued)
 			{
