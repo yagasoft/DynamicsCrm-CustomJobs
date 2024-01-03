@@ -116,7 +116,7 @@ namespace Yagasoft.CustomJobs.Service
 						log.Log($"TargetExecutionMode: {engineParams.TargetExecutionMode}");
 						log.Log($"MaximumDegreeOfParallelism: {engineParams.MaximumDegreeOfParallelism}");
 
-						semaphore = new SemaphoreSlim(config.MaxJobsPerRun.GetValueOrDefault(1));
+						semaphore = new SemaphoreSlim(config.MaxJobsinParallel.GetValueOrDefault(1));
 
 						if (!int.TryParse(ConfigHelpers.Get("JobsPercentage"), out var jobsPercentage))
 						{

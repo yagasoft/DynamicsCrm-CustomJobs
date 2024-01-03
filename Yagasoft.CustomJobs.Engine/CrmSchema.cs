@@ -2909,20 +2909,6 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
-		[AttributeLogicalName("ldv_recurrenceupdatedtrigger")]
-		public string RecurrenceUpdatedTrigger
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_recurrenceupdatedtrigger");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_recurrenceupdatedtrigger", value);
-			}
-		}
-
 		[AttributeLogicalName("ldv_retryschedule")]
 		public Guid? RetrySchedule
 		{
@@ -3108,7 +3094,7 @@ namespace Yagasoft.CustomJobs.Engine
 			get
 			{
 				var value = GetAttributeValue<OptionSetValue>("statecode");
-                return (StatusEnum?) value?.Value;
+				return (StatusEnum?)value?.Value;
 			}
 			set
 			{
@@ -3129,7 +3115,7 @@ namespace Yagasoft.CustomJobs.Engine
 			get
 			{
 				var value = GetAttributeValue<OptionSetValue>("statuscode");
-                return (StatusReasonEnum?) value?.Value;
+				return (StatusReasonEnum?)value?.Value;
 			}
 			set
 			{
@@ -3164,6 +3150,20 @@ namespace Yagasoft.CustomJobs.Engine
 			set
 			{
                 SetAttributeValue("ys_lockid", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_recurrenceupdatedtrigger")]
+		public string RecurrenceUpdatedTrigger
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_recurrenceupdatedtrigger");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_recurrenceupdatedtrigger", value);
 			}
 		}
 
@@ -3379,7 +3379,6 @@ namespace Yagasoft.CustomJobs.Engine
 			public const string ParentJob = "ldv_parentjobid";
 			public const string PreviousTargetDate = "ldv_previoustargetdate";
 			public const string RecordsPerPage = "ldv_recordsperpage";
-			public const string RecurrenceUpdatedTrigger = "ldv_recurrenceupdatedtrigger";
 			public const string RetrySchedule = "ldv_retryschedule";
 			public const string RunTrigger = "ldv_runtrigger";
 			public const string SerialisedInputParams = "ldv_serialisedinputparams";
@@ -3394,6 +3393,7 @@ namespace Yagasoft.CustomJobs.Engine
 			public const string StatusReason = "statuscode";
 			public const string OnlyLogFailures = "ys_isonlylogfailures";
 			public const string LockID = "ys_lockid";
+			public const string RecurrenceUpdatedTrigger = "ys_recurrenceupdatedtrigger";
 			public const string URL = "ys_url";
 
 			#endregion
@@ -3792,7 +3792,7 @@ namespace Yagasoft.CustomJobs.Engine
 			get
 			{
 				var value = GetAttributeValue<OptionSetValue>("statuscode");
-                return (StatusReasonEnum?) value?.Value;
+				return (StatusReasonEnum?)value?.Value;
 			}
 			set
 			{
@@ -3972,7 +3972,7 @@ namespace Yagasoft.CustomJobs.Engine
 			get
 			{
 				var value = GetAttributeValue<OptionSetValue>("ys_jobsplatformcode");
-                return (JobsPlatformEnum?) value?.Value;
+				return (JobsPlatformEnum?)value?.Value;
 			}
 			set
 			{
@@ -4016,7 +4016,7 @@ namespace Yagasoft.CustomJobs.Engine
 		}
 
 		[AttributeLogicalName("ys_maxjobsperrun")]
-		public int? MaxJobsPerRun
+		public int? MaxJobsinParallel
 		{
 			get
 			{
@@ -4040,7 +4040,7 @@ namespace Yagasoft.CustomJobs.Engine
 			get
 			{
 				var value = GetAttributeValue<OptionSetValue>("ys_targetexecutionmodecode");
-                return (TargetExecutionModeEnum?) value?.Value;
+				return (TargetExecutionModeEnum?)value?.Value;
 			}
 			set
 			{
@@ -4093,7 +4093,6 @@ namespace Yagasoft.CustomJobs.Engine
 		{
 			CRM = 717860000,
 			Service = 717860001,
-			Azure = 717860002,
 		}
 	
 		public enum TargetExecutionModeEnum
@@ -4233,6 +4232,14 @@ namespace Yagasoft.CustomJobs.Engine
 	}
 
 	#endregion
+
+	#endregion
+
+	#region GlobalEnums
+
+	public class GlobalEnums
+	{
+	}
 
 	#endregion
 

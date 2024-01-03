@@ -277,67 +277,8 @@ function IsRecurrentJob_OnChange(isOnLoad)
 	}
 	else
 	{
-		IsRecurrentJob(function(isRecurrent)
-		{
-			if (!isRecurrent)
-			{
-				SetSectionVisible('RecurrenceTab', 'RecurrenceRulesSection', false);
-			}
-			else
-			{
-				SetFieldValue(Sdk.CustomJob.RecurrentJob, true, true);
-
-				if (!isOnLoad)
-				{
-					alert("Please clear recurrent config records from grid first before setting job as non-recurrent.");
-				}
-			}
-		});
+			SetSectionVisible('RecurrenceTab', 'RecurrenceRulesSection', false);
 	}
-}
-
-function IsRecurrentJob(callback)
-{
-		ShowBusyIndicator('Checking recurrent job config records ...', 'IsRecurrentJob');
-
-		$.ajax({
-				type: "GET",
-				contentType: "application/json; charset=utf-8",
-				datatype: "json",
-				url: Xrm.Utility.getGlobalContext().getClientUrl() +
-					"/XRMServices/2011/OrganizationData.svc/ldv_customjobSet?" +
-					"$select=ldv_ldv_customjob_ldv_recurrencerule/ldv_recurrenceruleId" +
-					"&$expand=ldv_ldv_customjob_ldv_recurrencerule" +
-					"&$filter=ldv_customjobId eq (guid'" + GetRecordId(true) + "')&$top=1",
-				beforeSend: function(xmlHttpRequest)
-				{
-					xmlHttpRequest.setRequestHeader("Accept", "application/json");
-				},
-				async: true,
-				success: function(data, textStatus, xhr)
-				{
-					var results = data.d.results;
-
-					HideBusyIndicator('IsRecurrentJob');
-
-					if (callback)
-					{
-						callback(results.length && results[0].ldv_ldv_customjob_ldv_recurrencerule.results.length);
-					}
-				},
-				error: function(xhr, textStatus, errorThrown)
-				{
-					console.error(xhr);
-					console.error(textStatus + ": " + errorThrown);
-
-					HideBusyIndicator('IsRecurrentJob');
-
-					if (callback)
-					{
-						callback(true);
-					}
-				}
-			});
 }
 
 function SetFormLockedState()
