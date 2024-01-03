@@ -1,6 +1,4 @@
-﻿//         Project / File: Yagasoft.Plugins.Common / CustomJobHandler.cs
-
-#region Imports
+﻿#region Imports
 
 using System;
 using System.Linq;
@@ -51,12 +49,13 @@ namespace Yagasoft.CustomJobs
 				// get the triggering record
 				var targetGeneric = (Entity)Context.InputParameters["Target"];
 				target = targetGeneric.ToEntity<CustomJob>();
+				var preImage = Context.PreEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
 				image = Context.PostEntityImages.FirstOrDefault().Value?.ToEntity<CustomJob>();
 
 				// sync
 				if (Context.Mode == 0)
 				{
-					PerformSyncActions(targetGeneric);
+					PerformSyncActions(targetGeneric, preImage);
 					return;
 				}
 
@@ -123,7 +122,7 @@ namespace Yagasoft.CustomJobs
 
 		#region Sync
 
-		private void PerformSyncActions(Entity targetGeneric)
+		private void PerformSyncActions(Entity targetGeneric, CustomJob preImage)
 		{
 			targetGeneric.Require(nameof(targetGeneric));
 
@@ -160,6 +159,19 @@ namespace Yagasoft.CustomJobs
 							Name = BuildJobName(customJob)
 						});
 					Log.Log("Name was empty, updated.");
+				}
+
+				if (postImage.StatusReason == CustomJob.StatusReasonEnum.Waiting
+					&& preImage.StatusReason == CustomJob.StatusReasonEnum.Draft)
+				{
+					Log.Log("Refreshing target date ...");
+					Service.Update(
+						new CustomJob
+						{
+							Id = customJob.Id,
+							RecurrenceUpdatedTrigger = DateTime.Now.ToString()
+						});
+					Log.Log("Refreshed target date.");
 				}
 
 				return;

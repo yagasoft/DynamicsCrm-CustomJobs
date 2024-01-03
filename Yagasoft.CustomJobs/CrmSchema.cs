@@ -3000,20 +3000,6 @@ namespace Yagasoft.CustomJobs
 			}
 		}
 
-		[AttributeLogicalName("ldv_recurrenceupdatedtrigger")]
-		public string RecurrenceUpdatedTrigger
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_recurrenceupdatedtrigger");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_recurrenceupdatedtrigger", value);
-			}
-		}
-
 		[AttributeLogicalName("ldv_resetfield")]
 		public string ResetField
 		{
@@ -3579,6 +3565,20 @@ namespace Yagasoft.CustomJobs
 			}
 		}
 
+		[AttributeLogicalName("ys_recurrenceupdatedtrigger")]
+		public string RecurrenceUpdatedTrigger
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_recurrenceupdatedtrigger");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_recurrenceupdatedtrigger", value);
+			}
+		}
+
         /// <summary>
         /// [MaxLength=4000] 
 		/// 'ys_URL'.<br />
@@ -3904,7 +3904,6 @@ namespace Yagasoft.CustomJobs
 			public const string ParentJob = "ldv_parentjobid";
 			public const string PreviousTargetDate = "ldv_previoustargetdate";
 			public const string RecordsPerPage = "ldv_recordsperpage";
-			public const string RecurrenceUpdatedTrigger = "ldv_recurrenceupdatedtrigger";
 			public const string ResetField = "ldv_resetfield";
 			public const string RetryExpiryAction = "ldv_retryexpiryaction";
 			public const string RetrySchedule = "ldv_retryschedule";
@@ -3933,6 +3932,7 @@ namespace Yagasoft.CustomJobs
 			public const string VersionNumber = "versionnumber";
 			public const string OnlyLogFailures = "ys_isonlylogfailures";
 			public const string LockID = "ys_lockid";
+			public const string RecurrenceUpdatedTrigger = "ys_recurrenceupdatedtrigger";
 			public const string URL = "ys_url";
 
 			#endregion
@@ -5614,7 +5614,6 @@ namespace Yagasoft.CustomJobs
 		{
 			CRM = 717860000,
 			Service = 717860001,
-			Azure = 717860002,
 		}
 	
 		public enum TargetExecutionModeEnum
@@ -5622,7 +5621,6 @@ namespace Yagasoft.CustomJobs
 			Sequential = 717860000,
 			ExecuteMultiple = 717860001,
 			Threaded = 717860002,
-			Combined = 717860003,
 		}
 	
 		#endregion

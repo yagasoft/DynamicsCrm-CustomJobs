@@ -17,7 +17,6 @@ function EnqueueJob(formContext)
 {
     BuildAnchoredExecutionContext(formContext);
 
-	SetFieldValue(Sdk.CustomJob.RecurrenceUpdatedTrigger, new Date().toString(), true);
     SetFieldValue(Sdk.CustomJob.StatusReason, Sdk.CustomJob.StatusReasonEnum.Waiting, true);
 	SaveForm();
 }
