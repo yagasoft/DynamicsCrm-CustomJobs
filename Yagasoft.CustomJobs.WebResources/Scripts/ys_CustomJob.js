@@ -3,7 +3,7 @@
 /// <reference path="Sdk.Soap.vsdoc.js" />
 /// <reference path="Xrm.Page.js" />
 /// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/CrmSchemaJs.js" />
-/// <reference path="ldv_CommonGeneric.js" />
+/// <reference path="ys_CommonGeneric.js" />
 
 var Ys = (function(ys)
 {
@@ -77,7 +77,7 @@ function TargetName_OnChange(isOnLoad)
 		SetSectionsVisible(['TargetTab:SingleRecordSection', 'TargetTab:MultipleRecordsSection',
 			'TargetTab:TargetXmlSection'], true);
 
-        LoadAdvancedFind(Sdk.CustomJob.TargetXML, null, 200, 'ldv_targetlogicalname');
+        LoadAdvancedFind(Sdk.CustomJob.TargetXML, null, 200, 'ys_targetlogicalname');
 
 		TargetId_OnChange();
 		TargetXml_OnChange();
@@ -313,7 +313,7 @@ function HideNonUsedSections()
 
 	var isRetryRun = GetFieldValue(Sdk.CustomJob.CurrentRetryRun);
 	var isRetrySchedule = GetFieldValue(Sdk.CustomJob.RetrySchedule);
-	var isSubJobRetrySchedule = GetFieldValue('ldv_subjobsretryscheduleid');
+	var isSubJobRetrySchedule = GetFieldValue('ys_subjobsretryscheduleid');
 	var isRetryCount = GetFieldValue(Sdk.CustomJob.MaxRetryCount);
 
 	var isFailAction = GetFieldValue(Sdk.CustomJob.FailureAction);
@@ -372,7 +372,7 @@ function HideNonUsedSections()
 
 	if (!isSubJobRetrySchedule)
 	{
-		SetFieldVisible('ldv_subjobsretryscheduleid', false);
+		SetFieldVisible('ys_subjobsretryscheduleid', false);
 	}
 
 	if (!isRetryCount)

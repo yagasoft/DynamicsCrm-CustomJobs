@@ -2,7 +2,7 @@
 /// <reference path="jquery-1.11.1.js" />
 /// <reference path="Sdk.Soap.vsdoc.js" />
 /// <reference path="Xrm.Page.js" />
-/// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/Scripts/ldv_CommonGeneric.js" />
+/// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/Scripts/ys_CommonGeneric.js" />
 /// <reference path="../../../../Yagasoft.Libraries/Yagasoft.Libraries.Common/CrmSchemaJs.js" />
 
 var $ = window.$ || parent.$;

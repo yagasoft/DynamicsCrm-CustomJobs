@@ -69,14 +69,14 @@ namespace Yagasoft.CustomJobs
 			var parentQuery = new FetchExpression(
 			    string.Intern($@"
 <fetch no-lock='true'>
-  <entity name='ldv_customjob'>
-    <attribute name='ldv_customjobid' />
+  <entity name='ys_customjob'>
+    <attribute name='ys_customjobid' />
     <attribute name='statuscode' />
     <filter>
       <condition attribute='statuscode' operator='eq' value='{(int)CustomJob.StatusReasonEnum.WaitingOnSubJobs}' />
-      <condition entityname='subjob' attribute='ldv_customjobid' operator='null' />
+      <condition entityname='subjob' attribute='ys_customjobid' operator='null' />
     </filter>
-    <link-entity name='ldv_customjob' from='ldv_parentjobid' to='ldv_customjobid' link-type='outer' alias='subjob' >
+    <link-entity name='ys_customjob' from='ys_parentjobid' to='ys_customjobid' link-type='outer' alias='subjob' >
       <filter>
         <condition attribute='statecode' operator='eq' value='0' />
       </filter>

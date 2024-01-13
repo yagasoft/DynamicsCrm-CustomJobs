@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ahmed Elsawalhy (yagasoft.com)")]
 [assembly: AssemblyProduct("Yagasoft.CustomJobs.Service")]
-[assembly: AssemblyCopyright("Copyright © Ahmed Elsawalhy 2023")]
+[assembly: AssemblyCopyright("Copyright © Ahmed Elsawalhy")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

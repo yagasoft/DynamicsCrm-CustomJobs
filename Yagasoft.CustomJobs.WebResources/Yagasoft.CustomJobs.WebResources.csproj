@@ -71,18 +71,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\ldv_CommonGeneric.js" />
-    <Content Include="Scripts\ldv_CustomJobEngineRibbon.js" />
-    <Content Include="Scripts\ldv_CustomJobRibbon.js" />
-    <Content Include="Scripts\ldv_CustomJob.js" />
+    <Content Include="Scripts\ys_CommonGeneric.js" />
+    <Content Include="Scripts\ys_CustomJobEngineRibbon.js" />
+    <Content Include="Scripts\ys_CustomJobRibbon.js" />
+    <Content Include="Scripts\ys_CustomJob.js" />
     <Content Include="packages.config" />
+    <Content Include="UploaderMapping.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="WebResLink.dat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.11.1.js" />

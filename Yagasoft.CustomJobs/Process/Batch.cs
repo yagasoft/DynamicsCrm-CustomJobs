@@ -121,7 +121,7 @@ namespace Yagasoft.CustomJobs.Process
 						var query = new FetchExpression(
 							string.Intern($@"<fetch no-lock='true'>
   <entity name='{CustomJobEngine.EntityLogicalName}'>
-    <attribute name='ldv_customjobengineid' />
+    <attribute name='ys_customjobengineid' />
   </entity>
 </fetch>"));
 

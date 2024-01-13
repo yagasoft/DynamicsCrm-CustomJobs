@@ -444,7 +444,6 @@ nuget-access-key.txt
 *.dat
 
 # Tests
-/LinkDev.Tests.EnhancedOrgService
 
 # Tools
 *.exe

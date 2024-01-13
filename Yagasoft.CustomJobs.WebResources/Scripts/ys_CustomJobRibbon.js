@@ -1,7 +1,7 @@
 ﻿/// <reference path="Sdk.Soap.vsdoc.js" />
 /// <reference path="jquery-1.11.1.js" />
 /// <reference path="Sdk.Soap.vsdoc.js" />
-/// <reference path="ldv_CommonGeneric.js" />
+/// <reference path="ys_CommonGeneric.js" />
 
 var $ = window.$ || parent.$;
 
@@ -33,7 +33,7 @@ function CancelJob(formContext)
 				type: "PATCH",
 				contentType: "application/json; charset=utf-8",
 				datatype: "json",
-				url: Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v8.0/ldv_customjobs(" + GetRecordId(true) + ")",
+				url: Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v8.0/ys_customjobs(" + GetRecordId(true) + ")",
 				data: JSON.stringify({ statecode: 1, statuscode: 753240008 }),
 				beforeSend: function(xmlHttpRequest)
 				{
@@ -111,7 +111,7 @@ function ClearLogs(formContext)
 			contentType: "application/json; charset=utf-8",
 			datatype: "json",
 			url: Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v8.1/" +
-				"ldv_customjobs(" + GetRecordId(true) + ")" +
+				"ys_customjobs(" + GetRecordId(true) + ")" +
 				"/Microsoft.Dynamics.CRM.ys_CustomJobClearLogs",
 			beforeSend: function(xmlHttpRequest)
 			{

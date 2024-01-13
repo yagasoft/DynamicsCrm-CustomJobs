@@ -72,6 +72,16 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 		/// <summary>
+		/// Gets a binding to the set of all <see cref="CustomJobRecurrence"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CustomJobRecurrence> CustomJobRecurrenceSet
+		{
+			get
+			{
+				return this.CreateQuery<CustomJobRecurrence>();
+			}
+		}
+		/// <summary>
 		/// Gets a binding to the set of all <see cref="CommonConfiguration"/> entities.
 		/// </summary>
 		public System.Linq.IQueryable<CommonConfiguration> CommonConfigurationSet
@@ -2512,12 +2522,12 @@ namespace Yagasoft.CustomJobs.Engine
 	#region CustomJob
 
 	/// <summary>
-	/// 'ldv_customjob'.<br />
+	/// 'ys_customjob'.<br />
 	/// 
 	/// </summary>
 	[ExcludeFromCodeCoverage]
 	[DebuggerNonUserCode]
-	[DataContract, EntityLogicalName("ldv_customjob")]
+	[DataContract, EntityLogicalName("ys_customjob")]
 	public partial class CustomJob : GeneratedEntity<CustomJob.RelationName>
 	{
 		public CustomJob() : base(EntityLogicalName)
@@ -2532,9 +2542,9 @@ namespace Yagasoft.CustomJobs.Engine
 		{ }
 
 		public const string DisplayName = "Custom Job";
-		public const string SchemaName = "ldv_customjob";
-		public const string EntityLogicalName = "ldv_customjob";
-		public const int EntityTypeCode = 10110;
+		public const string SchemaName = "ys_customjob";
+		public const string EntityLogicalName = "ys_customjob";
+		public const int EntityTypeCode = 10163;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -2544,529 +2554,20 @@ namespace Yagasoft.CustomJobs.Engine
 
 		#region Attributes
 
-		[AttributeLogicalName("ldv_customjobid")]
+		[AttributeLogicalName("ys_customjobid")]
 		public override System.Guid Id
 		{
 			get => (CustomJobId == null || CustomJobId == Guid.Empty) ? base.Id : CustomJobId.GetValueOrDefault();
 			set
 			{
                 if (value == Guid.Empty) {
-                    Attributes.Remove("ldv_customjobid");
+                    Attributes.Remove("ys_customjobid");
                     base.Id = value;
                 } else {
 				    CustomJobId = value;
                 }
 			}
 		}
-
-		[AttributeLogicalName("ldv_actionname")]
-		public string ActionName
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_actionname");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_actionname", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_contextuser")]
-		public Guid? ContextUser
-		{
-			get
-			{
-				var value = GetAttributeValue<EntityReference>("ldv_contextuser");
-                return value?.Id;
-			}
-			set
-			{
-                if (value != null) SetAttributeValue("ldv_contextuser", new EntityReference("systemuser", value.Value));
-                else
-	                SetAttributeValue("ldv_contextuser", value);
-			}
-		}
-
-        public string ContextUserName
-        {
-		    get
-		    {
-				var value = GetAttributeValue<EntityReference>("ldv_contextuser");
-                return value?.Name;
-            }
-        }
-
-		[AttributeLogicalName("ldv_currentretryrun")]
-		public int? CurrentRetryRun
-		{
-			get
-			{
-				var value = GetAttributeValue<int?>("ldv_currentretryrun");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_currentretryrun", value);
-			}
-		}
-
-        /// <summary>
-        ///  
-		/// 'ldv_customjobId'.<br />
-        /// Unique identifier for entity instances
-        /// </summary>
-		[AttributeLogicalName("ldv_customjobid")]
-		public Guid? CustomJobId
-		{
-			get
-			{
-				var value = GetAttributeValue<Guid?>("ldv_customjobid");
-			    return value;
-			}
-			set
-			{
-                if (value != null)
-	                SetAttributeValue("ldv_customjobid", value);
-				if (value != null) base.Id = value.Value;
-				else Id = System.Guid.Empty;
-			}
-		}
-
-        /// <summary>
-        ///  
-		/// 'ldv_FailureAction'.<br />
-        /// This action is run when there is no retry, or when the retry count has expired.
-        /// </summary>
-		[AttributeLogicalName("ldv_failureaction")]
-		public Guid? FailureAction
-		{
-			get
-			{
-				var value = GetAttributeValue<EntityReference>("ldv_failureaction");
-                return value?.Id;
-			}
-			set
-			{
-                if (value != null) SetAttributeValue("ldv_failureaction", new EntityReference("workflow", value.Value));
-                else
-	                SetAttributeValue("ldv_failureaction", value);
-			}
-		}
-
-        public string FailureActionName
-        {
-		    get
-		    {
-				var value = GetAttributeValue<EntityReference>("ldv_failureaction");
-                return value?.Name;
-            }
-        }
-
-		[AttributeLogicalName("ldv_iscontinueonerror")]
-		public bool? ContinueOnError
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_iscontinueonerror");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_iscontinueonerror", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_isdeleteonsuccess")]
-		public bool? DeleteOnSuccess
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_isdeleteonsuccess");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_isdeleteonsuccess", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_isdeletesubjobsonsuccess")]
-		public bool? DeleteSubJobsOnSuccess
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_isdeletesubjobsonsuccess");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_isdeletesubjobsonsuccess", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_isgeneratelogs")]
-		public bool? GenerateLogs
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_isgeneratelogs");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_isgeneratelogs", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_isignorefailure")]
-		public bool? IgnoreFailure
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_isignorefailure");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_isignorefailure", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_ismarkforwaiting")]
-		public bool? MarkForWaiting
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_ismarkforwaiting");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_ismarkforwaiting", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_isparentrecurrent")]
-		public bool? ParentRecurrent
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_isparentrecurrent");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_isparentrecurrent", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_isrecurrentjob")]
-		public bool? RecurrentJob
-		{
-			get
-			{
-				var value = GetAttributeValue<bool?>("ldv_isrecurrentjob");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_isrecurrentjob", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_latestrunmessage")]
-		public string LatestRunMessage
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_latestrunmessage");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_latestrunmessage", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_maxretrycount")]
-		public int? MaxRetryCount
-		{
-			get
-			{
-				var value = GetAttributeValue<int?>("ldv_maxretrycount");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_maxretrycount", value);
-			}
-		}
-
-        /// <summary>
-        /// [MaxLength=400] 
-		/// 'ldv_name'.<br />
-        /// The name of the custom entity.
-        /// </summary>
-		[AttributeLogicalName("ldv_name")]
-		public string Name
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_name");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_name", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_pagenumber")]
-		public int? PageNumber
-		{
-			get
-			{
-				var value = GetAttributeValue<int?>("ldv_pagenumber");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_pagenumber", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_pagingcookie")]
-		public string PagingCookie
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_pagingcookie");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_pagingcookie", value);
-			}
-		}
-
-        /// <summary>
-        ///  
-		/// 'ldv_ParentJobId'.<br />
-        /// Unique identifier for Custom Job associated with Custom Job.
-        /// </summary>
-		[AttributeLogicalName("ldv_parentjobid")]
-		public Guid? ParentJob
-		{
-			get
-			{
-				var value = GetAttributeValue<EntityReference>("ldv_parentjobid");
-                return value?.Id;
-			}
-			set
-			{
-                if (value != null) SetAttributeValue("ldv_parentjobid", new EntityReference("ldv_customjob", value.Value));
-                else
-	                SetAttributeValue("ldv_parentjobid", value);
-			}
-		}
-
-        public string ParentJobName
-        {
-		    get
-		    {
-				var value = GetAttributeValue<EntityReference>("ldv_parentjobid");
-                return value?.Name;
-            }
-        }
-
-		[AttributeLogicalName("ldv_previoustargetdate")]
-		public DateTime? PreviousTargetDate
-		{
-			get
-			{
-				var value = GetAttributeValue<DateTime?>("ldv_previoustargetdate");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_previoustargetdate", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_recordsperpage")]
-		public int? RecordsPerPage
-		{
-			get
-			{
-				var value = GetAttributeValue<int?>("ldv_recordsperpage");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_recordsperpage", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_retryschedule")]
-		public Guid? RetrySchedule
-		{
-			get
-			{
-				var value = GetAttributeValue<EntityReference>("ldv_retryschedule");
-                return value?.Id;
-			}
-			set
-			{
-                if (value != null) SetAttributeValue("ldv_retryschedule", new EntityReference("ldv_recurrencerule", value.Value));
-                else
-	                SetAttributeValue("ldv_retryschedule", value);
-			}
-		}
-
-        public string RetryScheduleName
-        {
-		    get
-		    {
-				var value = GetAttributeValue<EntityReference>("ldv_retryschedule");
-                return value?.Name;
-            }
-        }
-
-		[AttributeLogicalName("ldv_runtrigger")]
-		public string RunTrigger
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_runtrigger");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_runtrigger", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_serialisedinputparams")]
-		public string SerialisedInputParams
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_serialisedinputparams");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_serialisedinputparams", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_subjobsretryscheduleid")]
-		public Guid? SubJobsRetrySchedule
-		{
-			get
-			{
-				var value = GetAttributeValue<EntityReference>("ldv_subjobsretryscheduleid");
-                return value?.Id;
-			}
-			set
-			{
-                if (value != null) SetAttributeValue("ldv_subjobsretryscheduleid", new EntityReference("ldv_recurrencerule", value.Value));
-                else
-	                SetAttributeValue("ldv_subjobsretryscheduleid", value);
-			}
-		}
-
-        public string SubJobsRetryScheduleName
-        {
-		    get
-		    {
-				var value = GetAttributeValue<EntityReference>("ldv_subjobsretryscheduleid");
-                return value?.Name;
-            }
-        }
-
-		[AttributeLogicalName("ldv_targetdate")]
-		public DateTime? TargetDate
-		{
-			get
-			{
-				var value = GetAttributeValue<DateTime?>("ldv_targetdate");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_targetdate", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_targetid")]
-		public string TargetID
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_targetid");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_targetid", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_targetlogicalname")]
-		public string TargetLogicalName
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_targetlogicalname");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_targetlogicalname", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_targetxml")]
-		public string TargetXML
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_targetxml");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_targetxml", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_workflow")]
-		public Guid? Workflow
-		{
-			get
-			{
-				var value = GetAttributeValue<EntityReference>("ldv_workflow");
-                return value?.Id;
-			}
-			set
-			{
-                if (value != null) SetAttributeValue("ldv_workflow", new EntityReference("workflow", value.Value));
-                else
-	                SetAttributeValue("ldv_workflow", value);
-			}
-		}
-
-        public string WorkflowName
-        {
-		    get
-		    {
-				var value = GetAttributeValue<EntityReference>("ldv_workflow");
-                return value?.Name;
-            }
-        }
 
         /// <summary>
         ///  
@@ -3125,6 +2626,201 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+		[AttributeLogicalName("ys_actionname")]
+		public string ActionName
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_actionname");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_actionname", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_contextuser")]
+		public Guid? ContextUser
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_contextuser");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_contextuser", new EntityReference("systemuser", value.Value));
+                else
+	                SetAttributeValue("ys_contextuser", value);
+			}
+		}
+
+        public string ContextUserName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_contextuser");
+                return value?.Name;
+            }
+        }
+
+		[Label("1033_fullname", "systemuser", "systemuserid", "ys_contextuser")]
+        public IDictionary<int, string> ContextUserLabels { get; set; }
+
+		[AttributeLogicalName("ys_currentretryrun")]
+		public int? CurrentRetryRun
+		{
+			get
+			{
+				var value = GetAttributeValue<int?>("ys_currentretryrun");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_currentretryrun", value);
+			}
+		}
+
+        /// <summary>
+        ///  
+		/// 'ys_customjobId'.<br />
+        /// Unique identifier for entity instances
+        /// </summary>
+		[AttributeLogicalName("ys_customjobid")]
+		public Guid? CustomJobId
+		{
+			get
+			{
+				var value = GetAttributeValue<Guid?>("ys_customjobid");
+			    return value;
+			}
+			set
+			{
+                if (value != null)
+	                SetAttributeValue("ys_customjobid", value);
+				if (value != null) base.Id = value.Value;
+				else Id = System.Guid.Empty;
+			}
+		}
+
+        /// <summary>
+        ///  
+		/// 'ys_FailureAction'.<br />
+        /// This action is run when there is no retry, or when the retry count has expired.
+        /// </summary>
+		[AttributeLogicalName("ys_failureaction")]
+		public Guid? FailureAction
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_failureaction");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_failureaction", new EntityReference("workflow", value.Value));
+                else
+	                SetAttributeValue("ys_failureaction", value);
+			}
+		}
+
+        public string FailureActionName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_failureaction");
+                return value?.Name;
+            }
+        }
+
+		[Label("1033_name", "workflow", "workflowid", "ys_failureaction")]
+        public IDictionary<int, string> FailureActionLabels { get; set; }
+
+		[AttributeLogicalName("ys_iscontinueonerror")]
+		public bool? ContinueOnError
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_iscontinueonerror");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_iscontinueonerror", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_isdeleteonsuccess")]
+		public bool? DeleteOnSuccess
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_isdeleteonsuccess");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_isdeleteonsuccess", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_isdeletesubjobsonsuccess")]
+		public bool? DeleteSubJobsOnSuccess
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_isdeletesubjobsonsuccess");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_isdeletesubjobsonsuccess", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_isgeneratelogs")]
+		public bool? GenerateLogs
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_isgeneratelogs");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_isgeneratelogs", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_isignorefailure")]
+		public bool? IgnoreFailure
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_isignorefailure");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_isignorefailure", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_ismarkforwaiting")]
+		public bool? MarkForWaiting
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_ismarkforwaiting");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_ismarkforwaiting", value);
+			}
+		}
+
 		[AttributeLogicalName("ys_isonlylogfailures")]
 		public bool? OnlyLogFailures
 		{
@@ -3136,6 +2832,62 @@ namespace Yagasoft.CustomJobs.Engine
 			set
 			{
                 SetAttributeValue("ys_isonlylogfailures", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_isonlyworkinghours")]
+		public bool? OnlyWorkingHours
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_isonlyworkinghours");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_isonlyworkinghours", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_isparentrecurrent")]
+		public bool? ParentRecurrent
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_isparentrecurrent");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_isparentrecurrent", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_isrecurrentjob")]
+		public bool? RecurrentJob
+		{
+			get
+			{
+				var value = GetAttributeValue<bool?>("ys_isrecurrentjob");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_isrecurrentjob", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_latestrunmessage")]
+		public string LatestRunMessage
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_latestrunmessage");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_latestrunmessage", value);
 			}
 		}
 
@@ -3153,6 +2905,128 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+		[AttributeLogicalName("ys_maxretrycount")]
+		public int? MaxRetryCount
+		{
+			get
+			{
+				var value = GetAttributeValue<int?>("ys_maxretrycount");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_maxretrycount", value);
+			}
+		}
+
+        /// <summary>
+        /// [MaxLength=400] 
+		/// 'ys_name'.<br />
+        /// The name of the custom entity.
+        /// </summary>
+		[AttributeLogicalName("ys_name")]
+		public string Name
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_name");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_name", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_pagenumber")]
+		public int? PageNumber
+		{
+			get
+			{
+				var value = GetAttributeValue<int?>("ys_pagenumber");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_pagenumber", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_pagingcookie")]
+		public string PagingCookie
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_pagingcookie");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_pagingcookie", value);
+			}
+		}
+
+        /// <summary>
+        ///  
+		/// 'ys_ParentJobId'.<br />
+        /// Unique identifier for Custom Job associated with Custom Job.
+        /// </summary>
+		[AttributeLogicalName("ys_parentjobid")]
+		public Guid? ParentJob
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_parentjobid");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_parentjobid", new EntityReference("ys_customjob", value.Value));
+                else
+	                SetAttributeValue("ys_parentjobid", value);
+			}
+		}
+
+        public string ParentJobName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_parentjobid");
+                return value?.Name;
+            }
+        }
+
+		[Label("1033_ys_name", "ys_customjob", "ys_customjobid", "ys_parentjobid")]
+        public IDictionary<int, string> ParentJobLabels { get; set; }
+
+		[AttributeLogicalName("ys_previoustargetdate")]
+		public DateTime? PreviousTargetDate
+		{
+			get
+			{
+				var value = GetAttributeValue<DateTime?>("ys_previoustargetdate");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_previoustargetdate", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_recordsperpage")]
+		public int? RecordsPerPage
+		{
+			get
+			{
+				var value = GetAttributeValue<int?>("ys_recordsperpage");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_recordsperpage", value);
+			}
+		}
+
 		[AttributeLogicalName("ys_recurrenceupdatedtrigger")]
 		public string RecurrenceUpdatedTrigger
 		{
@@ -3164,6 +3038,221 @@ namespace Yagasoft.CustomJobs.Engine
 			set
 			{
                 SetAttributeValue("ys_recurrenceupdatedtrigger", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_resetfield")]
+		public string ResetField
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_resetfield");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_resetfield", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_retryexpiryaction")]
+		public Guid? RetryExpiryAction
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_retryexpiryaction");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_retryexpiryaction", new EntityReference("workflow", value.Value));
+                else
+	                SetAttributeValue("ys_retryexpiryaction", value);
+			}
+		}
+
+        public string RetryExpiryActionName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_retryexpiryaction");
+                return value?.Name;
+            }
+        }
+
+		[Label("1033_name", "workflow", "workflowid", "ys_retryexpiryaction")]
+        public IDictionary<int, string> RetryExpiryActionLabels { get; set; }
+
+		[AttributeLogicalName("ys_retryschedule")]
+		public Guid? RetrySchedule
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_retryschedule");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_retryschedule", new EntityReference("ys_recurrencerule", value.Value));
+                else
+	                SetAttributeValue("ys_retryschedule", value);
+			}
+		}
+
+        public string RetryScheduleName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_retryschedule");
+                return value?.Name;
+            }
+        }
+
+		[Label("1033_ys_name", "ys_recurrencerule", "ys_recurrenceruleid", "ys_retryschedule")]
+        public IDictionary<int, string> RetryScheduleLabels { get; set; }
+
+		[AttributeLogicalName("ys_runtrigger")]
+		public string RunTrigger
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_runtrigger");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_runtrigger", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_serialisedinputparams")]
+		public string SerialisedInputParams
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_serialisedinputparams");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_serialisedinputparams", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_subjobsretryscheduleid")]
+		public Guid? SubJobsRetrySchedule
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_subjobsretryscheduleid");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_subjobsretryscheduleid", new EntityReference("ys_recurrencerule", value.Value));
+                else
+	                SetAttributeValue("ys_subjobsretryscheduleid", value);
+			}
+		}
+
+        public string SubJobsRetryScheduleName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_subjobsretryscheduleid");
+                return value?.Name;
+            }
+        }
+
+		[Label("1033_ys_name", "ys_recurrencerule", "ys_recurrenceruleid", "ys_subjobsretryscheduleid")]
+        public IDictionary<int, string> SubJobsRetryScheduleLabels { get; set; }
+
+		[AttributeLogicalName("ys_targetdate")]
+		public DateTime? TargetDate
+		{
+			get
+			{
+				var value = GetAttributeValue<DateTime?>("ys_targetdate");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_targetdate", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_targetid")]
+		public string TargetID
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_targetid");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_targetid", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_targetlogicalname")]
+		public string TargetLogicalName
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_targetlogicalname");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_targetlogicalname", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_targetxml")]
+		public string TargetXML
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_targetxml");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_targetxml", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_timer")]
+		public int? Timer
+		{
+			get
+			{
+				var value = GetAttributeValue<int?>("ys_timer");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_timer", value);
+			}
+		}
+
+        /// <summary>
+        ///  
+		/// 'ys_TimerBase'.<br />
+        /// If empty, then the timer base is 'created on' field.
+        /// </summary>
+		[AttributeLogicalName("ys_timerbase")]
+		public DateTime? TimerBase
+		{
+			get
+			{
+				var value = GetAttributeValue<DateTime?>("ys_timerbase");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_timerbase", value);
 			}
 		}
 
@@ -3186,34 +3275,96 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+		[AttributeLogicalName("ys_workflow")]
+		public Guid? Workflow
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_workflow");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_workflow", new EntityReference("workflow", value.Value));
+                else
+	                SetAttributeValue("ys_workflow", value);
+			}
+		}
+
+        public string WorkflowName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_workflow");
+                return value?.Name;
+            }
+        }
+
+		[Label("1033_name", "workflow", "workflowid", "ys_workflow")]
+        public IDictionary<int, string> WorkflowLabels { get; set; }
+
 		#endregion
 
 		#region Relationships
 
 		
 		/// <summary>
-		/// 1:N, 'ldv_ldv_customjob_ldv_customjobfailedtarget_CustomJob'
+		/// 1:N, 'ys_customjob_customjobrecurrence_CustomJobId'
 		/// </summary>
-		[RelationshipSchemaName("ldv_ldv_customjob_ldv_customjobfailedtarget_CustomJob")]
-		public CustomJobFailedTarget[] CustomJobFailedTargetsOfCustomJob
+		[RelationshipSchemaName("ys_customjob_customjobrecurrence_CustomJobId")]
+		public CustomJobRecurrence[] RecurrenceRules
 		{
-			get => GetRelatedEntities<CustomJobFailedTarget>("ldv_ldv_customjob_ldv_customjobfailedtarget_CustomJob", null)?.ToArray();
+			get => GetRelatedEntities<CustomJobRecurrence>("ys_customjob_customjobrecurrence_CustomJobId", null)?.ToArray();
 			set
 			{
 				if (RelatedEntities.IsReadOnly) { throw new Exception("Relationship collection is read only. The context that loaded this entity must be used to create relationships."); }
                 value?.ToList().ForEach(entity => entity.LogicalName = (string) value.First().GetType().GetField("EntityLogicalName").GetRawConstantValue());
-				SetRelatedEntities("ldv_ldv_customjob_ldv_customjobfailedtarget_CustomJob", null, value);
+				SetRelatedEntities("ys_customjob_customjobrecurrence_CustomJobId", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N, 'ys_ys_customjob_ys_customjob'
+		/// </summary>
+		[RelationshipSchemaName("ys_ys_customjob_ys_customjob", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public CustomJob[] CustomJobsOfParentJob
+		{
+			get => GetRelatedEntities<CustomJob>("ys_ys_customjob_ys_customjob", Microsoft.Xrm.Sdk.EntityRole.Referenced)?.ToArray();
+			set
+			{
+				if (RelatedEntities.IsReadOnly) { throw new Exception("Relationship collection is read only. The context that loaded this entity must be used to create relationships."); }
+                value?.ToList().ForEach(entity => entity.LogicalName = (string) value.First().GetType().GetField("EntityLogicalName").GetRawConstantValue());
+				SetRelatedEntities("ys_ys_customjob_ys_customjob", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N, 'ys_ys_customjob_ys_customjobfailedtarget_CustomJob'
+		/// </summary>
+		[RelationshipSchemaName("ys_ys_customjob_ys_customjobfailedtarget_CustomJob")]
+		public CustomJobFailedTarget[] CustomJobFailedTargetsOfCustomJob
+		{
+			get => GetRelatedEntities<CustomJobFailedTarget>("ys_ys_customjob_ys_customjobfailedtarget_CustomJob", null)?.ToArray();
+			set
+			{
+				if (RelatedEntities.IsReadOnly) { throw new Exception("Relationship collection is read only. The context that loaded this entity must be used to create relationships."); }
+                value?.ToList().ForEach(entity => entity.LogicalName = (string) value.First().GetType().GetField("EntityLogicalName").GetRawConstantValue());
+				SetRelatedEntities("ys_ys_customjob_ys_customjobfailedtarget_CustomJob", null, value);
 			}
 		}
 		
 		public static class RelationNames {
+			public static RelationName RecurrenceRules = new RelationName("RecurrenceRules");
+			public static RelationName CustomJobsOfParentJob = new RelationName("CustomJobsOfParentJob");
 			public static RelationName CustomJobFailedTargetsOfCustomJob = new RelationName("CustomJobFailedTargetsOfCustomJob");
 		}
 
 		public override IDictionary<string, object[]> RelationProperties { get {
 			if (relationProperties != null) return relationProperties;
 			relationProperties = new Dictionary<string, object[]>();
-			relationProperties["CustomJobFailedTargetsOfCustomJob"] = new object[] { "CustomJobFailedTargetsOfCustomJob", "ldv_customjobfailedtarget", "ldv_customjob", "ldv_customjob", "ldv_customjobid", "ldv_customjobid", "ldv_customjobid", "ldv_ldv_customjob_ldv_customjobfailedtarget_CustomJob", typeof (CustomJobFailedTarget[]) };
+			relationProperties["RecurrenceRules"] = new object[] { "RecurrenceRules", "ys_customjobrecurrence", "ys_customjob", "ys_customjobid", "ys_customjobid", "ys_customjobid", "ys_customjobid", "ys_customjob_customjobrecurrence_CustomJobId", typeof (CustomJobRecurrence[]) };
+			relationProperties["CustomJobsOfParentJob"] = new object[] { "CustomJobsOfParentJob", "ys_customjob", "ys_customjob", "ys_parentjobid", "ys_customjobid", "ys_customjobid", "ys_customjobid", "ys_ys_customjob_ys_customjob", typeof (CustomJob[]) };
+			relationProperties["CustomJobFailedTargetsOfCustomJob"] = new object[] { "CustomJobFailedTargetsOfCustomJob", "ys_customjobfailedtarget", "ys_customjob", "ys_customjob", "ys_customjobid", "ys_customjobid", "ys_customjobid", "ys_ys_customjob_ys_customjobfailedtarget_CustomJob", typeof (CustomJobFailedTarget[]) };
 			return relationProperties; } }
 
 		#endregion
@@ -3227,7 +3378,7 @@ namespace Yagasoft.CustomJobs.Engine
                 if (p.PropertyType == typeof(Guid))
                 {
                     base.Id = (Guid)value;
-                    Attributes["ldv_customjobid"] = base.Id;
+                    Attributes["ys_customjobid"] = base.Id;
                 }
                 else if (p.Name == "FormattedValues")
                 {
@@ -3242,6 +3393,26 @@ namespace Yagasoft.CustomJobs.Engine
 
 		#region Label/value pairs
 
+		public enum StatusEnum
+		{
+			Active = 0,
+			Inactive = 1,
+		}
+	
+		public enum StatusReasonEnum
+		{
+			Draft = 753240006,
+			Waiting = 753240005,
+			WaitingOnSubJobs = 753240009,
+			Queued = 1,
+			Running = 753240004,
+			Retry = 753240003,
+			Success = 2,
+			Failure = 753240002,
+			PartialFailure = 753240007,
+			Cancelled = 753240008,
+		}
+	
 		public enum ContinueOnErrorEnum
 		{
 			Yes = 1,
@@ -3278,6 +3449,18 @@ namespace Yagasoft.CustomJobs.Engine
 			No = 0,
 		}
 	
+		public enum OnlyLogFailuresEnum
+		{
+			Yes = 1,
+			No = 0,
+		}
+	
+		public enum OnlyWorkingHoursEnum
+		{
+			Yes = 1,
+			No = 0,
+		}
+	
 		public enum ParentRecurrentEnum
 		{
 			Yes = 1,
@@ -3285,32 +3468,6 @@ namespace Yagasoft.CustomJobs.Engine
 		}
 	
 		public enum RecurrentJobEnum
-		{
-			Yes = 1,
-			No = 0,
-		}
-	
-		public enum StatusEnum
-		{
-			Active = 0,
-			Inactive = 1,
-		}
-	
-		public enum StatusReasonEnum
-		{
-			Draft = 753240006,
-			Waiting = 753240005,
-			WaitingOnSubJobs = 753240009,
-			Queued = 1,
-			Running = 753240004,
-			Retry = 753240003,
-			Success = 2,
-			Failure = 753240002,
-			PartialFailure = 753240007,
-			Cancelled = 753240008,
-		}
-	
-		public enum OnlyLogFailuresEnum
 		{
 			Yes = 1,
 			No = 0,
@@ -3358,43 +3515,48 @@ namespace Yagasoft.CustomJobs.Engine
 		{
 			#region Logical names
 
-			public const string ActionName = "ldv_actionname";
-			public const string ContextUser = "ldv_contextuser";
-			public const string CurrentRetryRun = "ldv_currentretryrun";
-			public const string CustomJobId = "ldv_customjobid";
-			public const string FailureAction = "ldv_failureaction";
-			public const string ContinueOnError = "ldv_iscontinueonerror";
-			public const string DeleteOnSuccess = "ldv_isdeleteonsuccess";
-			public const string DeleteSubJobsOnSuccess = "ldv_isdeletesubjobsonsuccess";
-			public const string GenerateLogs = "ldv_isgeneratelogs";
-			public const string IgnoreFailure = "ldv_isignorefailure";
-			public const string MarkForWaiting = "ldv_ismarkforwaiting";
-			public const string ParentRecurrent = "ldv_isparentrecurrent";
-			public const string RecurrentJob = "ldv_isrecurrentjob";
-			public const string LatestRunMessage = "ldv_latestrunmessage";
-			public const string MaxRetryCount = "ldv_maxretrycount";
-			public const string Name = "ldv_name";
-			public const string PageNumber = "ldv_pagenumber";
-			public const string PagingCookie = "ldv_pagingcookie";
-			public const string ParentJob = "ldv_parentjobid";
-			public const string PreviousTargetDate = "ldv_previoustargetdate";
-			public const string RecordsPerPage = "ldv_recordsperpage";
-			public const string RetrySchedule = "ldv_retryschedule";
-			public const string RunTrigger = "ldv_runtrigger";
-			public const string SerialisedInputParams = "ldv_serialisedinputparams";
-			public const string SubJobsRetrySchedule = "ldv_subjobsretryscheduleid";
-			public const string TargetDate = "ldv_targetdate";
-			public const string TargetID = "ldv_targetid";
-			public const string TargetLogicalName = "ldv_targetlogicalname";
-			public const string TargetXML = "ldv_targetxml";
-			public const string Workflow = "ldv_workflow";
 			public const string ModifiedOn = "modifiedon";
 			public const string Status = "statecode";
 			public const string StatusReason = "statuscode";
+			public const string ActionName = "ys_actionname";
+			public const string ContextUser = "ys_contextuser";
+			public const string CurrentRetryRun = "ys_currentretryrun";
+			public const string CustomJobId = "ys_customjobid";
+			public const string FailureAction = "ys_failureaction";
+			public const string ContinueOnError = "ys_iscontinueonerror";
+			public const string DeleteOnSuccess = "ys_isdeleteonsuccess";
+			public const string DeleteSubJobsOnSuccess = "ys_isdeletesubjobsonsuccess";
+			public const string GenerateLogs = "ys_isgeneratelogs";
+			public const string IgnoreFailure = "ys_isignorefailure";
+			public const string MarkForWaiting = "ys_ismarkforwaiting";
 			public const string OnlyLogFailures = "ys_isonlylogfailures";
+			public const string OnlyWorkingHours = "ys_isonlyworkinghours";
+			public const string ParentRecurrent = "ys_isparentrecurrent";
+			public const string RecurrentJob = "ys_isrecurrentjob";
+			public const string LatestRunMessage = "ys_latestrunmessage";
 			public const string LockID = "ys_lockid";
+			public const string MaxRetryCount = "ys_maxretrycount";
+			public const string Name = "ys_name";
+			public const string PageNumber = "ys_pagenumber";
+			public const string PagingCookie = "ys_pagingcookie";
+			public const string ParentJob = "ys_parentjobid";
+			public const string PreviousTargetDate = "ys_previoustargetdate";
+			public const string RecordsPerPage = "ys_recordsperpage";
 			public const string RecurrenceUpdatedTrigger = "ys_recurrenceupdatedtrigger";
+			public const string ResetField = "ys_resetfield";
+			public const string RetryExpiryAction = "ys_retryexpiryaction";
+			public const string RetrySchedule = "ys_retryschedule";
+			public const string RunTrigger = "ys_runtrigger";
+			public const string SerialisedInputParams = "ys_serialisedinputparams";
+			public const string SubJobsRetrySchedule = "ys_subjobsretryscheduleid";
+			public const string TargetDate = "ys_targetdate";
+			public const string TargetID = "ys_targetid";
+			public const string TargetLogicalName = "ys_targetlogicalname";
+			public const string TargetXML = "ys_targetxml";
+			public const string Timer = "ys_timer";
+			public const string TimerBase = "ys_timerbase";
 			public const string URL = "ys_url";
+			public const string Workflow = "ys_workflow";
 
 			#endregion
 		}
@@ -3409,12 +3571,12 @@ namespace Yagasoft.CustomJobs.Engine
 	#region CustomJobFailedTarget
 
 	/// <summary>
-	/// 'ldv_customjobfailedtarget'.<br />
+	/// 'ys_customjobfailedtarget'.<br />
 	/// 
 	/// </summary>
 	[ExcludeFromCodeCoverage]
 	[DebuggerNonUserCode]
-	[DataContract, EntityLogicalName("ldv_customjobfailedtarget")]
+	[DataContract, EntityLogicalName("ys_customjobfailedtarget")]
 	public partial class CustomJobFailedTarget : GeneratedEntity<CustomJobFailedTarget.RelationName>
 	{
 		public CustomJobFailedTarget() : base(EntityLogicalName)
@@ -3429,9 +3591,9 @@ namespace Yagasoft.CustomJobs.Engine
 		{ }
 
 		public const string DisplayName = "Custom Job Failed Target";
-		public const string SchemaName = "ldv_customjobfailedtarget";
-		public const string EntityLogicalName = "ldv_customjobfailedtarget";
-		public const int EntityTypeCode = 10112;
+		public const string SchemaName = "ys_customjobfailedtarget";
+		public const string EntityLogicalName = "ys_customjobfailedtarget";
+		public const int EntityTypeCode = 10165;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3441,14 +3603,14 @@ namespace Yagasoft.CustomJobs.Engine
 
 		#region Attributes
 
-		[AttributeLogicalName("ldv_customjobfailedtargetid")]
+		[AttributeLogicalName("ys_customjobfailedtargetid")]
 		public override System.Guid Id
 		{
 			get => (CustomJobFailedTargetId == null || CustomJobFailedTargetId == Guid.Empty) ? base.Id : CustomJobFailedTargetId.GetValueOrDefault();
 			set
 			{
                 if (value == Guid.Empty) {
-                    Attributes.Remove("ldv_customjobfailedtargetid");
+                    Attributes.Remove("ys_customjobfailedtargetid");
                     base.Id = value;
                 } else {
 				    CustomJobFailedTargetId = value;
@@ -3456,19 +3618,19 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
-		[AttributeLogicalName("ldv_customjob")]
+		[AttributeLogicalName("ys_customjob")]
 		public Guid? CustomJob
 		{
 			get
 			{
-				var value = GetAttributeValue<EntityReference>("ldv_customjob");
+				var value = GetAttributeValue<EntityReference>("ys_customjob");
                 return value?.Id;
 			}
 			set
 			{
-                if (value != null) SetAttributeValue("ldv_customjob", new EntityReference("ldv_customjob", value.Value));
+                if (value != null) SetAttributeValue("ys_customjob", new EntityReference("ys_customjob", value.Value));
                 else
-	                SetAttributeValue("ldv_customjob", value);
+	                SetAttributeValue("ys_customjob", value);
 			}
 		}
 
@@ -3476,63 +3638,93 @@ namespace Yagasoft.CustomJobs.Engine
         {
 		    get
 		    {
-				var value = GetAttributeValue<EntityReference>("ldv_customjob");
+				var value = GetAttributeValue<EntityReference>("ys_customjob");
                 return value?.Name;
             }
         }
 
         /// <summary>
         ///  
-		/// 'ldv_customjobfailedtargetId'.<br />
+		/// 'ys_customjobfailedtargetId'.<br />
         /// Unique identifier for entity instances
         /// </summary>
-		[AttributeLogicalName("ldv_customjobfailedtargetid")]
+		[AttributeLogicalName("ys_customjobfailedtargetid")]
 		public Guid? CustomJobFailedTargetId
 		{
 			get
 			{
-				var value = GetAttributeValue<Guid?>("ldv_customjobfailedtargetid");
+				var value = GetAttributeValue<Guid?>("ys_customjobfailedtargetid");
 			    return value;
 			}
 			set
 			{
                 if (value != null)
-	                SetAttributeValue("ldv_customjobfailedtargetid", value);
+	                SetAttributeValue("ys_customjobfailedtargetid", value);
 				if (value != null) base.Id = value.Value;
 				else Id = System.Guid.Empty;
 			}
 		}
 
-		[AttributeLogicalName("ldv_failuremessage")]
+		[AttributeLogicalName("ys_failuremessage")]
 		public string FailureMessage
 		{
 			get
 			{
-				var value = GetAttributeValue<string>("ldv_failuremessage");
+				var value = GetAttributeValue<string>("ys_failuremessage");
 			    return value;
 			}
 			set
 			{
-                SetAttributeValue("ldv_failuremessage", value);
+                SetAttributeValue("ys_failuremessage", value);
 			}
 		}
 
         /// <summary>
+        ///  
+		/// 'ys_LogEntry'.<br />
+        /// Unique identifier for Custom Job Log associated with Custom Job Failed Target.
+        /// </summary>
+		[AttributeLogicalName("ys_logentry")]
+		public Guid? LogEntry
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_logentry");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_logentry", new EntityReference("ys_customjoblog", value.Value));
+                else
+	                SetAttributeValue("ys_logentry", value);
+			}
+		}
+
+        public string LogEntryName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_logentry");
+                return value?.Name;
+            }
+        }
+
+        /// <summary>
         /// [Required][MaxLength=36] 
-		/// 'ldv_name'.<br />
+		/// 'ys_name'.<br />
         /// The name of the custom entity.
         /// </summary>
-		[AttributeLogicalName("ldv_name")]
+		[AttributeLogicalName("ys_name")]
 		public string ID
 		{
 			get
 			{
-				var value = GetAttributeValue<string>("ldv_name");
+				var value = GetAttributeValue<string>("ys_name");
 			    return value;
 			}
 			set
 			{
-                SetAttributeValue("ldv_name", value);
+                SetAttributeValue("ys_name", value);
 			}
 		}
 
@@ -3560,7 +3752,7 @@ namespace Yagasoft.CustomJobs.Engine
                 if (p.PropertyType == typeof(Guid))
                 {
                     base.Id = (Guid)value;
-                    Attributes["ldv_customjobfailedtargetid"] = base.Id;
+                    Attributes["ys_customjobfailedtargetid"] = base.Id;
                 }
                 else if (p.Name == "FormattedValues")
                 {
@@ -3617,10 +3809,11 @@ namespace Yagasoft.CustomJobs.Engine
 		{
 			#region Logical names
 
-			public const string CustomJob = "ldv_customjob";
-			public const string CustomJobFailedTargetId = "ldv_customjobfailedtargetid";
-			public const string FailureMessage = "ldv_failuremessage";
-			public const string ID = "ldv_name";
+			public const string CustomJob = "ys_customjob";
+			public const string CustomJobFailedTargetId = "ys_customjobfailedtargetid";
+			public const string FailureMessage = "ys_failuremessage";
+			public const string LogEntry = "ys_logentry";
+			public const string ID = "ys_name";
 
 			#endregion
 		}
@@ -3635,12 +3828,12 @@ namespace Yagasoft.CustomJobs.Engine
 	#region CustomJobLog
 
 	/// <summary>
-	/// 'ldv_customjoblog'.<br />
+	/// 'ys_customjoblog'.<br />
 	/// 
 	/// </summary>
 	[ExcludeFromCodeCoverage]
 	[DebuggerNonUserCode]
-	[DataContract, EntityLogicalName("ldv_customjoblog")]
+	[DataContract, EntityLogicalName("ys_customjoblog")]
 	public partial class CustomJobLog : GeneratedEntity<CustomJobLog.RelationName>
 	{
 		public CustomJobLog() : base(EntityLogicalName)
@@ -3655,9 +3848,9 @@ namespace Yagasoft.CustomJobs.Engine
 		{ }
 
 		public const string DisplayName = "Custom Job Log";
-		public const string SchemaName = "ldv_customjoblog";
-		public const string EntityLogicalName = "ldv_customjoblog";
-		public const int EntityTypeCode = 10113;
+		public const string SchemaName = "ys_customjoblog";
+		public const string EntityLogicalName = "ys_customjoblog";
+		public const int EntityTypeCode = 10166;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3667,117 +3860,18 @@ namespace Yagasoft.CustomJobs.Engine
 
 		#region Attributes
 
-		[AttributeLogicalName("ldv_customjoblogid")]
+		[AttributeLogicalName("ys_customjoblogid")]
 		public override System.Guid Id
 		{
 			get => (CustomJobLogId == null || CustomJobLogId == Guid.Empty) ? base.Id : CustomJobLogId.GetValueOrDefault();
 			set
 			{
                 if (value == Guid.Empty) {
-                    Attributes.Remove("ldv_customjoblogid");
+                    Attributes.Remove("ys_customjoblogid");
                     base.Id = value;
                 } else {
 				    CustomJobLogId = value;
                 }
-			}
-		}
-
-        /// <summary>
-        /// [Required] 
-		/// 'ldv_CustomJobId'.<br />
-        /// Unique identifier for Custom Job associated with Custom Job Log.
-        /// </summary>
-		[AttributeLogicalName("ldv_customjobid")]
-		public Guid? CustomJob
-		{
-			get
-			{
-				var value = GetAttributeValue<EntityReference>("ldv_customjobid");
-                return value?.Id;
-			}
-			set
-			{
-                if (value != null) SetAttributeValue("ldv_customjobid", new EntityReference("ldv_customjob", value.Value));
-                else
-	                SetAttributeValue("ldv_customjobid", value);
-			}
-		}
-
-        public string CustomJobName
-        {
-		    get
-		    {
-				var value = GetAttributeValue<EntityReference>("ldv_customjobid");
-                return value?.Name;
-            }
-        }
-
-        /// <summary>
-        ///  
-		/// 'ldv_customjoblogId'.<br />
-        /// Unique identifier for entity instances
-        /// </summary>
-		[AttributeLogicalName("ldv_customjoblogid")]
-		public Guid? CustomJobLogId
-		{
-			get
-			{
-				var value = GetAttributeValue<Guid?>("ldv_customjoblogid");
-			    return value;
-			}
-			set
-			{
-                if (value != null)
-	                SetAttributeValue("ldv_customjoblogid", value);
-				if (value != null) base.Id = value.Value;
-				else Id = System.Guid.Empty;
-			}
-		}
-
-		[AttributeLogicalName("ldv_executiondate")]
-		public DateTime? ExecutionDate
-		{
-			get
-			{
-				var value = GetAttributeValue<DateTime?>("ldv_executiondate");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_executiondate", value);
-			}
-		}
-
-		[AttributeLogicalName("ldv_executionfullmessage")]
-		public string ExecutionFullMessage
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_executionfullmessage");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_executionfullmessage", value);
-			}
-		}
-
-        /// <summary>
-        /// [Required][MaxLength=400] 
-		/// 'ldv_name'.<br />
-        /// The name of the custom entity.
-        /// </summary>
-		[AttributeLogicalName("ldv_name")]
-		public string Message
-		{
-			get
-			{
-				var value = GetAttributeValue<string>("ldv_name");
-			    return value;
-			}
-			set
-			{
-                SetAttributeValue("ldv_name", value);
 			}
 		}
 
@@ -3802,23 +3896,122 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+        /// <summary>
+        /// [Required] 
+		/// 'ys_CustomJobId'.<br />
+        /// Unique identifier for Custom Job associated with Custom Job Log.
+        /// </summary>
+		[AttributeLogicalName("ys_customjobid")]
+		public Guid? CustomJob
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_customjobid");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_customjobid", new EntityReference("ys_customjob", value.Value));
+                else
+	                SetAttributeValue("ys_customjobid", value);
+			}
+		}
+
+        public string CustomJobName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_customjobid");
+                return value?.Name;
+            }
+        }
+
+        /// <summary>
+        ///  
+		/// 'ys_customjoblogId'.<br />
+        /// Unique identifier for entity instances
+        /// </summary>
+		[AttributeLogicalName("ys_customjoblogid")]
+		public Guid? CustomJobLogId
+		{
+			get
+			{
+				var value = GetAttributeValue<Guid?>("ys_customjoblogid");
+			    return value;
+			}
+			set
+			{
+                if (value != null)
+	                SetAttributeValue("ys_customjoblogid", value);
+				if (value != null) base.Id = value.Value;
+				else Id = System.Guid.Empty;
+			}
+		}
+
+		[AttributeLogicalName("ys_executiondate")]
+		public DateTime? ExecutionDate
+		{
+			get
+			{
+				var value = GetAttributeValue<DateTime?>("ys_executiondate");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_executiondate", value);
+			}
+		}
+
+		[AttributeLogicalName("ys_executionfullmessage")]
+		public string ExecutionFullMessage
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_executionfullmessage");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_executionfullmessage", value);
+			}
+		}
+
+        /// <summary>
+        /// [Required][MaxLength=400] 
+		/// 'ys_name'.<br />
+        /// The name of the custom entity.
+        /// </summary>
+		[AttributeLogicalName("ys_name")]
+		public string Message
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_name");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_name", value);
+			}
+		}
+
 		#endregion
 
 		#region Relationships
 
 		
 		/// <summary>
-		/// 1:N, 'ldv_ldv_customjoblog_ldv_customjobfailedtarget_LogEntry'
+		/// 1:N, 'ys_ys_customjoblog_ys_customjobfailedtarget_LogEntry'
 		/// </summary>
-		[RelationshipSchemaName("ldv_ldv_customjoblog_ldv_customjobfailedtarget_LogEntry")]
+		[RelationshipSchemaName("ys_ys_customjoblog_ys_customjobfailedtarget_LogEntry")]
 		public CustomJobFailedTarget[] CustomJobFailedTargetsOfLogEntry
 		{
-			get => GetRelatedEntities<CustomJobFailedTarget>("ldv_ldv_customjoblog_ldv_customjobfailedtarget_LogEntry", null)?.ToArray();
+			get => GetRelatedEntities<CustomJobFailedTarget>("ys_ys_customjoblog_ys_customjobfailedtarget_LogEntry", null)?.ToArray();
 			set
 			{
 				if (RelatedEntities.IsReadOnly) { throw new Exception("Relationship collection is read only. The context that loaded this entity must be used to create relationships."); }
                 value?.ToList().ForEach(entity => entity.LogicalName = (string) value.First().GetType().GetField("EntityLogicalName").GetRawConstantValue());
-				SetRelatedEntities("ldv_ldv_customjoblog_ldv_customjobfailedtarget_LogEntry", null, value);
+				SetRelatedEntities("ys_ys_customjoblog_ys_customjobfailedtarget_LogEntry", null, value);
 			}
 		}
 		
@@ -3829,7 +4022,7 @@ namespace Yagasoft.CustomJobs.Engine
 		public override IDictionary<string, object[]> RelationProperties { get {
 			if (relationProperties != null) return relationProperties;
 			relationProperties = new Dictionary<string, object[]>();
-			relationProperties["CustomJobFailedTargetsOfLogEntry"] = new object[] { "CustomJobFailedTargetsOfLogEntry", "ldv_customjobfailedtarget", "ldv_customjoblog", "ldv_logentry", "ldv_customjoblogid", "ldv_customjoblogid", "ldv_customjoblogid", "ldv_ldv_customjoblog_ldv_customjobfailedtarget_LogEntry", typeof (CustomJobFailedTarget[]) };
+			relationProperties["CustomJobFailedTargetsOfLogEntry"] = new object[] { "CustomJobFailedTargetsOfLogEntry", "ys_customjobfailedtarget", "ys_customjoblog", "ys_logentry", "ys_customjoblogid", "ys_customjoblogid", "ys_customjoblogid", "ys_ys_customjoblog_ys_customjobfailedtarget_LogEntry", typeof (CustomJobFailedTarget[]) };
 			return relationProperties; } }
 
 		#endregion
@@ -3843,7 +4036,7 @@ namespace Yagasoft.CustomJobs.Engine
                 if (p.PropertyType == typeof(Guid))
                 {
                     base.Id = (Guid)value;
-                    Attributes["ldv_customjoblogid"] = base.Id;
+                    Attributes["ys_customjoblogid"] = base.Id;
                 }
                 else if (p.Name == "FormattedValues")
                 {
@@ -3875,15 +4068,247 @@ namespace Yagasoft.CustomJobs.Engine
 
 	#endregion
 
-	#region CommonConfiguration
+	#region CustomJobRecurrence
 
 	/// <summary>
-	/// 'ldv_genericconfiguration'.<br />
+	/// 'ys_customjobrecurrence'.<br />
 	/// 
 	/// </summary>
 	[ExcludeFromCodeCoverage]
 	[DebuggerNonUserCode]
-	[DataContract, EntityLogicalName("ldv_genericconfiguration")]
+	[DataContract, EntityLogicalName("ys_customjobrecurrence")]
+	public partial class CustomJobRecurrence : GeneratedEntity<CustomJobRecurrence.RelationName>
+	{
+		public CustomJobRecurrence() : base(EntityLogicalName)
+		{ }
+		
+		/// <inheritdoc/>
+		public CustomJobRecurrence(string[] keys, object[] values) : base(keys, values, EntityLogicalName)
+		{ }
+		
+		/// <inheritdoc/>
+		public CustomJobRecurrence(object obj, Type limitingType) : base(obj, limitingType, EntityLogicalName)
+		{ }
+
+		public const string DisplayName = "Custom Job Recurrence";
+		public const string SchemaName = "ys_customjobrecurrence";
+		public const string EntityLogicalName = "ys_customjobrecurrence";
+		public const int EntityTypeCode = 10174;
+		
+		public class RelationName : RelationNameBase
+		{
+			public RelationName(string name) : base(name)
+			{}
+		}
+
+		#region Attributes
+
+		[AttributeLogicalName("ys_customjobrecurrenceid")]
+		public override System.Guid Id
+		{
+			get => (CustomJobRecurrenceId == null || CustomJobRecurrenceId == Guid.Empty) ? base.Id : CustomJobRecurrenceId.GetValueOrDefault();
+			set
+			{
+                if (value == Guid.Empty) {
+                    Attributes.Remove("ys_customjobrecurrenceid");
+                    base.Id = value;
+                } else {
+				    CustomJobRecurrenceId = value;
+                }
+			}
+		}
+
+		[AttributeLogicalName("ys_customjobid")]
+		public Guid? CustomJob
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_customjobid");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_customjobid", new EntityReference("ys_customjob", value.Value));
+                else
+	                SetAttributeValue("ys_customjobid", value);
+			}
+		}
+
+        public string CustomJobName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_customjobid");
+                return value?.Name;
+            }
+        }
+
+        /// <summary>
+        ///  
+		/// 'ys_customjobrecurrenceId'.<br />
+        /// Unique identifier for entity instances
+        /// </summary>
+		[AttributeLogicalName("ys_customjobrecurrenceid")]
+		public Guid? CustomJobRecurrenceId
+		{
+			get
+			{
+				var value = GetAttributeValue<Guid?>("ys_customjobrecurrenceid");
+			    return value;
+			}
+			set
+			{
+                if (value != null)
+	                SetAttributeValue("ys_customjobrecurrenceid", value);
+				if (value != null) base.Id = value.Value;
+				else Id = System.Guid.Empty;
+			}
+		}
+
+		[AttributeLogicalName("ys_recurrenceruleid")]
+		public Guid? RecurrenceRule
+		{
+			get
+			{
+				var value = GetAttributeValue<EntityReference>("ys_recurrenceruleid");
+                return value?.Id;
+			}
+			set
+			{
+                if (value != null) SetAttributeValue("ys_recurrenceruleid", new EntityReference("ys_recurrencerule", value.Value));
+                else
+	                SetAttributeValue("ys_recurrenceruleid", value);
+			}
+		}
+
+        public string RecurrenceRuleName
+        {
+		    get
+		    {
+				var value = GetAttributeValue<EntityReference>("ys_recurrenceruleid");
+                return value?.Name;
+            }
+        }
+
+		[AttributeLogicalName("ys_recurrenceupdatedtrigger")]
+		public string RecurrenceUpdatedTrigger
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_recurrenceupdatedtrigger");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_recurrenceupdatedtrigger", value);
+			}
+		}
+
+		#endregion
+
+		#region Relationships
+
+		
+		public static class RelationNames {
+		}
+
+		public override IDictionary<string, object[]> RelationProperties { get {
+			if (relationProperties != null) return relationProperties;
+			relationProperties = new Dictionary<string, object[]>();
+			return relationProperties; } }
+
+		#endregion
+
+		/// <inheritdoc/>
+		public CustomJobRecurrence(object obj) : base(obj, EntityLogicalName)
+		{
+            foreach (var p in obj.GetType().GetProperties())
+            {
+                var value = p.GetValue(obj, null);
+                if (p.PropertyType == typeof(Guid))
+                {
+                    base.Id = (Guid)value;
+                    Attributes["ys_customjobrecurrenceid"] = base.Id;
+                }
+                else if (p.Name == "FormattedValues")
+                {
+                    FormattedValues.AddRange((FormattedValueCollection)value);
+                }
+                else
+                {
+                    Attributes[p.Name.ToLower()] = value;
+                }
+            }
+		}
+
+		#region Label/value pairs
+
+		#endregion
+
+		#region Metadata
+
+		#region Enums
+
+		public static class Enums
+		{
+			/// <summary>
+			/// Gets the label corresponding to the option-set's value using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="constant">The value from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns></returns>
+			public static string GetLabel(string logicalName, int constant, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetLabel(logicalName, constant, typeof(Enums), languageCode);
+			}
+			/// <summary>
+			/// Gets the value corresponding to the option-set's label using its logical name,
+			/// the value within, and the language code.
+			/// </summary>
+			/// <param name="logicalName">The logical name of the option-set in CRM</param>
+			/// <param name="label">The label from the option-set</param>
+			/// <param name="languageCode">The language code from CRM</param>
+			/// <returns>The value corresponding to the label</returns>
+			public static int GetValue(string logicalName, string label, int languageCode = 1033)
+			{
+				return GeneratorHelpers.GetValue(logicalName, label, typeof(Enums), languageCode);
+			}
+		}
+
+		#endregion
+
+		#region Fields
+
+		public static class Fields
+		{
+			#region Logical names
+
+			public const string CustomJob = "ys_customjobid";
+			public const string CustomJobRecurrenceId = "ys_customjobrecurrenceid";
+			public const string RecurrenceRule = "ys_recurrenceruleid";
+			public const string RecurrenceUpdatedTrigger = "ys_recurrenceupdatedtrigger";
+
+			#endregion
+		}
+
+		#endregion
+
+		#endregion
+	}
+
+	#endregion
+
+	#region CommonConfiguration
+
+	/// <summary>
+	/// 'ys_genericconfiguration'.<br />
+	/// 
+	/// </summary>
+	[ExcludeFromCodeCoverage]
+	[DebuggerNonUserCode]
+	[DataContract, EntityLogicalName("ys_genericconfiguration")]
 	public partial class CommonConfiguration : GeneratedEntity<CommonConfiguration.RelationName>
 	{
 		public CommonConfiguration() : base(EntityLogicalName)
@@ -3898,9 +4323,9 @@ namespace Yagasoft.CustomJobs.Engine
 		{ }
 
 		public const string DisplayName = "Common Configuration";
-		public const string SchemaName = "ldv_genericconfiguration";
-		public const string EntityLogicalName = "ldv_genericconfiguration";
-		public const int EntityTypeCode = 10114;
+		public const string SchemaName = "ys_genericconfiguration";
+		public const string EntityLogicalName = "ys_genericconfiguration";
+		public const int EntityTypeCode = 10167;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -3910,14 +4335,14 @@ namespace Yagasoft.CustomJobs.Engine
 
 		#region Attributes
 
-		[AttributeLogicalName("ldv_genericconfigurationid")]
+		[AttributeLogicalName("ys_genericconfigurationid")]
 		public override System.Guid Id
 		{
 			get => (GenericConfigurationId == null || GenericConfigurationId == Guid.Empty) ? base.Id : GenericConfigurationId.GetValueOrDefault();
 			set
 			{
                 if (value == Guid.Empty) {
-                    Attributes.Remove("ldv_genericconfigurationid");
+                    Attributes.Remove("ys_genericconfigurationid");
                     base.Id = value;
                 } else {
 				    GenericConfigurationId = value;
@@ -3925,23 +4350,37 @@ namespace Yagasoft.CustomJobs.Engine
 			}
 		}
 
+		[AttributeLogicalName("ys_defaultcalendar")]
+		public string DefaultCalendar
+		{
+			get
+			{
+				var value = GetAttributeValue<string>("ys_defaultcalendar");
+			    return value;
+			}
+			set
+			{
+                SetAttributeValue("ys_defaultcalendar", value);
+			}
+		}
+
         /// <summary>
         ///  
-		/// 'ldv_genericconfigurationId'.<br />
+		/// 'ys_genericconfigurationId'.<br />
         /// Unique identifier for entity instances
         /// </summary>
-		[AttributeLogicalName("ldv_genericconfigurationid")]
+		[AttributeLogicalName("ys_genericconfigurationid")]
 		public Guid? GenericConfigurationId
 		{
 			get
 			{
-				var value = GetAttributeValue<Guid?>("ldv_genericconfigurationid");
+				var value = GetAttributeValue<Guid?>("ys_genericconfigurationid");
 			    return value;
 			}
 			set
 			{
                 if (value != null)
-	                SetAttributeValue("ldv_genericconfigurationid", value);
+	                SetAttributeValue("ys_genericconfigurationid", value);
 				if (value != null) base.Id = value.Value;
 				else Id = System.Guid.Empty;
 			}
@@ -4074,7 +4513,7 @@ namespace Yagasoft.CustomJobs.Engine
                 if (p.PropertyType == typeof(Guid))
                 {
                     base.Id = (Guid)value;
-                    Attributes["ldv_genericconfigurationid"] = base.Id;
+                    Attributes["ys_genericconfigurationid"] = base.Id;
                 }
                 else if (p.Name == "FormattedValues")
                 {
@@ -4115,12 +4554,12 @@ namespace Yagasoft.CustomJobs.Engine
 	#region RecurrenceRule
 
 	/// <summary>
-	/// 'ldv_recurrencerule'.<br />
+	/// 'ys_recurrencerule'.<br />
 	/// 
 	/// </summary>
 	[ExcludeFromCodeCoverage]
 	[DebuggerNonUserCode]
-	[DataContract, EntityLogicalName("ldv_recurrencerule")]
+	[DataContract, EntityLogicalName("ys_recurrencerule")]
 	public partial class RecurrenceRule : GeneratedEntity<RecurrenceRule.RelationName>
 	{
 		public RecurrenceRule() : base(EntityLogicalName)
@@ -4135,9 +4574,9 @@ namespace Yagasoft.CustomJobs.Engine
 		{ }
 
 		public const string DisplayName = "Recurrence Rule";
-		public const string SchemaName = "ldv_recurrencerule";
-		public const string EntityLogicalName = "ldv_recurrencerule";
-		public const int EntityTypeCode = 10117;
+		public const string SchemaName = "ys_recurrencerule";
+		public const string EntityLogicalName = "ys_recurrencerule";
+		public const int EntityTypeCode = 10170;
 		
 		public class RelationName : RelationNameBase
 		{
@@ -4147,14 +4586,14 @@ namespace Yagasoft.CustomJobs.Engine
 
 		#region Attributes
 
-		[AttributeLogicalName("ldv_recurrenceruleid")]
+		[AttributeLogicalName("ys_recurrenceruleid")]
 		public override System.Guid Id
 		{
 			get => (RecurrenceRuleId == null || RecurrenceRuleId == Guid.Empty) ? base.Id : RecurrenceRuleId.GetValueOrDefault();
 			set
 			{
                 if (value == Guid.Empty) {
-                    Attributes.Remove("ldv_recurrenceruleid");
+                    Attributes.Remove("ys_recurrenceruleid");
                     base.Id = value;
                 } else {
 				    RecurrenceRuleId = value;
@@ -4164,21 +4603,21 @@ namespace Yagasoft.CustomJobs.Engine
 
         /// <summary>
         ///  
-		/// 'ldv_recurrenceruleId'.<br />
+		/// 'ys_recurrenceruleId'.<br />
         /// Unique identifier for entity instances
         /// </summary>
-		[AttributeLogicalName("ldv_recurrenceruleid")]
+		[AttributeLogicalName("ys_recurrenceruleid")]
 		public Guid? RecurrenceRuleId
 		{
 			get
 			{
-				var value = GetAttributeValue<Guid?>("ldv_recurrenceruleid");
+				var value = GetAttributeValue<Guid?>("ys_recurrenceruleid");
 			    return value;
 			}
 			set
 			{
                 if (value != null)
-	                SetAttributeValue("ldv_recurrenceruleid", value);
+	                SetAttributeValue("ys_recurrenceruleid", value);
 				if (value != null) base.Id = value.Value;
 				else Id = System.Guid.Empty;
 			}
@@ -4208,7 +4647,7 @@ namespace Yagasoft.CustomJobs.Engine
                 if (p.PropertyType == typeof(Guid))
                 {
                     base.Id = (Guid)value;
-                    Attributes["ldv_recurrenceruleid"] = base.Id;
+                    Attributes["ys_recurrenceruleid"] = base.Id;
                 }
                 else if (p.Name == "FormattedValues")
                 {
