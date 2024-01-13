@@ -61,13 +61,6 @@ Guide can be found [here](https://blog.yagasoft.com/2024/01/dynamics-custom-jobs
 		
 ## Changes
 + Check Releases page for the later changes
-#### _v3.2.1.1 (2021-01-01)_
-+ Added: Windows Service
-+ Fixed: issues
-#### _v3.1.1.1 (2019-02-27)_
-+ Changed: moved to a new namespace
-#### _v2.1.1.1 (2018-09-06)_
-+ Changed: cleaned the project of obsolete components
 
 ---
 **Copyright &copy; by Ahmed Elsawalhy ([Yagasoft](https://yagasoft.com))** -- _GPL v3 Licence_
